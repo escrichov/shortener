@@ -38,6 +38,7 @@ class Common(Configuration):
         'debug_toolbar',
 
         'shortener.users',
+        'shortener_app',
     ]
 
     MIDDLEWARE = [
