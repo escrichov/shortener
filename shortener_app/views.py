@@ -21,7 +21,7 @@ def shorten(request):
     if url is None or url == "":
         return HttpResponse("No url provided")
 
-    if not url.startswith('http://') or not url.startswith('https://'):
+    if not url.startswith('http://') and not url.startswith('https://'):
         url = 'http://' + url
 
     validate = URLValidator()
