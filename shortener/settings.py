@@ -35,7 +35,6 @@ class Common(Configuration):
         'django.contrib.staticfiles',
 
         'django_extensions',
-        'debug_toolbar',
 
         'shortener.users',
         'shortener_app',
@@ -126,6 +125,10 @@ class Development(Common):
 
     INTERNAL_IPS = [
         '127.0.0.1'
+    ]
+
+    INSTALLED_APPS = Common.INSTALLED_APPS + [
+        'debug_toolbar',
     ]
 
     MIDDLEWARE = Common.MIDDLEWARE + [
