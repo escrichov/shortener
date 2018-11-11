@@ -33,9 +33,7 @@ class Common(Configuration):
         'django.contrib.messages',
         'whitenoise.runserver_nostatic',
         'django.contrib.staticfiles',
-
         'django_extensions',
-
         'shortener.users',
         'shortener_app',
     ]
