@@ -1,2 +1,17 @@
-Url shortened: {{ url }}
-Link: <a href="{{ short_url }}">{{ short_url }}</a>
+{% extends 'shortener_app/base.html' %}
+{% block content %}
+<div class="body-wrap boxed-container">
+	<main>
+		<section class="hero">
+			<div class="container">
+				<div class="row">
+					<h3 class="hero-title mt-0 is-revealing">Your short url</h3>
+					<input class="input input-short-url" onclick="copyTextFunc()" id="copyElement" type="text" value="{{ short_url }}" readonly/>
+					<h5>Linked to:</h5>
+					<a href="{{ url }}">{{ url }}</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</div>
+{% endblock %}
