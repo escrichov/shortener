@@ -138,7 +138,7 @@ class Staging(Common):
     """
     The in-staging settings.
     """
-    ALLOWED_HOSTS = ['carlos-shortener.herokuapp.com']
+    ALLOWED_HOSTS = ['carlos-shortener.herokuapp.com', 'cour.fun']
 
     # Security
     SESSION_COOKIE_SECURE = values.BooleanValue(True)
