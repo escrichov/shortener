@@ -15,6 +15,6 @@ class ShortUrl(models.Model):
             )
         )
 
-        absolute_uri = absolute_uri.strip("http:").strip("/")
+        absolute_uri = absolute_uri.strip("https:").strip("http:").strip("/")
 
         return absolute_uri
