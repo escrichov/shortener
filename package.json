@@ -15,22 +15,23 @@
     "clean": "rimraf shortener_app/static/shortener_app/{css/*,js/*,images/*}",
     "autoprefixer": "postcss -u autoprefixer -r shortener_app/static/shortener_app/css/*",
     "autoprefixer-prod": "postcss --no-map -u autoprefixer -r shortener_app/static/shortener_app/css/*",
-    "scss": "node-sass --output-style compressed -o shortener_app/static/shortener_app/css src/scss",
+    "scss": "node-sass --output-style compressed -o shortener_app/static/shortener_app/css src/scss --include-path node_modules",
     "scss-production": "node-sass -x --output-style compressed -o shortener_app/static/shortener_app/css src/scss",
     "lint": "eslint src/js || true",
     "lint-scss": "stylelint src/scss/*.scss --syntax scss || true",
     "uglify": "mkdirp shortener_app/static/shortener_app/js -p && uglifyjs src/js/*.js -m -c -o shortener_app/static/shortener_app/js/main.min.js",
+    "webpack": "mkdirp shortener_app/static/shortener_app/js -p && webpack --mode development src/js/main.js --output shortener_app/static/shortener_app/js/main.min.js",
     "imagemin": "imagemin src/images/* -o shortener_app/static/shortener_app/images",
     "browser-sync": "browser-sync start --files \"shortener_app/static/shortener_app/css/*.css, shortener_app/static/shortener_app/js/*.js, shortener_app/templates/**/*.html\" --proxy 127.0.0.1:8000 --reload-delay=300 --reload-debounce=500",
     "build:css": "run-s lint-scss scss autoprefixer",
     "build:css-prod": "run-s lint-scss scss autoprefixer-prod",
-    "build:js": "run-s lint uglify",
+    "build:js": "run-s lint webpack",
     "build:images": "run-s imagemin",
     "build": "run-s build:js build:css-prod build:images",
     "watch:css": "onchange \"src/scss\" -- run-s build:css",
     "watch:js": "onchange \"src/js\" -- run-s build:js",
     "watch:images": "onchange \"src/images\" -- run-s build:images",
-    "serve": "concurrently --kill-others \"npm run watch:*\" \"python manage.py runserver\"  \"npm run browser-sync\" "
+    "serve": "concurrently --kill-others \"npm run watch:*\" \"npm run browser-sync\" "
   },
   "devDependencies": {
     "autoprefixer": "^9.0.1",
@@ -50,8 +51,14 @@
     "postcss-cli": "^6.0.0",
     "rimraf": "^2.5.4",
     "stylelint": "^9.4.0",
-    "uglify-es": "^3.3.10"
+    "uglify-es": "^3.3.10",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2"
   },
   "homepage": "https://bitbucket.org/pasqualevitiello/ellie#readme",
-  "main": ".eslintrc.js"
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "clipboard": "^2.0.4",
+    "jquery": "^3.3.1"
+  }
 }

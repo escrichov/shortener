@@ -4,7 +4,9 @@ from django.template import loader
 from django.urls import reverse
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
+from django.db.models import F
 from .models import ShortUrl
+
 
 
 
@@ -47,9 +49,12 @@ def info(request, short_url_id):
 
     template = loader.get_template('shortener_app/info.html')
 
+    short_url_link = short_url.short_url(request)
+
     context = {
         'url': short_url.url,
-        'short_url': short_url.short_url(request)
+        'short_url': '127.0.0.1:8000/2',
+        'clicks': short_url.clicks,
     }
 
     return HttpResponse(template.render(context, request))
@@ -62,5 +67,7 @@ def url_redirect(request, short_url_id):
         )
     except ShortUrl.DoesNotExist:
         return HttpResponse("Not found")
+
+    ShortUrl.objects.filter(id=short_url.id).update(clicks=F('clicks') + 1)
 
     return redirect(short_url.url)

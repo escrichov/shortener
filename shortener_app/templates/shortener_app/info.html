@@ -4,12 +4,27 @@
 	<main>
 		<section class="hero">
 			<div class="container">
-				<div class="row">
-					<h3 class="hero-title mt-0 is-revealing">Your short url</h3>
-					<input class="input input-short-url" onclick="copyTextFunc()" id="copyElement" type="text" value="{{ short_url }}" readonly/>
-					<h5>Linked to:</h5>
-					<a href="{{ url }}">{{ url }}</a>
-				</div>
+        <h3 class="hero-title mt-0 is-revealing">Your short url</h3>
+        <table>
+          <tr>
+            <td>Link</td>
+            <td>Linked to</td>
+            <td>Clicks</td>
+          </tr>
+          <tr>
+            <td>
+              <em id="copyElement" class="input input-short-url" type="text">
+                {{ short_url }}
+              </em>
+              <button class="button button-primary btn-copy" data-clipboard-target="#copyElement" >
+                Copy to clipboard
+              </button>
+              <a href="{{ short_url }}" class="button button-primary btn-copy">Go to link</a>
+            </td>
+            <td><a href="{{ url }}">{{ url }}</a></td>
+            <td>{{ clicks }}</td>
+          </tr>
+        </table>
 			</div>
 		</section>
 	</main>
