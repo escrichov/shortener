@@ -51,7 +51,8 @@ def info(request, short_url_id):
 
     context = {
         'url': short_url.url,
-        'short_url': short_url.short_url(request),
+        'full_short_url': short_url.full_short_url(request),
+        'relative_short_url': short_url.relative_short_url,
         'clicks': short_url.clicks,
     }
 
