@@ -49,11 +49,9 @@ def info(request, short_url_id):
 
     template = loader.get_template('shortener_app/info.html')
 
-    short_url_link = short_url.short_url(request)
-
     context = {
         'url': short_url.url,
-        'short_url': '127.0.0.1:8000/2',
+        'short_url': short_url.short_url(request),
         'clicks': short_url.clicks,
     }
 
