@@ -1,4 +1,3 @@
-
 <header class="header-login-signup">
 
 	<div class="header-limiter">
@@ -10,10 +9,16 @@
 			<a href="#pricing">Pricing</a>
 		</nav>
 
-		<ul>
-			<li><a href="#">Login</a></li>
-			<li><a href="#">Sign up</a></li>
+    {% if user.is_authenticated %}
+    <ul>
+			<li><a href="{% url 'logout' %}">Logout</a></li>
 		</ul>
+    {% else %}
+		<ul>
+			<li><a href="{% url 'login' %}">Login</a></li>
+			<li><a href="{% url 'signup' %}">Sign up</a></li>
+		</ul>
+    {% endif %}
 
 	</div>
 

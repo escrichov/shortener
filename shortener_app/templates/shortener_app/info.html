@@ -1,32 +1,27 @@
-{% extends 'shortener_app/base.html' %}
+{% extends 'base.html' %}
 {% block content %}
-<div class="body-wrap boxed-container">
-	<main>
-		<section class="hero">
-			<div class="container">
-        <h3 class="hero-title mt-0 is-revealing">Your short url</h3>
-        <table>
-          <tr>
-            <td>Link</td>
-            <td>Linked to</td>
-            <td>Clicks</td>
-          </tr>
-          <tr>
-            <td>
-              <em id="copyElement" class="input input-short-url" type="text">
-                {{ full_short_url }}
-              </em>
-              <button class="button button-primary btn-copy" data-clipboard-target="#copyElement" >
-                Copy to clipboard
-              </button>
-              <a href="{{ relative_short_url }}" class="button button-primary btn-copy">Go to link</a>
-            </td>
-            <td><a href="{{ url }}">{{ url }}</a></td>
-            <td>{{ clicks }}</td>
-          </tr>
-        </table>
-			</div>
-		</section>
-	</main>
-</div>
+
+<h3 class="hero-title mt-0 is-revealing">Your short url</h3>
+<table>
+  <tr>
+    <td>Link</td>
+    <td>Created on</td>
+    <td>Linked to</td>
+    <td>Clicks</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="{{ relative_short_url }}" id="copyElement" type="text">
+        {{ full_short_url }}
+      </a>
+      <button class="button button-primary btn-copy" data-clipboard-target="#copyElement" >
+        Copy to clipboard
+      </button>
+    </td>
+    <td>{{ created_on }}</td>
+    <td><a href="{{ url }}">{{ url }}</a></td>
+    <td>{{ clicks }}</td>
+  </tr>
+</table>
+
 {% endblock %}

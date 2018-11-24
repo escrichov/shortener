@@ -26,7 +26,6 @@ class Common(Configuration):
 
     # Application definition
     INSTALLED_APPS = [
-        'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
@@ -34,8 +33,10 @@ class Common(Configuration):
         'whitenoise.runserver_nostatic',
         'django.contrib.staticfiles',
         'django_extensions',
-        'shortener.users',
         'shortener_app',
+        'users',
+        'django.contrib.admin',
+
     ]
 
     MIDDLEWARE = [
@@ -111,6 +112,12 @@ class Common(Configuration):
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     AUTH_USER_MODEL = 'users.User'
+
+    LOGIN_REDIRECT_URL = 'shortener_app:index'
+    LOGOUT_REDIRECT_URL = 'shortener_app:index'
+
+    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 
 class Development(Common):

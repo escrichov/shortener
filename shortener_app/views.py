@@ -54,6 +54,7 @@ def info(request, short_url_id):
         'full_short_url': short_url.full_short_url(request),
         'relative_short_url': short_url.relative_short_url,
         'clicks': short_url.clicks,
+        'created_on': short_url.created_on,
     }
 
     return HttpResponse(template.render(context, request))
