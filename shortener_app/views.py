@@ -44,13 +44,13 @@ def shorten(request):
         user=user,
     )
 
-    return redirect(reverse('shortener_app:info', kwargs={'short_url_id': short_url.id}))
+    return redirect(reverse('shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
 
 
-def info(request, short_url_id):
+def info(request, short_url_uid):
     try:
         short_url = ShortUrl.objects.get(
-            id=short_url_id,
+            uid=short_url_uid,
         )
     except ShortUrl.DoesNotExist:
         return HttpResponse("Not found", status=404)
@@ -64,10 +64,10 @@ def info(request, short_url_id):
     return HttpResponse(template.render(context, request))
 
 
-def url_redirect(request, short_url_id):
+def url_redirect(request, short_url_uid):
     try:
         short_url = ShortUrl.objects.get(
-            id=short_url_id,
+            uid=short_url_uid,
         )
     except ShortUrl.DoesNotExist:
         return HttpResponse("Not found")

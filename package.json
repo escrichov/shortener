@@ -21,7 +21,7 @@
     "lint-scss": "stylelint src/scss/*.scss --syntax scss || true",
     "uglify": "mkdirp shortener_app/static/shortener_app/js -p && uglifyjs src/js/*.js -m -c -o shortener_app/static/shortener_app/js/main.min.js",
     "webpack": "mkdirp shortener_app/static/shortener_app/js -p && webpack --mode development src/js/main.js --output shortener_app/static/shortener_app/js/main.min.js",
-    "imagemin": "imagemin src/images/* -o shortener_app/static/shortener_app/images",
+    "imagemin": "imagemin src/img/* -o shortener_app/static/shortener_app/img",
     "browser-sync": "browser-sync start --files \"shortener_app/static/shortener_app/css/*.css, shortener_app/static/shortener_app/js/*.js, shortener_app/templates/**/*.html\" --proxy 127.0.0.1:8000 --reload-delay=300 --reload-debounce=500",
     "build:css": "run-s lint-scss scss autoprefixer",
     "build:css-prod": "run-s lint-scss scss autoprefixer-prod",
