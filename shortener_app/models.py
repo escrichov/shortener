@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from datetime import datetime
+from django.contrib.auth import get_user_model
+from django.conf import settings
 
 
 class ShortUrl(models.Model):
@@ -9,6 +11,8 @@ class ShortUrl(models.Model):
     clicks = models.IntegerField(default=0)
     created_on = models.DateTimeField(default=datetime.utcnow)
 
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
+
     @property
     def relative_short_url(self):
         relative_uri = reverse(
@@ -16,10 +20,7 @@ class ShortUrl(models.Model):
             kwargs={'short_url_id': self.id}
         )
 
-        return relative_uri
+        return relative_uri.rstrip('/')
 
-    def full_short_url(self, request):
-        absolute_uri = request.build_absolute_uri(self.relative_short_url)
-        absolute_uri = absolute_uri.strip("https:").strip("http:").strip("/")
-
-        return absolute_uri
+    def full_short_url(self):
+        return settings.HOSTNAME + self.relative_short_url

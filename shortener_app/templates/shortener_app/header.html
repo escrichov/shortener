@@ -11,6 +11,7 @@
 
     {% if user.is_authenticated %}
     <ul>
+      <li><a href="{% url 'shortener_app:urls' %}">My urls</a></li>
 			<li><a href="{% url 'logout' %}">Logout</a></li>
 		</ul>
     {% else %}

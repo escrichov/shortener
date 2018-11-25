@@ -1,0 +1,13 @@
+<tr>
+    <td>
+      <a href="{{ url.relative_short_url }}" id="copyElement" type="text">
+        {{ url.full_short_url }}
+      </a>
+      <button class="button button-primary btn-copy" data-clipboard-target="#copyElement" >
+        Copy to clipboard
+      </button>
+    </td>
+    <td>{{ url.created_on }}</td>
+    <td><a href="{{ url.url }}">{{ url.url }}</a></td>
+    <td>{{ url.clicks }}</td>
+</tr>

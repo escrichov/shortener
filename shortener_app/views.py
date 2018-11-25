@@ -5,7 +5,9 @@ from django.urls import reverse
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from django.db.models import F
+from django.contrib.auth.decorators import login_required
 from .models import ShortUrl
+
 
 
 
@@ -32,8 +34,14 @@ def shorten(request):
     except ValidationError:
         return HttpResponse("Invalid url")
 
+    if request.user.is_authenticated:
+        user = request.user
+    else:
+        user = None
+
     short_url, _ = ShortUrl.objects.get_or_create(
         url=url,
+        user=user,
     )
 
     return redirect(reverse('shortener_app:info', kwargs={'short_url_id': short_url.id}))
@@ -50,11 +58,7 @@ def info(request, short_url_id):
     template = loader.get_template('shortener_app/info.html')
 
     context = {
-        'url': short_url.url,
-        'full_short_url': short_url.full_short_url(request),
-        'relative_short_url': short_url.relative_short_url,
-        'clicks': short_url.clicks,
-        'created_on': short_url.created_on,
+        'url': short_url,
     }
 
     return HttpResponse(template.render(context, request))
@@ -71,3 +75,20 @@ def url_redirect(request, short_url_id):
     ShortUrl.objects.filter(id=short_url.id).update(clicks=F('clicks') + 1)
 
     return redirect(short_url.url)
+
+
+
+@login_required
+def list_urls(request):
+    if request.user.is_authenticated:
+        urls = ShortUrl.objects.filter(user=request.user)
+    else:
+        urls = []
+
+    template = loader.get_template('shortener_app/urls.html')
+
+    context = {
+        'urls': urls,
+    }
+
+    return HttpResponse(template.render(context, request))

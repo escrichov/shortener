@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3 class="hero-title mt-0 is-revealing">Your short url</h3>
+<h3 class="hero-title mt-0 is-revealing">Your urls</h3>
 <table>
   <tr>
     <td>Link</td>
@@ -9,7 +9,10 @@
     <td>Linked to</td>
     <td>Clicks</td>
   </tr>
+  {% for url in urls %}
   {% include "shortener_app/url.html" %}
+  {% endfor %}
+
 </table>
 
 {% endblock %}

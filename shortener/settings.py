@@ -113,7 +113,7 @@ class Common(Configuration):
 
     AUTH_USER_MODEL = 'users.User'
 
-    LOGIN_REDIRECT_URL = 'shortener_app:index'
+    LOGIN_REDIRECT_URL = 'shortener_app:urls'
     LOGOUT_REDIRECT_URL = 'shortener_app:index'
 
     EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
@@ -140,6 +140,8 @@ class Development(Common):
         'debug_toolbar.middleware.DebugToolbarMiddleware'
     ]
 
+    HOSTNAME = 'localhost:8000'
+
 
 class Staging(Common):
     """
@@ -159,6 +161,8 @@ class Staging(Common):
     #SECURE_PROXY_SSL_HEADER = values.TupleValue(
     #    ('HTTP_X_FORWARDED_PROTO', 'https')
     #)
+
+    HOSTNAME = 'cour.fun'
 
 
 class Production(Staging):
