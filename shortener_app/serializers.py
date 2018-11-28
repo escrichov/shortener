@@ -3,12 +3,13 @@ from .models import ShortUrl
 
 
 class ShortUrlSerializer(serializers.ModelSerializer):
+    id = serializers.CharField(source='uid')
     short_url = serializers.CharField(source='full_short_url')
     target = serializers.CharField(source='url')
 
     class Meta:
         model = ShortUrl
-        fields = ('created_on', 'clicks', 'target', 'short_url')
+        fields = ('id', 'created_on', 'clicks', 'target', 'short_url')
 
 
 class ShortUrlCreateSerializer(serializers.ModelSerializer):
