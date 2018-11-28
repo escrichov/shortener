@@ -12,6 +12,11 @@ def generate_random_uid():
     return s
 
 
+def generate_random_apikey():
+    s = get_random_string(length=64, allowed_chars=string.ascii_letters+string.digits)
+    return s
+
+
 class ShortUrl(models.Model):
 
     uid = models.CharField(default=generate_random_uid, max_length=6, unique=True)
@@ -31,3 +36,9 @@ class ShortUrl(models.Model):
 
     def full_short_url(self):
         return settings.HOSTNAME + self.relative_short_url
+
+
+class APIAccess(models.Model):
+
+    apikey = models.CharField(default=generate_random_apikey, max_length=64, unique=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)

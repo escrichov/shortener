@@ -8,4 +8,10 @@
     <td>{{ url.created_on }}</td>
     <td><a href="{{ url.url }}">{{ url.url }}</a></td>
     <td>{{ url.clicks }}</td>
+    <td>
+      <form action="{% url 'shortener_app:delete' url.uid %}" method="post">
+        {% csrf_token %}
+        <input class="button" type="submit" value="Delete">
+      </form>
+    </td>
 </tr>

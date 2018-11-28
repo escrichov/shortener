@@ -36,7 +36,7 @@ class Common(Configuration):
         'shortener_app',
         'users',
         'django.contrib.admin',
-
+        'rest_framework',
     ]
 
     MIDDLEWARE = [
@@ -118,6 +118,23 @@ class Common(Configuration):
 
     EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
     EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
+    REST_FRAMEWORK = {
+        'DEFAULT_RENDERER_CLASSES': (
+            'rest_framework.renderers.JSONRenderer',
+        ),
+        'DEFAULT_PARSER_CLASSES': (
+            'rest_framework.parsers.JSONParser',
+        ),
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+            'shortener_app.authentication.APIAccessAuthentication',
+        ),
+        'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.IsAuthenticated',
+        ),
+        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+        'PAGE_SIZE': 10
+    }
 
 
 class Development(Common):
