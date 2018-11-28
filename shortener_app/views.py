@@ -11,7 +11,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import ShortUrl, APIAccess
+from datetime import datetime, timedelta
+
+from .models import ShortUrl, ShortUrlStats, APIAccess
 from .serializers import ShortUrlSerializer, ShortUrlCreateSerializer
 
 
@@ -29,6 +31,10 @@ def create_short_url(url_target, user):
     )
 
     return short_url
+
+
+def utcnow_current_hour():
+    return datetime.utcnow().replace(minute=0, second=0, microsecond=0)
 
 
 def index(request):
@@ -74,6 +80,28 @@ def info(request, short_url_uid):
     return HttpResponse(template.render(context, request))
 
 
+def stats(request, short_url_uid):
+    try:
+        short_url = ShortUrl.objects.get(
+            uid=short_url_uid,
+        )
+    except ShortUrl.DoesNotExist:
+        return HttpResponse("Not found", status=404)
+
+    # Get stats of last 24 hours
+    time_threshold = datetime.utcnow() - timedelta(days=1)
+    stats = ShortUrlStats.objects.filter(short_url=short_url, aggregated_datetime__gt=time_threshold)
+
+    template = loader.get_template('shortener_app/stats.html')
+
+    context = {
+        'url': short_url,
+        'stats': stats,
+    }
+
+    return HttpResponse(template.render(context, request))
+
+
 def url_redirect(request, short_url_uid):
     try:
         short_url = ShortUrl.objects.get(
@@ -83,6 +111,19 @@ def url_redirect(request, short_url_uid):
         return HttpResponse("Not found")
 
     ShortUrl.objects.filter(id=short_url.id).update(clicks=F('clicks') + 1)
+
+    # Create or update stats
+    now_current_hour = utcnow_current_hour()
+    _, created = ShortUrlStats.objects.get_or_create(
+        short_url=short_url,
+        aggregated_datetime=now_current_hour,
+        defaults={'clicks': 1}
+    )
+    if not created:
+        ShortUrlStats.objects.filter(
+            short_url=short_url,
+            aggregated_datetime=now_current_hour,
+        ).update(clicks=F('clicks') + 1)
 
     return redirect(short_url.url)
 

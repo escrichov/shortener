@@ -38,6 +38,13 @@ class ShortUrl(models.Model):
         return settings.HOSTNAME + self.relative_short_url
 
 
+class ShortUrlStats(models.Model):
+
+    clicks = models.IntegerField(default=0)
+    aggregated_datetime = models.DateTimeField(default=datetime.utcnow)
+    short_url = models.ForeignKey(ShortUrl, on_delete=models.CASCADE, null=True, blank=True)
+
+
 class APIAccess(models.Model):
 
     apikey = models.CharField(default=generate_random_apikey, max_length=64, unique=True)

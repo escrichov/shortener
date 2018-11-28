@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3 class="hero-title mt-0 is-revealing">Stats for: {{ url.full_short_url }}</h3>
+<ul>
+  <li>
+    <p>Total clicks: {{ url.clicks }}</p>
+  </li>
+</ul>
+
+<table>
+  <tr>
+    <td>Datetime</td>
+    <td>Clicks</td>
+  </tr>
+  {% for stat in stats %}
+    {% include "shortener_app/stat_object.html" %}
+  {% endfor %}
+</table>
+{% endblock %}

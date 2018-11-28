@@ -8,6 +8,7 @@
     <td>{{ url.created_on }}</td>
     <td><a href="{{ url.url }}">{{ url.url }}</a></td>
     <td>{{ url.clicks }}</td>
+    <td><a href="{% url 'shortener_app:stats' url.uid %}">View stats</a></td>
     <td>
       <form action="{% url 'shortener_app:delete' url.uid %}" method="post">
         {% csrf_token %}
