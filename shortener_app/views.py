@@ -12,7 +12,23 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import ShortUrl, APIAccess
-from .serializers import ShortUrlSerializer
+from .serializers import ShortUrlSerializer, ShortUrlCreateSerializer
+
+
+# Throw ValidationError exception if url_target is not incorrect format
+def create_short_url(url_target, user):
+    if not url_target.startswith('http://') and not url_target.startswith('https://'):
+        url_target = 'http://' + url_target
+
+    validate = URLValidator()
+    validate(url_target)
+
+    short_url, _ = ShortUrl.objects.get_or_create(
+        url=url_target,
+        user=user,
+    )
+
+    return short_url
 
 
 def index(request):
@@ -28,24 +44,15 @@ def shorten(request):
     if url is None or url == "":
         return HttpResponse("No url provided")
 
-    if not url.startswith('http://') and not url.startswith('https://'):
-        url = 'http://' + url
-
-    validate = URLValidator()
-    try:
-        validate(url)
-    except ValidationError:
-        return HttpResponse("Invalid url")
-
     if request.user.is_authenticated:
         user = request.user
     else:
         user = None
 
-    short_url, _ = ShortUrl.objects.get_or_create(
-        url=url,
-        user=user,
-    )
+    try:
+        short_url = create_short_url(url, user)
+    except ValidationError:
+        return HttpResponse("Invalid url")
 
     return redirect(reverse('shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
 
@@ -155,3 +162,23 @@ def api_url_delete(request, uid):
         return Response({'error': 'Url does not exist'}, status=status.HTTP_400_BAD_REQUEST)
 
     return Response({})
+
+
+@api_view(['POST'])
+def api_url_create(request):
+    """
+    Create user urls
+    """
+
+    s_input = ShortUrlCreateSerializer(data=request.data)
+    if not s_input.is_valid():
+        return Response(s_input.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        short_url = create_short_url(s_input.validated_data.get('url'), request.user)
+    except ValidationError:
+        return Response({'error': 'Invalid url'}, status=status.HTTP_400_BAD_REQUEST)
+
+    s_output = ShortUrlSerializer(short_url)
+
+    return Response(s_output.data)

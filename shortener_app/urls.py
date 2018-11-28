@@ -14,6 +14,7 @@ urlpatterns = [
     path('delete_api_access/<int:api_access_id>', views.delete_api_access, name='delete_api_access'),
     path('shorten', views.shorten, name='shorten'),
 
+    path('api/url/create', views.api_url_create, name='api_delete_create'),
     path('api/url/delete/<slug:uid>', views.api_url_delete, name='api_delete_url'),
     path('api/urls', views.api_url_list, name='api_list_urls'),
 ]

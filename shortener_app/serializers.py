@@ -9,3 +9,11 @@ class ShortUrlSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShortUrl
         fields = ('created_on', 'clicks', 'target', 'short_url')
+
+
+class ShortUrlCreateSerializer(serializers.ModelSerializer):
+    target = serializers.CharField(source='url', write_only=True, required=True)
+
+    class Meta:
+        model = ShortUrl
+        fields = ('target', )
