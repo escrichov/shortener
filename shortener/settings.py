@@ -211,7 +211,7 @@ class Staging(Common):
             }
         },
         'loggers': {
-            'testlogger': {
+            '': {
                 'handlers': ['console'],
                 'level': 'INFO',
             }
