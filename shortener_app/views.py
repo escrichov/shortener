@@ -4,7 +4,8 @@ from django.template import loader
 from django.urls import reverse
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-from django.db.models import F, Count
+from django.db.models import F, Count, DateTimeField
+from django.db.models.functions import Trunc
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
@@ -104,9 +105,9 @@ def stats(request, short_url_uid):
     time_threshold = datetime.utcnow() - timedelta(days=1)
     click_stats = ShortUrlLog.objects.filter(
         created_on__gt=time_threshold,
-    ).extra({
-        'name': 'strftime("%%H", created_on)'
-    }).order_by().values('name').annotate(count=Count('id'))
+    ).annotate(
+        name=Trunc('created_on', 'hour', output_field=DateTimeField())
+    ).values('name').annotate(count=Count('id'))
 
     # Get country stats of last 24 hours
     country_stats = ShortUrlLog.objects.filter(
