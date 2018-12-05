@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import os
+import sys
 
 from configurations import Configuration, values
 
@@ -205,7 +206,8 @@ class Staging(Common):
             'console': {
                 'level': 'DEBUG',
                 'class': 'logging.StreamHandler',
-                'formatter': 'verbose'
+                'formatter': 'verbose',
+                'stream': sys.stdout
             }
         },
         'loggers': {
