@@ -38,10 +38,17 @@ class ShortUrl(models.Model):
         return settings.HOSTNAME + self.relative_short_url
 
 
-class ShortUrlStats(models.Model):
+class ShortUrlLog(models.Model):
 
-    clicks = models.IntegerField(default=0)
-    aggregated_datetime = models.DateTimeField(default=datetime.utcnow)
+    created_on = models.DateTimeField(default=datetime.utcnow)
+    ip = models.GenericIPAddressField(null=True, blank=True)
+    browser = models.CharField(max_length=16, null=True, blank=True)
+    os = models.CharField(max_length=16, null=True, blank=True)
+    country_code = models.CharField(max_length=4, null=True, blank=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+    referer = models.CharField(max_length=256, null=True, blank=True)
+    user_agent = models.CharField(max_length=256, null=True, blank=True)
     short_url = models.ForeignKey(ShortUrl, on_delete=models.CASCADE, null=True, blank=True)
 
 

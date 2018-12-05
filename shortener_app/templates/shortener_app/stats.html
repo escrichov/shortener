@@ -10,11 +10,52 @@
 
 <table>
   <tr>
-    <td>Datetime</td>
-    <td>Clicks</td>
+    <td>Hour</td>
+    <td>Count</td>
   </tr>
-  {% for stat in stats %}
+  {% for stat in click_stats %}
     {% include "shortener_app/stat_object.html" %}
   {% endfor %}
 </table>
+
+<table>
+  <tr>
+    <td>Country</td>
+    <td>Count</td>
+  </tr>
+  {% for stat in country_stats %}
+    {% include "shortener_app/stat_object.html" %}
+  {% endfor %}
+</table>
+
+<table>
+  <tr>
+    <td>Os Name</td>
+    <td>Count</td>
+  </tr>
+  {% for stat in os_stats %}
+    {% include "shortener_app/stat_object.html" %}
+  {% endfor %}
+</table>
+
+<table>
+  <tr>
+    <td>Referal</td>
+    <td>Count</td>
+  </tr>
+  {% for stat in referal_stats %}
+    {% include "shortener_app/stat_object.html" %}
+  {% endfor %}
+</table>
+
+<table>
+  <tr>
+    <td>Browser</td>
+    <td>Count</td>
+  </tr>
+  {% for stat in browser_stats %}
+    {% include "shortener_app/stat_object.html" %}
+  {% endfor %}
+</table>
+
 {% endblock %}

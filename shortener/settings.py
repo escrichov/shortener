@@ -136,6 +136,8 @@ class Common(Configuration):
         'PAGE_SIZE': 10
     }
 
+    IPSTACK_APIKEY = values.SecretValue()
+
 
 class Development(Common):
     """

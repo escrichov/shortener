@@ -4,16 +4,19 @@ from django.template import loader
 from django.urls import reverse
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-from django.db.models import F
+from django.db.models import F, Count
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
+import requests
+from ua_parser import user_agent_parser
 from datetime import datetime, timedelta
 
-from .models import ShortUrl, ShortUrlStats, APIAccess
+from .models import ShortUrl, ShortUrlLog, APIAccess
 from .serializers import ShortUrlSerializer, ShortUrlCreateSerializer
 
 
@@ -35,6 +38,15 @@ def create_short_url(url_target, user):
 
 def utcnow_current_hour():
     return datetime.utcnow().replace(minute=0, second=0, microsecond=0)
+
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
 
 
 def index(request):
@@ -88,15 +100,55 @@ def stats(request, short_url_uid):
     except ShortUrl.DoesNotExist:
         return HttpResponse("Not found", status=404)
 
-    # Get stats of last 24 hours
+    # Get click stats of last 24 hours
     time_threshold = datetime.utcnow() - timedelta(days=1)
-    stats = ShortUrlStats.objects.filter(short_url=short_url, aggregated_datetime__gt=time_threshold)
+    click_stats = ShortUrlLog.objects.filter(
+        created_on__gt=time_threshold,
+    ).extra({
+        'name': 'strftime("%%H", created_on)'
+    }).order_by().values('name').annotate(count=Count('id'))
+
+    # Get country stats of last 24 hours
+    country_stats = ShortUrlLog.objects.filter(
+        created_on__gt=time_threshold,
+        country_code__isnull=False,
+    ).extra({
+        'name': 'country_code'
+    }).order_by().values('name').annotate(count=Count('id'))
+
+    # Get referal stats of last 24 hours
+    referal_stats = ShortUrlLog.objects.filter(
+        created_on__gt=time_threshold,
+        referer__isnull=False,
+    ).extra({
+        'name': 'referer'
+    }).order_by().values('name').annotate(count=Count('id'))
+
+    # Get os stats of last 24 hours
+    os_stats = ShortUrlLog.objects.filter(
+        created_on__gt=time_threshold,
+        os__isnull=False,
+    ).extra({
+        'name': 'os'
+    }).order_by().values('name').annotate(count=Count('id'))
+
+    # Get browser stats of last 24 hours
+    browser_stats = ShortUrlLog.objects.filter(
+        created_on__gt=time_threshold,
+        browser__isnull=False,
+    ).extra({
+        'name': 'browser'
+    }).order_by().values('name').annotate(count=Count('id'))
 
     template = loader.get_template('shortener_app/stats.html')
 
     context = {
         'url': short_url,
-        'stats': stats,
+        'click_stats': click_stats,
+        'country_stats': country_stats,
+        'os_stats': os_stats,
+        'referal_stats': referal_stats,
+        'browser_stats': browser_stats,
     }
 
     return HttpResponse(template.render(context, request))
@@ -110,20 +162,34 @@ def url_redirect(request, short_url_uid):
     except ShortUrl.DoesNotExist:
         return HttpResponse("Not found")
 
+    # Update total clicks
     ShortUrl.objects.filter(id=short_url.id).update(clicks=F('clicks') + 1)
 
-    # Create or update stats
-    now_current_hour = utcnow_current_hour()
-    _, created = ShortUrlStats.objects.get_or_create(
-        short_url=short_url,
-        aggregated_datetime=now_current_hour,
-        defaults={'clicks': 1}
-    )
-    if not created:
-        ShortUrlStats.objects.filter(
-            short_url=short_url,
-            aggregated_datetime=now_current_hour,
-        ).update(clicks=F('clicks') + 1)
+    # Get ip from header if behind proxy, else get ip directly
+    ip = get_client_ip(request)
+
+    # Parse user agent into os, user_agent and device
+    parsed_string = user_agent_parser.Parse(request.META.get('HTTP_USER_AGENT'))
+
+    # Locate visitors by ip address 
+    r = requests.get('http://api.ipstack.com/{ip}'.format(ip=ip), params={'access_key': settings.IPSTACK_APIKEY})
+    if r.status_code == 200:
+        response_data = r.json()
+    else:
+        response_data = {}
+
+    # Create log
+    point = ShortUrlLog()
+    point.ip = ip
+    point.referer = request.META.get('HTTP_REFERER')
+    point.user_agent = request.META.get('HTTP_USER_AGENT')
+    point.short_url = short_url
+    point.os = parsed_string['os'].get('family')
+    point.browser = parsed_string['user_agent'].get('family')
+    point.country_code = response_data.get('country_code')
+    point.latitude = response_data.get('latitude')
+    point.longitude = response_data.get('longitude')
+    point.save()
 
     return redirect(short_url.url)
 
