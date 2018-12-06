@@ -5,15 +5,7 @@
     <div class="hero-copy">
       <h1 class="hero-title mt-0 is-revealing">URL Shortener</h1>
       <p class="hero-paragraph is-revealing">Insert a url to generate a short link that can be shared in multiple sites.</p>
-      <form class="hero-form field field-grouped is-revealing" action="{% url 'shortener_app:shorten' %}" method="post">
-        {% csrf_token %}
-        <div class="control control-expanded">
-          <input class="input" type="text" name="url" placeholder="Shorten your url">
-        </div>
-        <div class="control">
-          <input class="button button-block button-primary" type="submit" value="Submit">
-        </div>
-      </form>
+      {% include "shortener_app/shorten_form.html" %}
     </div>
   </div>
 </div>

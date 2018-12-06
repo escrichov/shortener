@@ -1,0 +1,9 @@
+<form class="hero-form field field-grouped is-revealing" action="{% url 'shortener_app:shorten' %}" method="post">
+    {% csrf_token %}
+    <div class="control control-expanded">
+        <input class="input" type="text" name="url" placeholder="Shorten your url">
+    </div>
+    <div class="control">
+        <input class="button button-block button-primary" type="submit" value="Submit">
+    </div>
+</form>

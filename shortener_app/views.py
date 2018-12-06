@@ -73,7 +73,10 @@ def shorten(request):
     except ValidationError:
         return HttpResponse("Invalid url")
 
-    return redirect(reverse('shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
+    if user is None:
+        return redirect(reverse('shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
+    else:
+        return redirect(reverse('shortener_app:urls'))
 
 
 def info(request, short_url_uid):
