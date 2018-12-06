@@ -84,9 +84,8 @@ class NewVisitorTest(CommonTestCase):
         signup_button.click()
         self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h2'), "Sign up"))
 
-        # She fill the username, email and password
+        # She fill the email and password
         sign_up_form = self.browser.find_element_by_xpath("//main//form")
-        sign_up_form.find_element_by_name('username').send_keys('edith')
         sign_up_form.find_element_by_name('email').send_keys('edith@hispage.com')
         sign_up_form.find_element_by_name('password1').send_keys('fdfasd890')
         sign_up_form.find_element_by_name('password2').send_keys('fdfasd890')
@@ -102,7 +101,6 @@ class LoginUserTest(CommonTestCase):
         super().setUp()
 
         self.user = get_user_model().objects.create_user(
-            username='edith',
             email='edith@hispage.com',
             password='fdfasd890')
 
@@ -113,9 +111,9 @@ class LoginUserTest(CommonTestCase):
         # Edith come back to Shortener app to login into her account
         self.browser.get('{}/accounts/login'.format(self.live_server_url))
 
-        # She fill again the username and password on the form
+        # She fill again the email and password on the form
         login_form = self.browser.find_element_by_xpath("//main//form")
-        login_form.find_element_by_name('username').send_keys('edith')
+        login_form.find_element_by_name('username').send_keys('edith@hispage.com')
         login_form.find_element_by_name('password').send_keys('fdfasd890')
 
         # When she hit click on the form, the page reloads, and now edith can view
@@ -127,9 +125,9 @@ class LoginUserTest(CommonTestCase):
         # Edith come back to Shortener app to login into her account
         self.browser.get('{}/accounts/login'.format(self.live_server_url))
 
-        # She fill again the username and a bad password on the form
+        # She fill again the email and a bad password on the form
         login_form = self.browser.find_element_by_xpath("//main//form")
-        login_form.find_element_by_name('username').send_keys('edith')
+        login_form.find_element_by_name('username').send_keys('edith@hispage.com')
         login_form.find_element_by_name('password').send_keys('flass_onion')
 
         # When she hit click on the form, the page reloads
@@ -138,7 +136,7 @@ class LoginUserTest(CommonTestCase):
 
         # Now Edit she the error
         error_text = self.browser.find_element_by_xpath("//main//form//ul//li").text
-        self.assertIn("Please enter a correct username and password. Note that both fields may be case-sensitive.", error_text)
+        self.assertIn("Please enter a correct email and password. Note that both fields may be case-sensitive.", error_text)
 
 
 class AccountBackendUserTest(CommonTestCase):
@@ -147,7 +145,6 @@ class AccountBackendUserTest(CommonTestCase):
         super().setUp()
 
         self.user = get_user_model().objects.create_user(
-            username='edith',
             email='edith@hispage.com',
             password='fdfasd890')
         self.client.force_login(self.user)

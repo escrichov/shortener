@@ -5,11 +5,12 @@ from users.forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import User
 
 
-class UserAdmin(UserAdmin):
+class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = User
-    list_display = ['email', 'username',]
+    list_display = ['email', ]
+    ordering = ('email', )
 
 
-admin.site.register(User, UserAdmin)
+admin.site.register(User, CustomUserAdmin)
