@@ -116,9 +116,6 @@ class Common(Configuration):
     LOGIN_REDIRECT_URL = 'shortener_app:urls'
     LOGOUT_REDIRECT_URL = 'shortener_app:index'
 
-    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-    EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
-
     REST_FRAMEWORK = {
         'DEFAULT_RENDERER_CLASSES': (
             'rest_framework.renderers.JSONRenderer',
@@ -135,6 +132,8 @@ class Common(Configuration):
         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
         'PAGE_SIZE': 10
     }
+
+    DEFAULT_FROM_EMAIL = 'Cour.fun <info@cour.fun>'
 
     IPSTACK_APIKEY = values.SecretValue()
 
@@ -159,6 +158,13 @@ class Development(Common):
 
     HOSTNAME = 'localhost:8000'
 
+    EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+    SENDGRID_API_KEY = values.SecretValue()
+    SENDGRID_SANDBOX_MODE_IN_DEBUG = True
+
+    #EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    #EMAIL_FILE_PATH = os.path.join(Common.BASE_DIR, "sent_emails")
+
 
 class Staging(Common):
     """
@@ -180,6 +186,9 @@ class Staging(Common):
     #)
 
     HOSTNAME = 'cour.fun'
+
+    EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+    SENDGRID_API_KEY = values.SecretValue()
 
 
 class Production(Staging):
