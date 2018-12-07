@@ -8,6 +8,12 @@
   </li>
 </ul>
 
+<canvas id="click_stats_id" width="200" height="200"></canvas>
+<canvas id="country_stats_id" width="200" height="200"></canvas>
+<canvas id="referal_stats_id" width="200" height="200"></canvas>
+<canvas id="browser_stats_id" width="200" height="200"></canvas>
+<canvas id="os_stats_id" width="200" height="200"></canvas>
+
 <table>
   <tr>
     <td>Hour</td>
@@ -58,4 +64,14 @@
   {% endfor %}
 </table>
 
+{% endblock %}
+
+{% block javascript_data %}
+<script type="text/javascript">
+  var referal_stats = {{ referal_stats_javascript |safe }};
+  var country_stats = {{ country_stats_javascript |safe }};
+  var browser_stats = {{ browser_stats_javascript |safe }};
+  var os_stats = {{ os_stats_javascript |safe }};
+  var click_stats = {{ click_stats_javascript |safe }};
+</script>
 {% endblock %}

@@ -13,6 +13,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
+import json
 import requests
 from ua_parser import user_agent_parser
 from datetime import datetime, timedelta
@@ -146,6 +147,31 @@ def stats(request, short_url_uid):
 
     template = loader.get_template('shortener_app/stats.html')
 
+    click_stats_javascript = {'labels': [], 'values': []}
+    for stat in click_stats:
+        click_stats_javascript['labels'].append(str(stat['name']))
+        click_stats_javascript['values'].append(stat['count'])
+
+    referal_stats_javascript = {'labels': [], 'values': []}
+    for stat in referal_stats:
+        referal_stats_javascript['labels'].append(stat['name'])
+        referal_stats_javascript['values'].append(stat['count'])
+
+    country_stats_javascript = {'labels': [], 'values': []}
+    for stat in country_stats:
+        country_stats_javascript['labels'].append(stat['name'])
+        country_stats_javascript['values'].append(stat['count'])
+
+    browser_stats_javascript = {'labels': [], 'values': []}
+    for stat in browser_stats:
+        browser_stats_javascript['labels'].append(stat['name'])
+        browser_stats_javascript['values'].append(stat['count'])
+
+    os_stats_javascript = {'labels': [], 'values': []}
+    for stat in os_stats:
+        os_stats_javascript['labels'].append(stat['name'])
+        os_stats_javascript['values'].append(stat['count'])
+
     context = {
         'url': short_url,
         'click_stats': click_stats,
@@ -153,6 +179,11 @@ def stats(request, short_url_uid):
         'os_stats': os_stats,
         'referal_stats': referal_stats,
         'browser_stats': browser_stats,
+        'country_stats_javascript': json.dumps(country_stats_javascript),
+        'referal_stats_javascript': json.dumps(referal_stats_javascript),
+        'browser_stats_javascript': json.dumps(browser_stats_javascript),
+        'os_stats_javascript': json.dumps(os_stats_javascript),
+        'click_stats_javascript': json.dumps(click_stats_javascript),
     }
 
     return HttpResponse(template.render(context, request))

@@ -58,6 +58,7 @@
   "homepage": "https://bitbucket.org/pasqualevitiello/ellie#readme",
   "main": ".eslintrc.js",
   "dependencies": {
+    "chart.js": "^2.7.3",
     "clipboard": "^2.0.4",
     "jquery": "^3.3.1"
   }
