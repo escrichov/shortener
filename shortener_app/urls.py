@@ -18,4 +18,5 @@ urlpatterns = [
     path('api/url/create', views.api_url_create, name='api_delete_create'),
     path('api/url/delete/<slug:uid>', views.api_url_delete, name='api_delete_url'),
     path('api/url/list', views.api_url_list, name='api_list_urls'),
+    path('pricing', views.pricing, name='pricing'),
 ]

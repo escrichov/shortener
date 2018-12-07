@@ -2,11 +2,11 @@
 
 	<div class="header-limiter">
 
-		<h1><a href="/">Cour.fun</a></h1>
+		<h1><a href="{% url 'shortener_app:index' %}">Cour.fun</a></h1>
 
 		<nav>
-			<a href="/">Home</a>
-			<a href="#pricing">Pricing</a>
+			<a href="{% url 'shortener_app:index' %}">Home</a>
+			<a href="{% url 'shortener_app:pricing' %}">Pricing</a>
 		</nav>
 
     {% if user.is_authenticated %}

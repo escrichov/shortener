@@ -324,3 +324,11 @@ def api_url_create(request):
     s_output = ShortUrlSerializer(short_url)
 
     return Response(s_output.data)
+
+
+def pricing(request):
+
+    template = loader.get_template('shortener_app/pricing.html')
+    context = {}
+
+    return HttpResponse(template.render(context, request))
