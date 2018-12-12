@@ -8,6 +8,7 @@ from django.db.models import F, Count, DateTimeField
 from django.db.models.functions import Trunc
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -17,6 +18,8 @@ import json
 import requests
 from ua_parser import user_agent_parser
 from datetime import datetime, timedelta
+
+from payments.models import Subscription
 
 from .models import ShortUrl, ShortUrlLog, APIAccess
 from .serializers import ShortUrlSerializer, ShortUrlCreateSerializer
@@ -52,11 +55,7 @@ def get_client_ip(request):
 
 
 def index(request):
-
-    template = loader.get_template('shortener_app/index.html')
-    context = {}
-
-    return HttpResponse(template.render(context, request))
+    return render(request, 'shortener_app/index.html', {})
 
 
 def shorten(request):
@@ -88,13 +87,9 @@ def info(request, short_url_uid):
     except ShortUrl.DoesNotExist:
         return HttpResponse("Not found", status=404)
 
-    template = loader.get_template('shortener_app/info.html')
+    template = loader.get_template()
 
-    context = {
-        'url': short_url,
-    }
-
-    return HttpResponse(template.render(context, request))
+    return render(request, 'shortener_app/info.html', context)
 
 
 def stats(request, short_url_uid):
@@ -145,8 +140,6 @@ def stats(request, short_url_uid):
         'name': 'browser'
     }).order_by().values('name').annotate(count=Count('id'))
 
-    template = loader.get_template('shortener_app/stats.html')
-
     click_stats_javascript = {'labels': [], 'values': []}
     for stat in click_stats:
         click_stats_javascript['labels'].append(str(stat['name']))
@@ -186,7 +179,7 @@ def stats(request, short_url_uid):
         'click_stats_javascript': json.dumps(click_stats_javascript),
     }
 
-    return HttpResponse(template.render(context, request))
+    return render(request, 'shortener_app/stats.html', context)
 
 
 def url_redirect(request, short_url_uid):
@@ -233,13 +226,11 @@ def url_redirect(request, short_url_uid):
 def list_urls(request):
     urls = ShortUrl.objects.filter(user=request.user)
 
-    template = loader.get_template('shortener_app/urls.html')
-
     context = {
         'urls': urls,
     }
 
-    return HttpResponse(template.render(context, request))
+    return render(request, 'shortener_app/urls.html', context)
 
 
 @login_required
@@ -270,15 +261,25 @@ def delete_api_access(request, api_access_id):
 
 @login_required
 def profile(request):
-    template = loader.get_template('shortener_app/profile.html')
-
     api_accesses = APIAccess.objects.filter(user=request.user)
+    try:
+        subscription = Subscription.objects.get(user=request.user)
+    except Subscription.DoesNotExist:
+        subscription = None
+
+    if subscription and subscription.state == Subscription.STATE_ACTIVE:
+        subscription_active = True
+    else:
+        subscription_active = False
 
     context = {
         'api_accesses': api_accesses,
+        'payment_amount': 100,
+        'subscription_active': subscription_active,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
     }
 
-    return HttpResponse(template.render(context, request))
+    return render(request, 'shortener_app/profile.html', context)
 
 
 @api_view(['GET'])
@@ -327,8 +328,25 @@ def api_url_create(request):
 
 
 def pricing(request):
+    return render(request, 'shortener_app/pricing.html', {})
 
-    template = loader.get_template('shortener_app/pricing.html')
-    context = {}
 
-    return HttpResponse(template.render(context, request))
+@login_required
+def upgrade_to_premium(request):
+    try:
+        subscription = Subscription.objects.get(user=request.user)
+    except Subscription.DoesNotExist:
+        subscription = None
+
+    if subscription and subscription.state == Subscription.STATE_ACTIVE:
+        subscription_active = True
+    else:
+        subscription_active = False
+
+    context = {
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'payment_amount': 100,
+        'subscription_active': subscription_active,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+    }
+    return render(request, 'shortener_app/upgrade_to_premium.html', context)

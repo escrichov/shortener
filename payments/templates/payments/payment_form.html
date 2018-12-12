@@ -1,0 +1,25 @@
+{% if subscription_active %}
+
+<p>You have premium account plan.</p>
+<p>If you cancel the subscription you continue to has access until the end of the period.</p>
+<a href="{% url 'payments:payment_cancel' %}" class="button button-primary">Cancel subscription</a>
+
+{% else %}
+
+<p>Price: 1€</p>
+<form action="{% url 'payments:payment_checkout' %}" method="POST">
+    {% csrf_token %}
+    <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{ stripe_public_key }}"
+        data-amount="{{ payment_amount }}"
+        data-name="Cour.fun"
+        data-description="Monthly subscription"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-zip-code="true"
+        data-currency="eur">
+    </script>
+</form>
+
+{% endif %}

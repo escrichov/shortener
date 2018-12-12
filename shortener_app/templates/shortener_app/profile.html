@@ -8,8 +8,10 @@
   <li>Email: {{ user.email }}</li>
 </ul>
 
-<h4>Api access</h4>
+<h4>Premium</h4>
+{% include "payments/payment_form.html" %}  
 
+<h4>Api access</h4>
 <ul>
   {% if api_accesses %}
     {%for api_access in api_accesses %}

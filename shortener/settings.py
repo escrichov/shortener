@@ -33,6 +33,7 @@ class Common(Configuration):
         'whitenoise.runserver_nostatic',
         'django.contrib.staticfiles',
         'django_extensions',
+        'payments',
         'shortener_app',
         'users',
         'django.contrib.admin',
@@ -134,8 +135,13 @@ class Common(Configuration):
     }
 
     DEFAULT_FROM_EMAIL = 'Cour.fun <info@cour.fun>'
+    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
     IPSTACK_APIKEY = values.SecretValue()
+
+    STRIPE_PUBLIC_KEY = values.SecretValue()
+    STRIPE_SECRET_KEY = values.SecretValue()
 
 
 class Development(Common):
@@ -158,12 +164,9 @@ class Development(Common):
 
     HOSTNAME = 'localhost:8000'
 
-    EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-    SENDGRID_API_KEY = values.SecretValue()
-    SENDGRID_SANDBOX_MODE_IN_DEBUG = True
-
-    #EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-    #EMAIL_FILE_PATH = os.path.join(Common.BASE_DIR, "sent_emails")
+    #EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+    #SENDGRID_API_KEY = values.SecretValue()
+    #SENDGRID_SANDBOX_MODE_IN_DEBUG = True
 
 
 class Staging(Common):
