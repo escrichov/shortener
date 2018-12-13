@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-13 01:33+0000\n"
+"POT-Creation-Date: 2018-12-13 22:38+0000\n"
 "PO-Revision-Date: 2018-12-13 02:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -61,41 +61,13 @@ msgstr ""
 "Introduce una url para generar un enlace corto que puede ser compartido en "
 "múltiples sitios."
 
-#: shortener_app/templates/shortener_app/info.html:5
+#: shortener_app/templates/shortener_app/info.html:6
 msgid "Your short url"
 msgstr "Tu url corta"
 
-#: shortener_app/templates/shortener_app/info.html:8
-#: shortener_app/templates/shortener_app/urls.html:11
-msgid "Link"
-msgstr "Enlace"
-
-#: shortener_app/templates/shortener_app/info.html:9
-#: shortener_app/templates/shortener_app/urls.html:12
-msgid "Created on"
-msgstr "Fecha de Creación"
-
-#: shortener_app/templates/shortener_app/info.html:10
-#: shortener_app/templates/shortener_app/urls.html:13
-msgid "Linked to"
-msgstr "Enlace a"
-
-#: shortener_app/templates/shortener_app/info.html:11
-#: shortener_app/templates/shortener_app/urls.html:14
-msgid "Clicks"
-msgstr "Clicks"
-
-#: shortener_app/templates/shortener_app/info.html:12
-#: shortener_app/templates/shortener_app/urls.html:15
-msgid "Stats"
-msgstr "Estadísticas"
-
-#: shortener_app/templates/shortener_app/info.html:13
-#: shortener_app/templates/shortener_app/profile.html:23
-#: shortener_app/templates/shortener_app/url.html:16
-#: shortener_app/templates/shortener_app/urls.html:16
-msgid "Delete"
-msgstr "Eliminar"
+#: shortener_app/templates/shortener_app/list_urls.html:6
+msgid "Your urls"
+msgstr "Mis urls"
 
 #: shortener_app/templates/shortener_app/pricing.html:7
 msgid "per month"
@@ -126,6 +98,12 @@ msgstr "Email"
 msgid "Api access"
 msgstr "Acceso Api"
 
+#: shortener_app/templates/shortener_app/profile.html:23
+#: shortener_app/templates/shortener_app/urls.html:12
+#: shortener_app/templates/shortener_app/urls.html:31
+msgid "Delete"
+msgstr "Eliminar"
+
 #: shortener_app/templates/shortener_app/profile.html:32
 msgid "Generate apikey"
 msgstr "Generar apikey"
@@ -146,10 +124,26 @@ msgstr "Estadísticas para"
 msgid "Total clicks"
 msgstr "Clicks totales"
 
-#: shortener_app/templates/shortener_app/url.html:12
+#: shortener_app/templates/shortener_app/urls.html:7
+msgid "Link"
+msgstr "Enlace"
+
+#: shortener_app/templates/shortener_app/urls.html:8
+msgid "Created on"
+msgstr "Fecha de Creación"
+
+#: shortener_app/templates/shortener_app/urls.html:9
+msgid "Linked to"
+msgstr "Enlace a"
+
+#: shortener_app/templates/shortener_app/urls.html:10
+msgid "Clicks"
+msgstr "Clicks"
+
+#: shortener_app/templates/shortener_app/urls.html:11
+msgid "Stats"
+msgstr "Estadísticas"
+
+#: shortener_app/templates/shortener_app/urls.html:27
 msgid "View stats"
 msgstr "Ver estadísticas"
-
-#: shortener_app/templates/shortener_app/urls.html:6
-msgid "Your urls"
-msgstr "Mis urls"

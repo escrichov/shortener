@@ -3,55 +3,141 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-13 01:33+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2018-12-13 22:38+0000\n"
+"PO-Revision-Date: 2018-12-13 23:39+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: users/models.py:52
 msgid "first name"
-msgstr ""
+msgstr "Nombre"
 
 #: users/models.py:53
 msgid "last name"
-msgstr ""
+msgstr "Apellidos"
 
 #: users/models.py:55
 msgid "staff status"
-msgstr ""
+msgstr "staff status"
 
 #: users/models.py:57
 msgid "Designates whether the user can log into this admin site."
 msgstr ""
+"Designa si el usuario puede iniciar sesión en este sitio de administración."
 
 #: users/models.py:60
 msgid "active"
-msgstr ""
+msgstr "activo"
 
 #: users/models.py:63
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
+"Designa si este usuario debe ser tratado como activo. Deselecciona esto en "
+"lugar de eliminar cuentas."
 
 #: users/models.py:67
 msgid "date joined"
-msgstr ""
+msgstr "fecha de ingreso"
 
 #: users/models.py:76
 msgid "user"
-msgstr ""
+msgstr "usuario"
 
 #: users/models.py:77
 msgid "users"
+msgstr "usuarios"
+
+#: users/templates/registration/login.html:4
+#: users/templates/registration/login.html:8
+msgid "Login"
+msgstr "Entrar"
+
+#: users/templates/registration/login.html:10
+msgid "Reset Password"
+msgstr "Cambiar contraseña"
+
+#: users/templates/registration/password_reset_complete.html:6
+msgid "Password reset complete"
+msgstr "Cambio de contraseña completado"
+
+#: users/templates/registration/password_reset_complete.html:7
+msgid "Your new password has been set. You can log in now on the log in page."
 msgstr ""
+"Tu nueva contraseña se ha guardado. Puedes entrar ahora en la página de "
+"login."
+
+#: users/templates/registration/password_reset_confirm.html:6
+msgid "Set a new password!"
+msgstr "Introduce una nueva contraseña"
+
+#: users/templates/registration/password_reset_confirm.html:10
+msgid "Change my password"
+msgstr "Cambiar mi contraseña"
+
+#: users/templates/registration/password_reset_done.html:5
+msgid "Check your inbox."
+msgstr "Comprueba tu correo."
+
+#: users/templates/registration/password_reset_done.html:6
+msgid ""
+"We've emailed you instructions for setting your password. You should receive "
+"the email shortly!"
+msgstr ""
+"Te hemos enviado las instrucciones para cambiar tu contraseña por email. "
+"Recibirás un email dentro de poco."
+
+#: users/templates/registration/password_reset_email.html:3
+msgid ""
+"To initiate the password reset process for your {{ user.get_username }} Cour."
+"fun account, click the link below:"
+msgstr ""
+"Para iniciar el proceso de cambiar el password para tu {{ user."
+"get_username }} cuenta de Cour.fun, haz click en el enlace de abajo:"
+
+#: users/templates/registration/password_reset_email.html:7
+msgid ""
+"If clicking the link above doesn't work, please copy and paste the URL in a "
+"new browser window instead."
+msgstr ""
+"Si hacer clic en el enlace anterior no funciona, copia y pegua la URL en una "
+"nueva ventana del navegador."
+
+#: users/templates/registration/password_reset_email.html:9
+msgid "Sincerely,"
+msgstr "Atentamente,"
+
+#: users/templates/registration/password_reset_email.html:10
+msgid "The Cour.fun Team"
+msgstr "El equipo de Cour.fun"
+
+#: users/templates/registration/password_reset_form.html:5
+msgid "Forgot your password?"
+msgstr "¿Has olvidado tu contraseña?"
+
+#: users/templates/registration/password_reset_form.html:6
+msgid ""
+"Enter your email address below, and we'll email instructions for setting a "
+"new one."
+msgstr ""
+"Introduce tu dirección de correo electrónico a continuación, y te enviaremos "
+"instrucciones para configurar una nueva."
+
+#: users/templates/registration/password_reset_form.html:11
+msgid "Send me instructions!"
+msgstr "Envíame las instrucciones"
+
+#: users/templates/registration/password_reset_subject.txt:2
+msgid "Cour.fun password reset"
+msgstr "Cour.fun Cambio de contraseña"
