@@ -87,9 +87,7 @@ def info(request, short_url_uid):
     except ShortUrl.DoesNotExist:
         return HttpResponse("Not found", status=404)
 
-    template = loader.get_template()
-
-    return render(request, 'shortener_app/info.html', context)
+    return render(request, 'shortener_app/info.html', {})
 
 
 def stats(request, short_url_uid):
