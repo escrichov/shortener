@@ -1,65 +1,50 @@
 {
-  "name": "ellie",
+  "name": "shortener",
   "version": "1.0.0",
-  "description": "Ellie Template",
-  "author": "Pasquale Vitiello <pasqualevitiello@gmail.com>",
-  "license": "GPLv3",
-  "repository": {
-    "type": "git",
-    "url": "https://bitbucket.org/pasqualevitiello/ellie.git"
-  },
-  "bugs": {
-    "url": "https://bitbucket.org/pasqualevitiello/ellie/issues"
-  },
-  "scripts": {
-    "clean": "rimraf shortener_app/static/shortener_app/{css/*,js/*,images/*}",
-    "autoprefixer": "postcss -u autoprefixer -r shortener_app/static/shortener_app/css/*",
-    "autoprefixer-prod": "postcss --no-map -u autoprefixer -r shortener_app/static/shortener_app/css/*",
-    "scss": "node-sass --output-style compressed -o shortener_app/static/shortener_app/css src/scss --include-path node_modules",
-    "scss-production": "node-sass -x --output-style compressed -o shortener_app/static/shortener_app/css src/scss",
-    "lint": "eslint src/js || true",
-    "lint-scss": "stylelint src/scss/*.scss --syntax scss || true",
-    "uglify": "mkdirp shortener_app/static/shortener_app/js -p && uglifyjs src/js/*.js -m -c -o shortener_app/static/shortener_app/js/main.min.js",
-    "webpack": "mkdirp shortener_app/static/shortener_app/js -p && webpack --mode development src/js/main.js --output shortener_app/static/shortener_app/js/main.min.js",
-    "imagemin": "imagemin src/img/* -o shortener_app/static/shortener_app/img",
-    "browser-sync": "browser-sync start --files \"shortener_app/static/shortener_app/css/*.css, shortener_app/static/shortener_app/js/*.js, shortener_app/templates/**/*.html\" --proxy 127.0.0.1:8000 --reload-delay=300 --reload-debounce=500",
-    "build:css": "run-s lint-scss scss autoprefixer",
-    "build:css-prod": "run-s lint-scss scss autoprefixer-prod",
-    "build:js": "run-s lint webpack",
-    "build:images": "run-s imagemin",
-    "build": "run-s build:js build:css-prod build:images",
-    "watch:css": "onchange \"src/scss\" -- run-s build:css",
-    "watch:js": "onchange \"src/js\" -- run-s build:js",
-    "watch:images": "onchange \"src/images\" -- run-s build:images",
-    "serve": "concurrently --kill-others \"npm run watch:*\" \"npm run browser-sync\" "
-  },
-  "devDependencies": {
-    "autoprefixer": "^9.0.1",
-    "browser-sync": "^2.12.8",
-    "concurrently": "^4.0.1",
-    "eslint": "^5.2.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "imagemin-cli": "^3.0.0",
-    "mkdirp": "^0.5.1",
-    "node-sass": "^4.9.2",
-    "npm-run-all": "^4.1.3",
-    "onchange": "^4.1.0",
-    "postcss-cli": "^6.0.0",
-    "rimraf": "^2.5.4",
-    "stylelint": "^9.4.0",
-    "uglify-es": "^3.3.10",
-    "webpack": "^4.26.0",
-    "webpack-cli": "^3.1.2"
-  },
-  "homepage": "https://bitbucket.org/pasqualevitiello/ellie#readme",
-  "main": ".eslintrc.js",
+  "description": "This is a simple Django 2.0+ project template with my preferred setup. Most Django project templates make way too many assumptions or are just way too complicated. I try to make the least amount of assumptions possible while still trying provide a useful setup. Most of my projects are deployed to Heroku, so this is optimized for that but is not necessary.",
+  "main": "webpack.config.js",
   "dependencies": {
+    "boostrap": "^2.0.0",
+    "bootstrap": "^4.1.3",
+    "chart": "^0.1.2",
     "chart.js": "^2.7.3",
     "clipboard": "^2.0.4",
-    "jquery": "^3.3.1"
-  }
+    "css-loader": "^2.0.0",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.11.0",
+    "popper.js": "^1.14.6",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {
+    "argv": "0.0.2",
+    "autoprefixer": "^9.4.2",
+    "browser-sync": "^2.26.3",
+    "cssnano": "^4.1.7",
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "uglify-save-license": "^0.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/escrichov/shortener.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/escrichov/shortener/issues"
+  },
+  "homepage": "https://github.com/escrichov/shortener#readme"
 }

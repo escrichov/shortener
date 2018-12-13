@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-<h3 class="hero-title mt-0 is-revealing">Stats for: {{ url.full_short_url }}</h3>
+<h3>Stats for: {{ url.full_short_url }}</h3>
 <ul>
   <li>
     <p>Total clicks: {{ url.clicks }}</p>
@@ -24,4 +25,6 @@
   var os_stats = {{ os_stats_javascript |safe }};
   var click_stats = {{ click_stats_javascript |safe }};
 </script>
+<script src="{% static 'shortener_app/js/vendor/Chart.min.js' %}"></script>
+<script src="{% static 'shortener_app/js/components/stats.min.js' %}"></script>
 {% endblock %}

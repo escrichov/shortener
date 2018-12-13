@@ -6,14 +6,15 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Shortener</title>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Heebo:400,400i,500,700|Titillium+Web:600" rel="stylesheet">
 		<link rel="stylesheet" href="{% static 'shortener_app/css/style.css' %}">
 	</head>
-	<body class="is-boxed">
+	<body>
 
 		{% include "shortener_app/header.html" %}
 
-    <main>
+    <main class="mt-5 mb-5">
       <div class="container">
         {% block content %}
 		    {% endblock %}
@@ -22,8 +23,11 @@
 
 		{% include "shortener_app/footer.html" %}
 
+		<script src="{% static 'shortener_app/js/vendor/jquery.min.js' %}"></script>
+		<script src="{% static 'shortener_app/js/vendor/popper.min.js' %}"></script>
+		<script src="{% static 'shortener_app/js/vendor/bootstrap.min.js' %}"></script>
+		<script src="{% static 'shortener_app/js/app.min.js' %}"></script>
 		{% block javascript_data %}
 		{% endblock %}
-		<script src="{% static 'shortener_app/js/main.min.js' %}"></script>
 	</body>
 </html>

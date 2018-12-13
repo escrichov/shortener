@@ -1,12 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <h1 class="hero-title mt-0 is-revealing">URL Shortener</h1>
-      <p class="hero-paragraph is-revealing">Insert a url to generate a short link that can be shared in multiple sites.</p>
-      {% include "shortener_app/shorten_form.html" %}
-    </div>
-  </div>
+<div>
+  <h1>URL Shortener</h1>
+  <p>Insert a url to generate a short link that can be shared in multiple sites.</p>
+  {% include "shortener_app/shorten_form.html" %}
 </div>
 {% endblock %}

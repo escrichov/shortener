@@ -1,19 +1,4 @@
-import $ from 'jquery';
-import ClipboardJS from 'clipboard';
-import Chart from 'chart.js';
-
-// Clipboard
-var clipboard = new ClipboardJS('.btn-copy', {
-  target: function(trigger) {
-    return $(trigger).siblings('.copy-target').get(0);
-  }
-});
-
-clipboard.on('success', function(e) {
-    e.clearSelection();
-});
-
-var ctx = document.getElementById("click_stats_id");
+var ctx = $("#click_stats_id");
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -34,7 +19,7 @@ var myChart = new Chart(ctx, {
     },
 });
 
-var ctx = document.getElementById("referal_stats_id");
+var ctx = $("#referal_stats_id");
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
@@ -55,7 +40,7 @@ var myChart = new Chart(ctx, {
     },
 });
 
-var ctx = document.getElementById("country_stats_id");
+var ctx = $("#country_stats_id");
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
@@ -76,7 +61,7 @@ var myChart = new Chart(ctx, {
     },
 });
 
-var ctx = document.getElementById("browser_stats_id");
+var ctx = $("#browser_stats_id");
 var myChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {
@@ -97,7 +82,7 @@ var myChart = new Chart(ctx, {
     },
 });
 
-var ctx = document.getElementById("os_stats_id");
+var ctx = $("#os_stats_id");
 var myChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3 class="hero-title mt-0 is-revealing">Account details</h3>
+<h3>Account details</h3>
 <h4>Account details</h4>
 <ul>
   <li>Username: {{ user.username }}</li>
@@ -19,7 +19,7 @@
       {{ api_access.apikey }}
       <form action="{% url 'shortener_app:delete_api_access' api_access.id %}" method="post">
         {% csrf_token %}
-        <input class="button" type="submit" value="Delete">
+        <input class="btn btn-danger" type="submit" value="Delete">
       </form>
     </li>
     {% endfor %}
@@ -28,7 +28,7 @@
   {% endif %}
   <form action="{% url 'shortener_app:create_api_access' %}" method="post">
     {% csrf_token %}
-    <input class="button" type="submit" value="Generate apikey">
+    <input class="btn btn-secondary" type="submit" value="Generate apikey">
   </form>
 </ul>
 

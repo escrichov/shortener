@@ -1,21 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-<h3 class="hero-title mt-0 is-revealing">Your urls</h3>
+<h3>Your urls</h3>
 {% include "shortener_app/shorten_form.html" %}
-<table>
-  <tr>
-    <td>Link</td>
-    <td>Created on</td>
-    <td>Linked to</td>
-    <td>Clicks</td>
-    <td>Stats</td>
-    <td>Delete</td>
-  </tr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Link</th>
+      <th scope="col">Created on</th>
+      <th scope="col">Linked to</th>
+      <th scope="col">Clicks</th>
+      <th scope="col">Stats</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
   {% for url in urls %}
   {% include "shortener_app/url.html" %}
   {% endfor %}
-
+  </tbody>
 </table>
 
+{% endblock %}
+
+{% block javascript_data %}
+<script src="{% static 'shortener_app/js/vendor/clipboard.min.js' %}"></script>
+<script src="{% static 'shortener_app/js/components/button-copy.min.js' %}"></script>
 {% endblock %}

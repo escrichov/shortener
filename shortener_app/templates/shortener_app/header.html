@@ -1,27 +1,42 @@
-<header class="header-login-signup">
-
-	<div class="header-limiter">
-
-		<h1><a href="{% url 'shortener_app:index' %}">Cour.fun</a></h1>
-
-		<nav>
-			<a href="{% url 'shortener_app:index' %}">Home</a>
-			<a href="{% url 'shortener_app:pricing' %}">Pricing</a>
-		</nav>
-
-    {% if user.is_authenticated %}
-    <ul>
-      <li><a href="{% url 'shortener_app:urls' %}">My urls</a></li>
-      <li><a href="{% url 'shortener_app:profile' %}">Profile</a></li>
-			<li><a href="{% url 'logout' %}">Logout</a></li>
-		</ul>
-    {% else %}
-		<ul>
-			<li><a href="{% url 'login' %}">Login</a></li>
-			<li><a href="{% url 'signup' %}">Sign up</a></li>
-		</ul>
-    {% endif %}
-
-	</div>
-
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="{% url 'shortener_app:index' %}">Cour.fun</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'shortener_app:index' %}">Home</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link" href="{% url 'shortener_app:pricing' %}">Pricing</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav">
+					{% if user.is_authenticated %}
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'shortener_app:urls' %}">My urls</a>
+						</li>
+						<li class="nav-item">
+								<a class="nav-link" href="{% url 'shortener_app:profile' %}">Profile</a>
+						</li>
+						<li class="nav-item">
+								<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+						</li>
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'login' %}">Login</a>
+						</li>
+						<li class="nav-item">
+								<a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+						</li>
+					{% endif %}
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
 </header>
+
