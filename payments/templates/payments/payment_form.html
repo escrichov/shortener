@@ -1,12 +1,13 @@
+{% load i18n %}
 {% if subscription_active %}
 
-<p>You have premium account plan.</p>
-<p>If you cancel the subscription you continue to has access until the end of the period.</p>
-<a href="{% url 'payments:payment_cancel' %}" class="btn btn-danger">Cancel subscription</a>
+<p>{% trans "You have premium account plan." %}</p>
+<p>{% trans "If you cancel the subscription you continue to has access until the end of the period." %}</p>
+<a href="{% url 'payments:payment_cancel' %}" class="btn btn-danger">{% trans "Cancel subscription" %}</a>
 
 {% else %}
 
-<p>Price: 1€</p>
+<p>{% trans "Price" %}: 1€</p>
 <form action="{% url 'payments:payment_checkout' %}" method="POST">
     {% csrf_token %}
     <script

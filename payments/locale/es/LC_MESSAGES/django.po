@@ -17,41 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: users/models.py:52
-msgid "first name"
+#: payments/templates/payments/payment_cancelled.html:5
+msgid "Payment cancelled"
 msgstr ""
 
-#: users/models.py:53
-msgid "last name"
+#: payments/templates/payments/payment_cancelled.html:6
+msgid "Sorry"
 msgstr ""
 
-#: users/models.py:55
-msgid "staff status"
+#: payments/templates/payments/payment_confirmation.html:5
+msgid "Payment confirmed"
 msgstr ""
 
-#: users/models.py:57
-msgid "Designates whether the user can log into this admin site."
+#: payments/templates/payments/payment_confirmation.html:6
+msgid "Thank you!"
 msgstr ""
 
-#: users/models.py:60
-msgid "active"
+#: payments/templates/payments/payment_form.html:4
+msgid "You have premium account plan."
 msgstr ""
 
-#: users/models.py:63
+#: payments/templates/payments/payment_form.html:5
 msgid ""
-"Designates whether this user should be treated as active. Unselect this "
-"instead of deleting accounts."
+"If you cancel the subscription you continue to has access until the end of "
+"the period."
 msgstr ""
 
-#: users/models.py:67
-msgid "date joined"
+#: payments/templates/payments/payment_form.html:6
+msgid "Cancel subscription"
 msgstr ""
 
-#: users/models.py:76
-msgid "user"
-msgstr ""
-
-#: users/models.py:77
-msgid "users"
+#: payments/templates/payments/payment_form.html:10
+msgid "Price"
 msgstr ""
