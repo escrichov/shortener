@@ -1,10 +1,6 @@
-{% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-{% block content %}
 
-<h3>{% trans "Your urls" %}</h3>
-{% include "shortener_app/shorten_form.html" %}
 <table class="table">
   <thead>
     <tr>
@@ -18,14 +14,24 @@
   </thead>
   <tbody>
   {% for url in urls %}
-  {% include "shortener_app/url.html" %}
+  <tr>
+    <td>
+      <a href="{{ url.relative_short_url }}" class="copy-target" type="text">
+        {{ url.full_short_url }}
+      </a>
+      <i class="ml-2 far fa-copy btn-copy"></i>
+    </td>
+    <td>{{ url.created_on }}</td>
+    <td><a href="{{ url.url }}">{{ url.url }}</a></td>
+    <td>{{ url.clicks }}</td>
+    <td><a href="{% url 'shortener_app:stats' url.uid %}">{% trans "View stats" %}</a></td>
+    <td>
+      <form action="{% url 'shortener_app:delete' url.uid %}" method="post">
+        {% csrf_token %}
+        <input class="btn btn-danger" type="submit" value="{% trans 'Delete' %}">
+      </form>
+    </td>
+</tr>
   {% endfor %}
   </tbody>
 </table>
-
-{% endblock %}
-
-{% block javascript_data %}
-<script src="{% static 'shortener_app/js/vendor/clipboard.min.js' %}"></script>
-<script src="{% static 'shortener_app/js/components/button-copy.min.js' %}"></script>
-{% endblock %}
