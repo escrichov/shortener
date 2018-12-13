@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 
-<h3>Stats for: {{ url.full_short_url }}</h3>
+<h3>{% trans "Stats for" %}: {{ url.full_short_url }}</h3>
 <ul>
   <li>
-    <p>Total clicks: {{ url.clicks }}</p>
+    <p>{% trans "Total clicks" %}: {{ url.clicks }}</p>
   </li>
 </ul>
 

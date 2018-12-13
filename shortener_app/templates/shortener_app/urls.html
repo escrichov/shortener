@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 
-<h3>Your urls</h3>
+<h3>{% trans "Your urls" %}</h3>
 {% include "shortener_app/shorten_form.html" %}
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Link</th>
-      <th scope="col">Created on</th>
-      <th scope="col">Linked to</th>
-      <th scope="col">Clicks</th>
-      <th scope="col">Stats</th>
-      <th scope="col">Delete</th>
+      <th scope="col">{% trans "Link" %}</th>
+      <th scope="col">{% trans "Created on" %}</th>
+      <th scope="col">{% trans "Linked to" %}</th>
+      <th scope="col">{% trans "Clicks" %}</th>
+      <th scope="col">{% trans "Stats" %}</th>
+      <th scope="col">{% trans "Delete" %}</th>
     </tr>
   </thead>
   <tbody>

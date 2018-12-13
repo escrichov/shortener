@@ -1,3 +1,4 @@
+{% load i18n %}
 <tr>
     <td>
       <a href="{{ url.relative_short_url }}" class="copy-target" type="text">
@@ -8,11 +9,11 @@
     <td>{{ url.created_on }}</td>
     <td><a href="{{ url.url }}">{{ url.url }}</a></td>
     <td>{{ url.clicks }}</td>
-    <td><a href="{% url 'shortener_app:stats' url.uid %}">View stats</a></td>
+    <td><a href="{% url 'shortener_app:stats' url.uid %}">{% trans "View stats" %}</a></td>
     <td>
       <form action="{% url 'shortener_app:delete' url.uid %}" method="post">
         {% csrf_token %}
-        <input class="btn btn-danger" type="submit" value="Delete">
+        <input class="btn btn-danger" type="submit" value="{% trans 'Delete' %}">
       </form>
     </td>
 </tr>

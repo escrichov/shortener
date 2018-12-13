@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
 
-<h3>Account details</h3>
-<h4>Account details</h4>
+<h3>{% trans "Account details" %}</h3>
+<h4>{% trans "Account details" %}</h4>
 <ul>
-  <li>Username: {{ user.username }}</li>
-  <li>Email: {{ user.email }}</li>
+  <li>{% trans "Username" %}: {{ user.username }}</li>
+  <li>{% trans "Email" %}: {{ user.email }}</li>
 </ul>
 
 <h4>Premium</h4>
 {% include "payments/payment_form.html" %}  
 
-<h4>Api access</h4>
+<h4>{% trans "Api access" %}</h4>
 <ul>
   {% if api_accesses %}
     {%for api_access in api_accesses %}
@@ -19,7 +20,7 @@
       {{ api_access.apikey }}
       <form action="{% url 'shortener_app:delete_api_access' api_access.id %}" method="post">
         {% csrf_token %}
-        <input class="btn btn-danger" type="submit" value="Delete">
+        <input class="btn btn-danger" type="submit" value="{% trans 'Delete' %}">
       </form>
     </li>
     {% endfor %}
@@ -28,7 +29,7 @@
   {% endif %}
   <form action="{% url 'shortener_app:create_api_access' %}" method="post">
     {% csrf_token %}
-    <input class="btn btn-secondary" type="submit" value="Generate apikey">
+    <input class="btn btn-secondary" type="submit" value="{% trans 'Generate apikey' %}">
   </form>
 </ul>
 

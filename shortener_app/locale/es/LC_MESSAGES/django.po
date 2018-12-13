@@ -7,16 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-13 00:57+0000\n"
-"PO-Revision-Date: 2018-12-13 02:00+0100\n"
+"POT-Creation-Date: 2018-12-13 01:20+0000\n"
+"PO-Revision-Date: 2018-12-13 02:25+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 1.8.7.1\n"
+
+#: shortener_app/templates/shortener_app/footer.html:4
+msgid "all rights reserved"
+msgstr ""
 
 #: shortener_app/templates/shortener_app/header.html:12
 msgid "Home"
@@ -45,3 +49,104 @@ msgstr "Entrar"
 #: shortener_app/templates/shortener_app/header.html:34
 msgid "Sign up"
 msgstr "Registro"
+
+#: shortener_app/templates/shortener_app/index.html:5
+msgid "URL Shortener"
+msgstr "Acortador de URLs"
+
+#: shortener_app/templates/shortener_app/index.html:6
+msgid "Insert a url to generate a short link that can be shared in multiple sites."
+msgstr "Introduce una url para generar un enlace corto que puede ser compartido en múltiples sitios."
+
+#: shortener_app/templates/shortener_app/info.html:5
+msgid "Your short url"
+msgstr "Tu url corta"
+
+#: shortener_app/templates/shortener_app/info.html:8
+#: shortener_app/templates/shortener_app/urls.html:11
+msgid "Link"
+msgstr "Enlace"
+
+#: shortener_app/templates/shortener_app/info.html:9
+#: shortener_app/templates/shortener_app/urls.html:12
+msgid "Created on"
+msgstr "Creado el"
+
+#: shortener_app/templates/shortener_app/info.html:10
+#: shortener_app/templates/shortener_app/urls.html:13
+msgid "Linked to"
+msgstr "Enlace a"
+
+#: shortener_app/templates/shortener_app/info.html:11
+#: shortener_app/templates/shortener_app/urls.html:14
+msgid "Clicks"
+msgstr "Clicks"
+
+#: shortener_app/templates/shortener_app/info.html:12
+#: shortener_app/templates/shortener_app/urls.html:15
+msgid "Stats"
+msgstr "Estadísticas"
+
+#: shortener_app/templates/shortener_app/info.html:13
+#: shortener_app/templates/shortener_app/profile.html:23
+#: shortener_app/templates/shortener_app/url.html:16
+#: shortener_app/templates/shortener_app/urls.html:16
+msgid "Delete"
+msgstr "Eliminar"
+
+#: shortener_app/templates/shortener_app/pricing.html:7
+msgid "per month"
+msgstr "por mes"
+
+#: shortener_app/templates/shortener_app/pricing.html:8
+msgid "Unlimited urls, unlimited stats"
+msgstr "Urls ilimitadas, estadísiticas ilimitadas"
+
+#: shortener_app/templates/shortener_app/pricing.html:9
+msgid "Buy premium"
+msgstr "Compra premium"
+
+#: shortener_app/templates/shortener_app/profile.html:5
+#: shortener_app/templates/shortener_app/profile.html:6
+msgid "Account details"
+msgstr "Detalles de la cuenta"
+
+#: shortener_app/templates/shortener_app/profile.html:8
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: shortener_app/templates/shortener_app/profile.html:9
+msgid "Email"
+msgstr "Email"
+
+#: shortener_app/templates/shortener_app/profile.html:15
+msgid "Api access"
+msgstr "Acceso Api"
+
+#: shortener_app/templates/shortener_app/profile.html:32
+msgid "Generate apikey"
+msgstr "Generar apikey"
+
+#: shortener_app/templates/shortener_app/shorten_form.html:4
+msgid "Shorten your url"
+msgstr "Acorta tu url"
+
+#: shortener_app/templates/shortener_app/shorten_form.html:5
+msgid "Submit"
+msgstr "Enviar"
+
+#: shortener_app/templates/shortener_app/stats.html:6
+msgid "Stats for"
+msgstr "Estadísticas para"
+
+#: shortener_app/templates/shortener_app/stats.html:9
+msgid "Total clicks"
+msgstr "Clicks totales"
+
+#: shortener_app/templates/shortener_app/url.html:12
+msgid "View stats"
+msgstr "Ver estadísticas"
+
+#: shortener_app/templates/shortener_app/urls.html:6
+msgid "Your urls"
+msgstr "Mis urls"

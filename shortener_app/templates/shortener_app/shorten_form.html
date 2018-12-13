@@ -1,5 +1,6 @@
+{% load i18n %}
 <form class="form-inline" action="{% url 'shortener_app:shorten' %}" method="post">
     {% csrf_token %}
-    <input class="form-control mb-2" type="text" name="url" placeholder="Shorten your url">
-    <input class="btn btn-primary ml-1 mb-2" type="submit" value="Submit">
+    <input class="form-control mb-2" type="text" name="url" placeholder="{% trans 'Shorten your url' %}">
+    <input class="btn btn-primary ml-1 mb-2" type="submit" value="{% trans 'Submit' %}">
 </form>

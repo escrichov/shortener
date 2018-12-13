@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
 
-<h3>Your short url</h3>
+<h3>{% trans "Your short url" %}</h3>
 <table>
   <tr>
-    <td>Link</td>
-    <td>Created on</td>
-    <td>Linked to</td>
-    <td>Clicks</td>
-    <td>Stats</td>
-    <td>Delete</td>
+    <td>{% trans "Link" %}</td>
+    <td>{% trans "Created on" %}</td>
+    <td>{% trans "Linked to" %}</td>
+    <td>{% trans "Clicks" %}</td>
+    <td>{% trans "Stats" %}</td>
+    <td>{% trans "Delete" %}</td>
   </tr>
   {% include "shortener_app/url.html" %}
 </table>
