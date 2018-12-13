@@ -1,3 +1,4 @@
+{% load i18n %}
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
@@ -8,29 +9,29 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="{% url 'shortener_app:index' %}">Home</a>
+						<a class="nav-link" href="{% url 'shortener_app:index' %}">{% trans "Home" %}</a>
 					</li>
 					<li class="nav-item">
-							<a class="nav-link" href="{% url 'shortener_app:pricing' %}">Pricing</a>
+							<a class="nav-link" href="{% url 'shortener_app:pricing' %}">{% trans "Pricing" %}</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav">
 					{% if user.is_authenticated %}
 						<li class="nav-item">
-							<a class="nav-link" href="{% url 'shortener_app:urls' %}">My urls</a>
+							<a class="nav-link" href="{% url 'shortener_app:urls' %}">{% trans "My urls" %}</a>
 						</li>
 						<li class="nav-item">
-								<a class="nav-link" href="{% url 'shortener_app:profile' %}">Profile</a>
+								<a class="nav-link" href="{% url 'shortener_app:profile' %}">{% trans "Profile" %}</a>
 						</li>
 						<li class="nav-item">
-								<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+								<a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
 						</li>
 					{% else %}
 						<li class="nav-item">
-							<a class="nav-link" href="{% url 'login' %}">Login</a>
+							<a class="nav-link" href="{% url 'login' %}">{% trans "Login" %}</a>
 						</li>
 						<li class="nav-item">
-								<a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+								<a class="nav-link" href="{% url 'signup' %}">{% trans "Sign up" %}</a>
 						</li>
 					{% endif %}
 				</ul>

@@ -8,7 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import os
-
+from django.utils.translation import ugettext_lazy as _
 from configurations import Configuration, values
 
 
@@ -45,6 +45,7 @@ class Common(Configuration):
         'whitenoise.middleware.WhiteNoiseMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
+        'django.middleware.locale.LocaleMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
@@ -105,6 +106,15 @@ class Common(Configuration):
     USE_L10N = True
 
     USE_TZ = False
+
+    LANGUAGES = (
+        ('en', _('English')),
+        ('es', _('Spanish')),
+    )
+
+    LOCALE_PATHS = (
+        os.path.join(BASE_DIR, 'locale'),
+    )
 
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/2.1/howto/static-files/
