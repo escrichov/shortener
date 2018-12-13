@@ -1,5 +1,6 @@
 from django.test import LiveServerTestCase
 from django.contrib.auth import get_user_model
+from django.conf import settings
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -7,28 +8,32 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from shortener_app.models import ShortUrl
+
 
 class element_has_css_class(object):
-  """An expectation for checking that an element has a particular css class.
+    """An expectation for checking that an element has a particular css class.
 
-  locator - used to find the element
-  returns the WebElement once it has the particular css class
-  """
-  def __init__(self, locator, css_class):
-    self.locator = locator
-    self.css_class = css_class
+    locator - used to find the element
+    returns the WebElement once it has the particular css class
+    """
+    def __init__(self, locator, css_class):
+        self.locator = locator
+        self.css_class = css_class
 
-  def __call__(self, driver):
-    element = driver.find_element(*self.locator)   # Finding the referenced element
-    if self.css_class in element.get_attribute("class"):
-        return element
-    else:
-        return False
+    def __call__(self, driver):
+        element = driver.find_element(*self.locator)   # Finding the referenced element
+        if self.css_class in element.get_attribute("class"):
+            return element
+        else:
+            return False
 
 
 class CommonTestCase(LiveServerTestCase):
 
     def setUp(self):
+        settings.HOSTNAME = self.live_server_url
+
         options = webdriver.ChromeOptions()
         options.add_argument('lang=en')
 
@@ -184,6 +189,95 @@ class AccountBackendUserTest(CommonTestCase):
         my_urls_button.click()
         self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h3'), "Your urls"))
  
+    def test_create_url(self):
+        
+        # Edith come back to Shortener app, she is already logged in
+        self.browser.get('{}/myurls'.format(self.live_server_url))
+
+        # She is invited to enter a url item straight away
+        inputbox = self.browser.find_element_by_xpath("//main//form//input[@name='url']")
+        self.assertEqual(
+            inputbox.get_attribute('placeholder'),
+            'Shorten your url'
+        )
+
+        # She types "https://google.com" into a text box (Edith's hobby is search in Google)
+        target_url = 'https://google.com'
+        inputbox.send_keys(target_url)
+
+        # When she hits enter, the page updates, and now the page lists
+        # "https://google.com" as an item in a list table
+        inputbox.send_keys(Keys.ENTER)
+        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//table//tr[1]//td[3]//a'), target_url))
+
+    def test_view_url_stats(self):
+        # Create data
+        short_url = ShortUrl()
+        short_url.user = self.user
+        short_url.target = 'https://google.com'
+        short_url.save()
+
+        # Edith come back to Shortener app, she is already logged in
+        self.browser.get('{}/myurls'.format(self.live_server_url))
+
+        # She views the "View stats" button in the first url
+        stats_button = self.browser.find_element_by_xpath('//main//table//tr[1]//td[5]//a')
+
+        # When she hit click on the "View stats" button, the page redirect to Stats page
+        stats_button.click()
+        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h3'), "Stats"))
+
+    def test_delete_url(self):
+        # Create data
+        short_url = ShortUrl()
+        short_url.user = self.user
+        short_url.target = 'https://google.com'
+        short_url.save()
+
+        # Edith come back to Shortener app, she is already logged in
+        self.browser.get('{}/myurls'.format(self.live_server_url))
+
+        # She views the "Delete" button in the first url
+        delete_button = self.browser.find_element_by_xpath('//main//table//tbody//tr[1]//td[6]//form')
+
+        # When she hit click on the "View stats" button, the page redirect to Stats page
+        delete_button.click()
+        self.wait.until(EC.invisibility_of_element_located((By.XPATH, '//main//table//tbody//tr[1]')))
+
+    def test_follow_real_link(self):
+        # Create data
+        short_url = ShortUrl()
+        short_url.user = self.user
+        short_url.url = 'https://google.com'
+        short_url.save()
+
+        # Edith come back to Shortener app, she is already logged in
+        self.browser.get('{}/myurls'.format(self.live_server_url))
+
+        # She views the "https://google.com" link in the first url
+        real_url_button = self.browser.find_element_by_xpath('//main//table//tbody//tr[1]//td[3]//a')
+
+        # When she hit click on the "https://google.com" button, the page redirect to 'https://google.com'
+        real_url_button.click()
+        self.wait.until(EC.title_contains("Google"))
+
+    def test_follow_short_link(self):
+        # Create data
+        short_url = ShortUrl()
+        short_url.user = self.user
+        short_url.url = 'https://google.com'
+        short_url.save()
+
+        # Edith come back to Shortener app, she is already logged in
+        self.browser.get('{}/myurls'.format(self.live_server_url))
+
+        # She views the "Short url" link in the first url
+        short_url_button = self.browser.find_element_by_xpath('//main//table//tbody//tr[1]//td[1]//a')
+
+        # When she hit click on the "Short url" link, the page redirect to 'https://google.com'
+        short_url_button.click()
+        self.wait.until(EC.title_contains("Google"))
+
     def test_logout(self):
         # Edith come back to Shortener app, she is already logged in
         self.browser.get(self.live_server_url)
