@@ -29,8 +29,13 @@ class element_has_css_class(object):
 class CommonTestCase(LiveServerTestCase):
 
     def setUp(self):
-        self.browser = webdriver.Chrome()
-        self.wait = WebDriverWait(self.browser, 20)
+        options = webdriver.ChromeOptions()
+        options.add_argument('lang=en')
+
+        self.browser = webdriver.Chrome(chrome_options=options)
+        self.browser.set_window_position(0, 0)
+        self.browser.set_window_size(1024, 768)
+        self.wait = WebDriverWait(self.browser, 5)
 
     def tearDown(self):
         self.browser.quit()
@@ -77,7 +82,7 @@ class NewVisitorTest(CommonTestCase):
         self.browser.get(self.live_server_url)
 
         # She notices the "Sign up" button on the corner
-        signup_button = self.browser.find_element_by_xpath("//header//ul//li[2]//a")
+        signup_button = self.browser.find_element_by_xpath("//header//ul[2]//li[2]//a")
         self.assertIn('Sign up', signup_button.text)
 
         # When she clicks on the "Sign up button", the page updates and now appears a Sign up form
@@ -160,7 +165,7 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get(self.live_server_url)
 
         # She views her profile in the header
-        profile_button = self.browser.find_element_by_xpath("//header//ul//li[2]//a")
+        profile_button = self.browser.find_element_by_xpath("//header//ul[2]//li[2]//a")
         self.assertIn('Profile', profile_button.text)
 
         # When she hit click on the profile button, the page reloads, and now Edith can view her profile
@@ -172,7 +177,7 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get(self.live_server_url)
 
         # She views "my urls" button in the header
-        my_urls_button = self.browser.find_element_by_xpath("//header//ul//li[1]//a")
+        my_urls_button = self.browser.find_element_by_xpath("//header//ul[2]//li[1]//a")
         self.assertIn('My urls', my_urls_button.text)
 
         # When she hit click on the profile button, the page reloads, and now Edith can view her profile
@@ -184,9 +189,9 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get(self.live_server_url)
 
         # She views the "Logout" button in the header
-        my_urls_button = self.browser.find_element_by_xpath("//header//ul//li[3]//a")
+        my_urls_button = self.browser.find_element_by_xpath("//header//ul[2]//li[3]//a")
         self.assertIn('Logout', my_urls_button.text)
 
         # When she hit click on the "Logout" button, the page redirect to Homepage
         my_urls_button.click()
-        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//header//ul//li[1]//a'), "Login"))
+        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//header//ul[2]//li[1]//a'), "Login"))

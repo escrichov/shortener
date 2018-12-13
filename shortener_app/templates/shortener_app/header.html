@@ -21,17 +21,17 @@
 							<a class="nav-link" href="{% url 'shortener_app:urls' %}">{% trans "My urls" %}</a>
 						</li>
 						<li class="nav-item">
-								<a class="nav-link" href="{% url 'shortener_app:profile' %}">{% trans "Profile" %}</a>
+							<a class="nav-link" href="{% url 'shortener_app:profile' %}">{% trans "Profile" %}</a>
 						</li>
 						<li class="nav-item">
-								<a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
+							<a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
 						</li>
 					{% else %}
 						<li class="nav-item">
 							<a class="nav-link" href="{% url 'login' %}">{% trans "Login" %}</a>
 						</li>
 						<li class="nav-item">
-								<a class="nav-link" href="{% url 'signup' %}">{% trans "Sign up" %}</a>
+							<a class="nav-link" href="{% url 'signup' %}">{% trans "Sign up" %}</a>
 						</li>
 					{% endif %}
 				</ul>

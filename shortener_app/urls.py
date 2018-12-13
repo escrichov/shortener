@@ -14,10 +14,10 @@ urlpatterns = [
     path('delete_api_access/<int:api_access_id>', views.delete_api_access, name='delete_api_access'),
     path('shorten', views.shorten, name='shorten'),
     path('stats/<slug:short_url_uid>', views.stats, name='stats'),
-
-    path('api/url/create', views.api_url_create, name='api_delete_create'),
-    path('api/url/delete/<slug:uid>', views.api_url_delete, name='api_delete_url'),
-    path('api/url/list', views.api_url_list, name='api_list_urls'),
     path('pricing', views.pricing, name='pricing'),
     path('upgrade_to_premium', views.upgrade_to_premium, name='upgrade_to_premium'),
+
+    path('api/url/create', views.api_url_create, name='api_create_url'),
+    path('api/url/delete/<slug:uid>', views.api_url_delete, name='api_delete_url'),
+    path('api/url/list', views.api_url_list, name='api_list_urls'),
 ]
