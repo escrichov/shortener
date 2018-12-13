@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-13 22:38+0000\n"
-"PO-Revision-Date: 2018-12-13 23:39+0100\n"
+"POT-Creation-Date: 2018-12-13 22:42+0000\n"
+"PO-Revision-Date: 2018-12-13 23:42+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -141,3 +141,7 @@ msgstr "Envíame las instrucciones"
 #: users/templates/registration/password_reset_subject.txt:2
 msgid "Cour.fun password reset"
 msgstr "Cour.fun Cambio de contraseña"
+
+#: users/templates/signup.html:5 users/templates/signup.html:9
+msgid "Sign up"
+msgstr "Registro"
