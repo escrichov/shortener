@@ -3,50 +3,53 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-13 01:33+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2018-12-13 23:18+0100\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+
 #: payments/templates/payments/payment_cancelled.html:5
 msgid "Payment cancelled"
-msgstr ""
+msgstr "Pago cancelado"
 
 #: payments/templates/payments/payment_cancelled.html:6
 msgid "Sorry"
-msgstr ""
+msgstr "Lo sentimos"
 
 #: payments/templates/payments/payment_confirmation.html:5
 msgid "Payment confirmed"
-msgstr ""
+msgstr "Pago confirmado"
 
 #: payments/templates/payments/payment_confirmation.html:6
 msgid "Thank you!"
-msgstr ""
+msgstr "¡Muchas gracias!"
 
 #: payments/templates/payments/payment_form.html:4
 msgid "You have premium account plan."
-msgstr ""
+msgstr "Tienes el plan premium"
 
 #: payments/templates/payments/payment_form.html:5
 msgid ""
 "If you cancel the subscription you continue to has access until the end of "
 "the period."
 msgstr ""
+"Si cancelas la subscripción, continúas teniendo acceso hasta el final del "
+"periodo."
 
 #: payments/templates/payments/payment_form.html:6
 msgid "Cancel subscription"
-msgstr ""
+msgstr "Cancelar subscripción"
 
 #: payments/templates/payments/payment_form.html:10
 msgid "Price"
-msgstr ""
+msgstr "Precio"
