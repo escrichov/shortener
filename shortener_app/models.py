@@ -4,6 +4,7 @@ from datetime import datetime
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.utils.crypto import get_random_string
+from django.core.validators import URLValidator
 
 import string
 import requests
@@ -26,6 +27,22 @@ class ShortUrl(models.Model):
     clicks = models.IntegerField(default=0)
     created_on = models.DateTimeField(default=datetime.utcnow)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
+
+    @classmethod
+    def create_and_validate(cls, url_target, user):
+        if not url_target.startswith('http://') and not url_target.startswith('https://'):
+            url_target = 'http://' + url_target
+
+        # Throw ValidationError exception if url_target is not incorrect format
+        validate = URLValidator()
+        validate(url_target)
+
+        short_url, _ = ShortUrl.objects.get_or_create(
+            url=url_target,
+            user=user,
+        )
+
+        return short_url
 
     @property
     def url_active(self):

@@ -4,8 +4,8 @@ from rest_framework import exceptions
 from rest_framework.test import APITestCase
 from rest_framework import status
 
-from .serializers import ShortUrlSerializer
-from .models import APIAccess, ShortUrl
+from shortener_app.serializers import ShortUrlSerializer
+from shortener_app.models import APIAccess, ShortUrl
 
 
 class APITests(APITestCase):
