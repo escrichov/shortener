@@ -221,7 +221,7 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
         # She views the "View stats" button in the first url
-        stats_button = self.browser.find_element_by_xpath('//main//table//tr[1]//td[5]//a')
+        stats_button = self.browser.find_element_by_xpath('//main//table//tr[1]//td[6]//a')
 
         # When she hit click on the "View stats" button, the page redirect to Stats page
         stats_button.click()
@@ -238,7 +238,7 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
         # She views the "Delete" button in the first url
-        delete_button = self.browser.find_element_by_xpath('//main//table//tbody//tr[1]//td[6]//form')
+        delete_button = self.browser.find_element_by_xpath('//main//table//tbody//tr[1]//td[7]//form')
 
         # When she hit click on the "View stats" button, the page redirect to Stats page
         delete_button.click()

@@ -7,6 +7,7 @@
       <th scope="col">{% trans "Link" %}</th>
       <th scope="col">{% trans "Created on" %}</th>
       <th scope="col">{% trans "Linked to" %}</th>
+      <th scope="col">{% trans "Link active" %}</th>
       <th scope="col">{% trans "Clicks" %}</th>
       <th scope="col">{% trans "Stats" %}</th>
       <th scope="col">{% trans "Delete" %}</th>
@@ -23,6 +24,7 @@
     </td>
     <td>{{ url.created_on }}</td>
     <td><a href="{{ url.url }}">{{ url.url }}</a></td>
+    <td>{{ url.url_active }}</td>
     <td>{{ url.clicks }}</td>
     <td><a href="{% url 'shortener_app:stats' url.uid %}">{% trans "View stats" %}</a></td>
     <td>
