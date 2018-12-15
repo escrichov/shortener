@@ -175,7 +175,7 @@ class AccountBackendUserTest(CommonTestCase):
 
         # When she hit click on the profile button, the page reloads, and now Edith can view her profile
         profile_button.click()
-        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h3'), "Account details"))
+        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h4'), "Account details"))
  
     def test_view_my_urls(self):
         # Edith come back to Shortener app, she is already logged in
