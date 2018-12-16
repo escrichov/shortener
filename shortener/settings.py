@@ -8,6 +8,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import os
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 from django.utils.translation import ugettext_lazy as _
 from configurations import Configuration, values
 
@@ -207,6 +209,14 @@ class Staging(Common):
     EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
     SENDGRID_API_KEY = values.SecretValue()
 
+    SENTRY_DSN = values.SecretValue()
+
+    @classmethod
+    def post_setup(cls):
+        sentry_sdk.init(
+            dsn=cls.SENTRY_DSN,
+            integrations=[DjangoIntegration()]
+        )
 
 class Production(Staging):
     """
