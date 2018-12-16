@@ -18,6 +18,7 @@ def index(request):
 
 
 def pricing(request):
+    raise ValueError("Test")
     return render(request, 'shortener_app/pricing.html', {})
 
 
