@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c81b4715efd5736e1780f3878766d74fb2af987ebefd578aaca59be4db4aa641"
+            "sha256": "10386a11e3ff12352a3321e79238db08e6bb447e7e1b08c3bc96de9b80ec40cc"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -169,6 +169,14 @@
             ],
             "version": "==5.6.0"
         },
+        "sentry-sdk": {
+            "hashes": [
+                "sha256:56118f4c3bd3412e47d1969997580df2f27ae951df949d07f0c2120cefe40b00",
+                "sha256:b5a4cd2bb9e86c21e1f4b3fef856785a1075a5430b10a37385c3dce47aaf0649"
+            ],
+            "index": "pypi",
+            "version": "==0.6.2"
+        },
         "six": {
             "hashes": [
                 "sha256:3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c",
@@ -185,11 +193,11 @@
         },
         "stripe": {
             "hashes": [
-                "sha256:1a144fdbc9ea4b5d99673588f335d53e04c79f855bf157f7d433f182d89230b1",
-                "sha256:6cd947997eb8814d91f6395c53d176aee7eacf9900dcd6d016e3b9708163ec9d"
+                "sha256:7167f7511b6d3204e907aad5d46eb8784d5345c95a96b47ce443e70130cad294",
+                "sha256:74203c009fec30fa85a8f00f8b96c9838c7dd794ec9b356a77c329198ce252dc"
             ],
             "index": "pypi",
-            "version": "==2.15.0"
+            "version": "==2.16.0"
         },
         "ua-parser": {
             "hashes": [
@@ -297,10 +305,10 @@
         },
         "jedi": {
             "hashes": [
-                "sha256:0191c447165f798e6a730285f2eee783fff81b0d3df261945ecb80983b5c3ca7",
-                "sha256:b7493f73a2febe0dc33d51c99b474547f7f6c0b2c8fb2b21f453eef204c12148"
+                "sha256:571702b5bd167911fe9036e5039ba67f820d6502832285cde8c881ab2b2149fd",
+                "sha256:c8481b5e59d34a5c7c42e98f6625e633f6ef59353abea6437472c7ec2093f191"
             ],
-            "version": "==0.13.1"
+            "version": "==0.13.2"
         },
         "jinja2": {
             "hashes": [
@@ -443,10 +451,10 @@
         },
         "notebook": {
             "hashes": [
-                "sha256:661341909008d1e7bfa1541904006f9789fa3de1cbec8379d2879819454cc04b",
-                "sha256:91705b109fc785198faed892489cddb233265564d5e2dad5e4f7974af05ee8dd"
+                "sha256:8d7aa1e06fea49d4600afd751c929e9bc7339be92d80fe5e56006ddb1d3bf73b",
+                "sha256:f57d470401b2d7434587bcf4dd9263e73f139bf070b1b81a7ed4dfae7ec83f71"
             ],
-            "version": "==5.7.2"
+            "version": "==5.7.3"
         },
         "pandocfilters": {
             "hashes": [
