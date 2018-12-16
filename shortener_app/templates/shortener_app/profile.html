@@ -8,22 +8,22 @@
 </ul>
 
 <h4>Premium</h4>
-{% include "payments/payment_form.html" %}  
+{% include "payments/payment_form.html" %}
 
 <h4>{% trans "Api access" %}</h4>
 <ul>
   {% if api_accesses %}
-    {%for api_access in api_accesses %}
-    <li>
-      {{ api_access.apikey }}
-      <form action="{% url 'shortener_app:delete_api_access' api_access.id %}" method="post">
-        {% csrf_token %}
-        <input class="btn btn-danger" type="submit" value="{% trans 'Delete' %}">
-      </form>
-    </li>
-    {% endfor %}
+  {%for api_access in api_accesses %}
+  <li>
+    {{ api_access.apikey }}
+    <form action="{% url 'shortener_app:delete_api_access' api_access.id %}" method="post">
+      {% csrf_token %}
+      <input class="btn btn-danger" type="submit" value="{% trans 'Delete' %}">
+    </form>
+  </li>
+  {% endfor %}
   {% else %}
-    <p>No apikeys</p>
+  <p>No apikeys</p>
   {% endif %}
   <form action="{% url 'shortener_app:create_api_access' %}" method="post">
     {% csrf_token %}

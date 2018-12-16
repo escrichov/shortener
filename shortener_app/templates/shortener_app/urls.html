@@ -14,26 +14,26 @@
     </tr>
   </thead>
   <tbody>
-  {% for url in urls %}
-  <tr>
-    <td>
-      <a href="{{ url.relative_short_url }}" class="copy-target" type="text">
-        {{ url.full_short_url }}
-      </a>
-      <i class="ml-2 far fa-copy btn-copy"></i>
-    </td>
-    <td>{{ url.created_on }}</td>
-    <td><a href="{{ url.url }}">{{ url.url }}</a></td>
-    <td>{{ url.url_active }}</td>
-    <td>{{ url.clicks }}</td>
-    <td><a href="{% url 'shortener_app:stats' url.uid %}">{% trans "View stats" %}</a></td>
-    <td>
-      <form action="{% url 'shortener_app:delete' url.uid %}" method="post">
-        {% csrf_token %}
-        <input class="btn btn-danger" type="submit" value="{% trans 'Delete' %}">
-      </form>
-    </td>
-</tr>
-  {% endfor %}
+    {% for url in urls %}
+    <tr>
+      <td>
+        <a class="copy-target" href="{{ url.relative_short_url }}" type="text">
+          {{ url.full_short_url }}
+        </a>
+        <i class="ml-2 far fa-copy btn-copy"></i>
+      </td>
+      <td>{{ url.created_on }}</td>
+      <td><a href="{{ url.url }}">{{ url.url }}</a></td>
+      <td>{{ url.url_active }}</td>
+      <td>{{ url.clicks }}</td>
+      <td><a href="{% url 'shortener_app:stats' url.uid %}">{% trans "View stats" %}</a></td>
+      <td>
+        <form action="{% url 'shortener_app:delete' url.uid %}" method="post">
+          {% csrf_token %}
+          <input class="btn btn-danger" type="submit" value="{% trans 'Delete' %}">
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
   </tbody>
 </table>

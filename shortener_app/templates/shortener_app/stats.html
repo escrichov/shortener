@@ -20,11 +20,11 @@
 
 {% block javascript_data %}
 <script type="text/javascript">
-  var referal_stats = {{ referal_stats_javascript |safe }};
-  var country_stats = {{ country_stats_javascript |safe }};
-  var browser_stats = {{ browser_stats_javascript |safe }};
-  var os_stats = {{ os_stats_javascript |safe }};
-  var click_stats = {{ click_stats_javascript |safe }};
+  var referal_stats = {{ referal_stats_javascript | safe }};
+  var country_stats = {{ country_stats_javascript | safe }};
+  var browser_stats = {{ browser_stats_javascript | safe }};
+  var os_stats = {{ os_stats_javascript | safe }};
+  var click_stats = {{ click_stats_javascript | safe }};
 </script>
 <script src="{% static 'shortener_app/js/vendor/Chart.min.js' %}"></script>
 <script src="{% static 'shortener_app/js/components/stats.min.js' %}"></script>

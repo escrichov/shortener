@@ -3,32 +3,36 @@
 {% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html lang="{{LANGUAGE_CODE}}">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Shortener</title>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-		<link rel="stylesheet" href="{% static 'shortener_app/css/style.css' %}">
-	</head>
-	<body>
 
-		{% include "shortener_app/header.html" %}
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Shortener</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'shortener_app/css/style.css' %}">
+</head>
 
-    <main class="mt-5 mb-5">
-      <div class="container">
-        {% block content %}
-		    {% endblock %}
-      </div>
-    </main>
+<body>
 
-		{% include "shortener_app/footer.html" %}
+	{% include "shortener_app/header.html" %}
 
-		<script src="{% static 'shortener_app/js/vendor/jquery.min.js' %}"></script>
-		<script src="{% static 'shortener_app/js/vendor/popper.min.js' %}"></script>
-		<script src="{% static 'shortener_app/js/vendor/bootstrap.min.js' %}"></script>
-		<script src="{% static 'shortener_app/js/app.min.js' %}"></script>
-		{% block javascript_data %}
-		{% endblock %}
-	</body>
+	<main class="mt-5 mb-5">
+		<div class="container">
+			{% block content %}
+			{% endblock %}
+		</div>
+	</main>
+
+	{% include "shortener_app/footer.html" %}
+
+	<script src="{% static 'shortener_app/js/vendor/jquery.min.js' %}"></script>
+	<script src="{% static 'shortener_app/js/vendor/popper.min.js' %}"></script>
+	<script src="{% static 'shortener_app/js/vendor/bootstrap.min.js' %}"></script>
+	<script src="{% static 'shortener_app/js/app.min.js' %}"></script>
+	{% block javascript_data %}
+	{% endblock %}
+</body>
+
 </html>

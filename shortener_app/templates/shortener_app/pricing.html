@@ -2,10 +2,10 @@
 {% load i18n %}
 {% block content %}
 <div>
-    <h1>Premium</h1>
-    <h2>1€</h2>
-    <h3>{% trans "per month" %}</h3>
-    <p>{% trans "Unlimited urls, unlimited stats" %}</p>
-    <a href="{% url 'shortener_app:upgrade_to_premium' %}" class="btn btn-primary">{% trans "Buy premium" %}</a>
+  <h1>Premium</h1>
+  <h2>1€</h2>
+  <h3>{% trans "per month" %}</h3>
+  <p>{% trans "Unlimited urls, unlimited stats" %}</p>
+  <a class="btn btn-primary" href="{% url 'shortener_app:upgrade_to_premium' %}">{% trans "Buy premium" %}</a>
 </div>
 {% endblock %}

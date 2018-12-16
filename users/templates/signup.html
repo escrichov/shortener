@@ -2,10 +2,10 @@
 {% load i18n %}
 
 {% block content %}
-  <h2>{% trans "Sign up" %}</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-primary" type="submit">{% trans "Sign up" %}</button>
-  </form>
+<h2>{% trans "Sign up" %}</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary" type="submit">{% trans "Sign up" %}</button>
+</form>
 {% endblock %}
