@@ -5,8 +5,6 @@ python:
 install:
     - cp example.env .env
     - pip install pipenv
-    - export VENV_HOME_DIR=.venv
-    - pipenv sync
-    - pipenv shell
+    - pipenv install --dev
 script:
-    - python manage.py test shortener_app
+    - pipenv manage.py test shortener_app
