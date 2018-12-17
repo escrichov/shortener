@@ -5,7 +5,7 @@ python:
 install:
     - cp example.env .env
     - pip install pipenv
-    - export VENV_HOME_DIR=$(pipenv --venv)
+    - export VENV_HOME_DIR=.venv
     - pipenv sync
     - pipenv shell
 script:
