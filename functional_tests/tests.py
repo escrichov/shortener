@@ -36,6 +36,7 @@ class CommonTestCase(LiveServerTestCase):
 
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
+        options.add_argument('disable-gpu')
         options.add_argument('lang=en')
 
         self.browser = webdriver.Chrome(chrome_options=options)
