@@ -1,5 +1,7 @@
 dist: "xenial"
 language: python
+addons:
+  chrome: stable
 python:
     - "3.6"
     - "3.7"
@@ -9,5 +11,5 @@ install:
     - pipenv install --dev
     - pipenv run python manage.py collectstatic --no-input
 script:
-    - pipenv run coverage run --omit=functional_tests,shortener,manage.py --source='.' manage.py test shortener_app
+    - pipenv run coverage run --omit=functional_tests/*,shortener/*,manage.py,shortener_app/app.py,users/app.py,payments/app.py --source='.' manage.py test shortener_app
     - codecov
