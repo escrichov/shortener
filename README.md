@@ -23,6 +23,30 @@ $ django-admin.py startproject \
   project_name
 $ mv example.env .env
 $ pipenv install --dev
+$ pipenv shell --anyway
+$ python manage.py collectstatic
+$ python manage.py migrate
+```
+
+## Development frontend (javascript scripts and sass styles)
+```bash
+python manage.py runserver
+npm run serve
+```
+
+## Run tests
+
+```bash
+pipenv shell --anyway
+python manage.py test
+```
+
+## Install and compile javascript and styles
+
+```bash
+npm run install
+npm run build
+npm run serve
 ```
 
 ## Environment variables
@@ -118,7 +142,7 @@ Returns:
 
 The MIT License (MIT)
 
-Copyright (c) 2012-2017 José Padilla
+Copyright (c) 2018-2018 Carlos Escriche
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
