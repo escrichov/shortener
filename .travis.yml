@@ -5,11 +5,19 @@ addons:
 python:
     - "3.6"
     - "3.7"
+before_install:
+  - wget -N https://chromedriver.storage.googleapis.com/2.45/chromedriver_linux64.zip -P ~/Downloads
+  - unzip ~/Downloads/chromedriver_linux64.zip -d ~/Downloads
+  - sudo mv -f ~/Downloads/chromedriver /usr/local/share/
+  - sudo chmod +x /usr/local/share/chromedriver
+  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+  - sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 install:
     - cp example.env .env
     - pip install pipenv
     - pipenv install --dev
     - pipenv run python manage.py collectstatic --no-input
 script:
+    - whereis chromedriver
     - pipenv run coverage run --omit=functional_tests/*,shortener/*,manage.py,shortener_app/app.py,users/app.py,payments/app.py --source='.' manage.py test
     - codecov
