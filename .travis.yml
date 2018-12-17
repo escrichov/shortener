@@ -24,4 +24,4 @@ script:
 deploy:
     provider: heroku
     app: $HEROKU_APP
-    api_key: $(heroku auth:token
+    api_key: $HEROKU_AUTH_TOKEN
