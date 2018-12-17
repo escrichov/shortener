@@ -9,5 +9,5 @@ install:
     - pipenv install --dev
     - pipenv run python manage.py collectstatic --no-input
 script:
-    - pipenv run coverage python manage.py test shortener_app
+    - pipenv run coverage run --source='.' manage.py test shortener_app
     - codecov
