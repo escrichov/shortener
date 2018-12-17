@@ -35,9 +35,11 @@ class CommonTestCase(LiveServerTestCase):
         settings.HOSTNAME = self.live_server_url
 
         options = webdriver.ChromeOptions()
+        options.add_argument('headless')
         options.add_argument('lang=en')
 
         self.browser = webdriver.Chrome(chrome_options=options)
+        #self.browser.headless = True
         self.browser.set_window_position(0, 0)
         self.browser.set_window_size(1024, 768)
         self.wait = WebDriverWait(self.browser, 5)
@@ -176,7 +178,7 @@ class AccountBackendUserTest(CommonTestCase):
         # When she hit click on the profile button, the page reloads, and now Edith can view her profile
         profile_button.click()
         self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h4'), "Account details"))
- 
+
     def test_view_my_urls(self):
         # Edith come back to Shortener app, she is already logged in
         self.browser.get(self.live_server_url)
@@ -188,9 +190,9 @@ class AccountBackendUserTest(CommonTestCase):
         # When she hit click on the profile button, the page reloads, and now Edith can view her profile
         my_urls_button.click()
         self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h3'), "Your urls"))
- 
+
     def test_create_url(self):
-        
+
         # Edith come back to Shortener app, she is already logged in
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
