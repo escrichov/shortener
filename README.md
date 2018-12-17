@@ -1,5 +1,6 @@
 # URL Shortener
 [![Build Status](https://travis-ci.org/escrichov/shortener.svg?branch=master)](https://travis-ci.org/escrichov/shortener)
+[![codecov](https://codecov.io/gh/escrichov/shortener/branch/master/graph/badge.svg)](https://codecov.io/gh/escrichov/shortener)
 
 Url shortener.
 
@@ -20,7 +21,6 @@ Url shortener.
 git clone https://github.com/escrichov/shortener
 cp example.env .env
 pipenv install --dev
-pipenv run python manage.py collectstatic
 pipenv run python manage.py collectstatic
 pipenv run python manage.py migrate
 ```

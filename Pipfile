@@ -10,6 +10,8 @@ pylint-django = "*"
 selenium = "*"
 jupyter = "*"
 autopep8 = "*"
+codecov = "*"
+coverage = "*"
 
 [packages]
 dj-database-url = "==0.5.0"
