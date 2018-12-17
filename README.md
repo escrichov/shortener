@@ -18,24 +18,23 @@ Url shortener.
 
 ```bash
 git clone https://github.com/escrichov/shortener
-mv example.env .env
+cp example.env .env
 pipenv install --dev
-pipenv shell --anyway
-python manage.py collectstatic
-python manage.py migrate
+pipenv run python manage.py collectstatic
+pipenv run python manage.py collectstatic
+pipenv run python manage.py migrate
 ```
 
 ## Development frontend (javascript scripts and sass styles)
 ```bash
-python manage.py runserver
+pipenv run python manage.py runserver
 npm run serve
 ```
 
 ## Run tests
 
 ```bash
-pipenv shell --anyway
-python manage.py test
+pipenv run python manage.py test
 ```
 
 ## Install and compile javascript and styles
