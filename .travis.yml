@@ -21,3 +21,7 @@ script:
     - whereis chromedriver
     - pipenv run coverage run --omit=functional_tests/*,shortener/*,manage.py,shortener_app/apps.py,users/apps.py,payments/apps.py --source='.' manage.py test
     - codecov
+deploy:
+    provider: heroku
+    app: $HEROKU_APP
+    api_key: $(heroku auth:token
