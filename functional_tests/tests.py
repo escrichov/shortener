@@ -39,7 +39,6 @@ class CommonTestCase(LiveServerTestCase):
         options.add_argument('lang=en')
 
         self.browser = webdriver.Chrome(chrome_options=options)
-        #self.browser.headless = True
         self.browser.set_window_position(0, 0)
         self.browser.set_window_size(1024, 768)
         self.wait = WebDriverWait(self.browser, 5)
