@@ -6,5 +6,6 @@ install:
     - cp example.env .env
     - pip install pipenv
     - pipenv sync
+    - pipenv shell
 script:
     - python manage.py test shortener_app
