@@ -9,7 +9,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
 
-
 class UserManager(BaseUserManager):
     """
     A custom user manager to deal with emails as unique identifiers for auth
@@ -54,7 +53,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
-        help_text=_('Designates whether the user can log into this admin site.'),
+        help_text=_(
+            'Designates whether the user can log into this admin site.'),
     )
     is_active = models.BooleanField(
         _('active'),

@@ -4,4 +4,3 @@ from .models import Subscription
 
 
 admin.site.register(Subscription)
-

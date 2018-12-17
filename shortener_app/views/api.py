@@ -42,7 +42,8 @@ def api_url_create(request):
         return Response(s_input.errors, status=status.HTTP_400_BAD_REQUEST)
 
     try:
-        short_url = ShortUrl.create_and_validate(s_input.validated_data.get('url'), request.user)
+        short_url = ShortUrl.create_and_validate(
+            s_input.validated_data.get('url'), request.user)
     except ValidationError:
         return Response({'error': 'Invalid url'}, status=status.HTTP_400_BAD_REQUEST)
 

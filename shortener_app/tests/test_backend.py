@@ -25,13 +25,15 @@ class BackendTestNotLoggedInCase(TestCase):
         self.assertRedirects(response, self.login_redirect_url(url))
 
     def test_delete_no_logged_in(self):
-        url = reverse('shortener_app:delete', kwargs={'short_url_uid': '123456'})
+        url = reverse('shortener_app:delete', kwargs={
+                      'short_url_uid': '123456'})
         response = self.client.get(url)
 
         self.assertRedirects(response, self.login_redirect_url(url))
 
     def test_stats_no_logged_in(self):
-        url = reverse('shortener_app:stats', kwargs={'short_url_uid': '123456'})
+        url = reverse('shortener_app:stats', kwargs={
+                      'short_url_uid': '123456'})
         response = self.client.get(url)
 
         self.assertRedirects(response, self.login_redirect_url(url))
@@ -43,7 +45,8 @@ class BackendTestNotLoggedInCase(TestCase):
         self.assertRedirects(response, self.login_redirect_url(url))
 
     def test_delete_api_access_no_logged_in(self):
-        url = reverse('shortener_app:delete_api_access', kwargs={'api_access_id': 1})
+        url = reverse('shortener_app:delete_api_access',
+                      kwargs={'api_access_id': 1})
         response = self.client.get(url)
 
         self.assertRedirects(response, self.login_redirect_url(url))
@@ -124,7 +127,8 @@ class BackendTestCase(TestCase):
 
         response = self.client.get(reverse('shortener_app:upgrade_to_premium'))
 
-        self.assertTemplateUsed(response, 'shortener_app/upgrade_to_premium.html')
+        self.assertTemplateUsed(
+            response, 'shortener_app/upgrade_to_premium.html')
         self.assertContains(response, "Price")
         self.assertEquals(response.status_code, 200)
 
@@ -136,7 +140,8 @@ class BackendTestCase(TestCase):
 
         response = self.client.get(reverse('shortener_app:upgrade_to_premium'))
 
-        self.assertTemplateUsed(response, 'shortener_app/upgrade_to_premium.html')
+        self.assertTemplateUsed(
+            response, 'shortener_app/upgrade_to_premium.html')
         self.assertContains(response, "Price")
         self.assertEquals(response.status_code, 200)
 
@@ -148,7 +153,8 @@ class BackendTestCase(TestCase):
 
         response = self.client.get(reverse('shortener_app:upgrade_to_premium'))
 
-        self.assertTemplateUsed(response, 'shortener_app/upgrade_to_premium.html')
+        self.assertTemplateUsed(
+            response, 'shortener_app/upgrade_to_premium.html')
         self.assertContains(response, "You have premium account plan")
         self.assertEquals(response.status_code, 200)
 
@@ -158,14 +164,16 @@ class BackendTestCase(TestCase):
         short_url.url = 'https://google.com'
         short_url.save()
 
-        response = self.client.get(reverse('shortener_app:delete', kwargs={'short_url_uid': short_url.uid}))
+        response = self.client.get(reverse('shortener_app:delete', kwargs={
+                                   'short_url_uid': short_url.uid}))
 
         with self.assertRaises(ShortUrl.DoesNotExist):
             ShortUrl.objects.get(id=short_url.id)
         self.assertRedirects(response, reverse('shortener_app:urls'))
 
     def test_delete_short_url_not_exist(self):
-        response = self.client.get(reverse('shortener_app:delete', kwargs={'short_url_uid': '123456'}))
+        response = self.client.get(
+            reverse('shortener_app:delete', kwargs={'short_url_uid': '123456'}))
 
         self.assertRedirects(response, reverse('shortener_app:urls'))
 
@@ -175,13 +183,15 @@ class BackendTestCase(TestCase):
         short_url.url = 'https://google.com'
         short_url.save()
 
-        response = self.client.get(reverse('shortener_app:stats', kwargs={'short_url_uid': short_url.uid}))
+        response = self.client.get(reverse('shortener_app:stats', kwargs={
+                                   'short_url_uid': short_url.uid}))
 
         self.assertTemplateUsed(response, 'shortener_app/stats.html')
         self.assertEquals(response.status_code, 200)
 
     def test_stats_short_url_not_exist(self):
-        response = self.client.get(reverse('shortener_app:stats', kwargs={'short_url_uid': '123456'}))
+        response = self.client.get(
+            reverse('shortener_app:stats', kwargs={'short_url_uid': '123456'}))
 
         self.assertEqual(response.content, b'Not found')
         self.assertEqual(response.status_code, 404)
@@ -198,12 +208,14 @@ class BackendTestCase(TestCase):
         api_access.user = self.user
         api_access.save()
 
-        response = self.client.get(reverse('shortener_app:delete_api_access', kwargs={'api_access_id': api_access.id}))
+        response = self.client.get(reverse('shortener_app:delete_api_access', kwargs={
+                                   'api_access_id': api_access.id}))
 
         self.assertEqual(api_access.user, self.user)
         self.assertRedirects(response, reverse('shortener_app:profile'))
 
     def test_delete_api_access_not_exist(self):
-        response = self.client.get(reverse('shortener_app:delete_api_access', kwargs={'api_access_id': 1}))
+        response = self.client.get(
+            reverse('shortener_app:delete_api_access', kwargs={'api_access_id': 1}))
 
         self.assertRedirects(response, reverse('shortener_app:profile'))

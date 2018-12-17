@@ -16,10 +16,14 @@ class Subscription(models.Model):
     )
 
     # Stripe Charge
-    stripe_payment_token = models.CharField(max_length=32, null=True, blank=True)
-    stripe_subscription_id = models.CharField(max_length=64, null=True, blank=True)
+    stripe_payment_token = models.CharField(
+        max_length=32, null=True, blank=True)
+    stripe_subscription_id = models.CharField(
+        max_length=64, null=True, blank=True)
     stripe_customer_id = models.CharField(max_length=32, null=True, blank=True)
 
-    state = models.PositiveSmallIntegerField(choices=STATE_CHOICES, default=STATE_ACTIVE)
+    state = models.PositiveSmallIntegerField(
+        choices=STATE_CHOICES, default=STATE_ACTIVE)
 
-    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(
+        get_user_model(), on_delete=models.CASCADE, null=True, blank=True)

@@ -11,12 +11,13 @@ from .models import Subscription
 def payment_cancel(request):
 
     try:
-        subscription = Subscription.objects.get(user=request.user) 
+        subscription = Subscription.objects.get(user=request.user)
     except Subscription.DoesNotExist:
         return render(request, 'payments/payment_cancelled.html', context={})
 
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    stripe_subscription = stripe.Subscription.retrieve(subscription.stripe_subscription_id)
+    stripe_subscription = stripe.Subscription.retrieve(
+        subscription.stripe_subscription_id)
     stripe_subscription.cancel_at_period_end = True
     stripe_subscription.save()
 
@@ -64,7 +65,8 @@ def payment_checkout(request):
         customer.save()
 
         # Update stripe subscription
-        stripe_subscription = stripe.Subscription.retrieve(subscription.stripe_subscription_id)
+        stripe_subscription = stripe.Subscription.retrieve(
+            subscription.stripe_subscription_id)
         if stripe_subscription:
             stripe_subscription.cancel_at_period_end = False
             stripe_subscription.save()
@@ -78,7 +80,8 @@ def payment_checkout(request):
         subscription.stripe_payment_token = payment_token
         subscription.stripe_subscription_id = stripe_subscription['id']
         subscription.state = Subscription.STATE_ACTIVE
-        subscription.save(update_fields=['stripe_payment_token', 'stripe_subscription_id', 'state'])
+        subscription.save(
+            update_fields=['stripe_payment_token', 'stripe_subscription_id', 'state'])
 
     context = {}
 

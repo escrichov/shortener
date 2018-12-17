@@ -95,7 +95,8 @@ class APITests(APITestCase):
         short_url_1.url = 'https://www.google.com'
         short_url_1.user = self.user
         short_url_1.save()
-        url = reverse('shortener_app:api_delete_url', kwargs={'uid': short_url_1.uid})
+        url = reverse('shortener_app:api_delete_url',
+                      kwargs={'uid': short_url_1.uid})
         self.headers = {self.header_name: 'invalid-api-key'}
 
         response = self.client.get(url, format='json', **self.headers)
@@ -110,7 +111,8 @@ class APITests(APITestCase):
         """
         Ensure we can create a new account object.
         """
-        url = reverse('shortener_app:api_delete_url', kwargs={'uid': 'invalid_uid'})
+        url = reverse('shortener_app:api_delete_url',
+                      kwargs={'uid': 'invalid_uid'})
 
         response = self.client.post(url, format='json', **self.headers)
 
@@ -125,7 +127,8 @@ class APITests(APITestCase):
         short_url_1.url = 'https://www.google.com'
         short_url_1.user = self.user
         short_url_1.save()
-        url = reverse('shortener_app:api_delete_url', kwargs={'uid': short_url_1.uid})
+        url = reverse('shortener_app:api_delete_url',
+                      kwargs={'uid': short_url_1.uid})
 
         response = self.client.post(url, format='json', **self.headers)
 
@@ -156,7 +159,8 @@ class APITests(APITestCase):
         url = reverse('shortener_app:api_create_url')
         data = {'target': 'google'}
 
-        response = self.client.post(url, data=data, format='json', **self.headers)
+        response = self.client.post(
+            url, data=data, format='json', **self.headers)
 
         short_url = ShortUrl.objects.filter(user=self.user).first()
         self.assertEqual(short_url, None)
@@ -170,7 +174,8 @@ class APITests(APITestCase):
         url = reverse('shortener_app:api_create_url')
         data = {'target': 'https://google.com'}
 
-        response = self.client.post(url, data=data, format='json', **self.headers)
+        response = self.client.post(
+            url, data=data, format='json', **self.headers)
 
         short_url = ShortUrl.objects.filter(user=self.user).first()
         s = ShortUrlSerializer(short_url)

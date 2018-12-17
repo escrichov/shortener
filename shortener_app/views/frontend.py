@@ -70,15 +70,17 @@ def url_redirect(request, short_url_uid):
 
     # Parse user agent into os, user_agent and device
     if 'HTTP_USER_AGENT' in request.META:
-        parsed_string = user_agent_parser.Parse(request.META.get('HTTP_USER_AGENT'))
+        parsed_string = user_agent_parser.Parse(
+            request.META.get('HTTP_USER_AGENT'))
         browser_string = parsed_string['user_agent'].get('family')
         os_string = parsed_string['os'].get('family')
     else:
         browser_string = None
         os_string = None
 
-    # Locate visitors by ip address 
-    r = requests.get('http://api.ipstack.com/{ip}'.format(ip=ip), params={'access_key': settings.IPSTACK_APIKEY})
+    # Locate visitors by ip address
+    r = requests.get('http://api.ipstack.com/{ip}'.format(
+        ip=ip), params={'access_key': settings.IPSTACK_APIKEY})
     if r.status_code == 200:
         response_data = r.json()
     else:

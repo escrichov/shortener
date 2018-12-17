@@ -9,6 +9,7 @@ pylint = "*"
 pylint-django = "*"
 selenium = "*"
 jupyter = "*"
+autopep8 = "*"
 
 [packages]
 dj-database-url = "==0.5.0"
