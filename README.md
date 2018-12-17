@@ -1,6 +1,6 @@
-# Django 2.0+ project template
+# URL Shortener
 
-This is a simple Django 2.0+ project template with my preferred setup. Most Django project templates make way too many assumptions or are just way too complicated. I try to make the least amount of assumptions possible while still trying provide a useful setup. Most of my projects are deployed to Heroku, so this is optimized for that but is not necessary.
+Url shortener.
 
 ## Features
 
@@ -16,16 +16,12 @@ This is a simple Django 2.0+ project template with my preferred setup. Most Djan
 ## How to install
 
 ```bash
-$ django-admin.py startproject \
-  --template=https://github.com/jpadilla/django-project-template/archive/master.zip \
-  --name=Procfile \
-  --extension=py,md,env \
-  project_name
-$ mv example.env .env
-$ pipenv install --dev
-$ pipenv shell --anyway
-$ python manage.py collectstatic
-$ python manage.py migrate
+git clone https://github.com/escrichov/shortener
+mv example.env .env
+pipenv install --dev
+pipenv shell --anyway
+python manage.py collectstatic
+python manage.py migrate
 ```
 
 ## Development frontend (javascript scripts and sass styles)
@@ -71,6 +67,11 @@ DJANGO_SECURE_REDIRECT_EXEMPT=''
 DJANGO_SECURE_SSL_HOST=''
 DJANGO_SECURE_SSL_REDIRECT='yes'
 DJANGO_SECURE_PROXY_SSL_HEADER='HTTP_X_FORWARDED_PROTO,https'
+DJANGO_SENDGRID_API_KEY=''
+DJANGO_IPSTACK_APIKEY=''
+DJANGO_SENTRY_DSN=''
+DJANGO_STRIPE_PUBLIC_KEY=''
+DJANGO_STRIPE_SECRET_KEY=''
 ```
 
 ## Deployment
