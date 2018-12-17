@@ -8,4 +8,4 @@ install:
     - pip install pipenv
     - pipenv install --dev
 script:
-    - pipenv manage.py test shortener_app
+    - pipenv run python manage.py test shortener_app
