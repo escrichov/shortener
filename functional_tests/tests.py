@@ -41,7 +41,7 @@ class CommonTestCase(LiveServerTestCase):
         self.browser = webdriver.Chrome(chrome_options=options)
         self.browser.set_window_position(0, 0)
         self.browser.set_window_size(1024, 768)
-        self.wait = WebDriverWait(self.browser, 20)
+        self.wait = WebDriverWait(self.browser, 10)
 
     def tearDown(self):
         self.browser.quit()
