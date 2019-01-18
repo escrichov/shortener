@@ -37,6 +37,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
+    "stylelint": "^9.10.0",
     "uglify-save-license": "^0.4.1"
   },
   "scripts": {

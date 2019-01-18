@@ -55,6 +55,12 @@ pipenv run python manage.py test
 ./node_modules/.bin/eslint src gulpfile.js
 ```
 
+## Run scss linter
+
+```bash
+./node_modules/.bin/stylelint "src/scss/"
+```
+
 ## Install and compile javascript and styles
 
 ```bash
