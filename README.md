@@ -49,6 +49,12 @@ npm run serve
 pipenv run python manage.py test
 ```
 
+## Run javascript linter
+
+```bash
+./node_modules/.bin/eslint src gulpfile.js
+```
+
 ## Install and compile javascript and styles
 
 ```bash
