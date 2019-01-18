@@ -1,6 +1,7 @@
 # URL Shortener
 [![Build Status](https://travis-ci.org/escrichov/shortener.svg?branch=master)](https://travis-ci.org/escrichov/shortener)
 [![codecov](https://codecov.io/gh/escrichov/shortener/branch/master/graph/badge.svg)](https://codecov.io/gh/escrichov/shortener)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4172b033b6ec441983df62d40d3e7499)](https://www.codacy.com/app/escrichov/shortener?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=escrichov/shortener&amp;utm_campaign=Badge_Grade)
 
 Url shortener.
 
