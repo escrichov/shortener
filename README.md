@@ -26,6 +26,17 @@ pipenv run python manage.py collectstatic
 pipenv run python manage.py migrate
 ```
 
+## Install chromedriver to run tests
+
+http://chromedriver.chromium.org/getting-started
+
+In Mac OS X
+
+```bash
+brew tap caskroom/cask
+brew cask instal chromedriver
+```
+
 ## Development frontend (javascript scripts and sass styles)
 ```bash
 pipenv run python manage.py runserver
