@@ -1,0 +1,16 @@
+# .coveragerc to control coverage.py
+[run]
+# whether to measure branch coverage in addition to statement coverage.
+branch = True  
+
+# list of file name patterns, the files to leave out of measurement or reporting.
+omit =
+    functional_tests/*
+    shortener/*
+    manage.py
+    shortener_app/apps.py
+    users/apps.py
+    payments/apps.py
+
+# a list of packages or directories, the source to measure during execution.
+source = .
