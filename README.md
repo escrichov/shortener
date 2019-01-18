@@ -61,6 +61,12 @@ pipenv run python manage.py test
 ./node_modules/.bin/stylelint "src/scss/"
 ```
 
+## Run Markdown linter
+
+```bash
+./node_modules/.bin/remark README.md LICENSE
+```
+
 ## Install and compile javascript and styles
 
 ```bash
