@@ -1,4 +1,4 @@
-var ctx = $("#click_stats_id");
+var ctx = $("#click_stats_id")
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -17,9 +17,9 @@ var myChart = new Chart(ctx, {
             borderWidth: 0
         }]
     },
-});
+})
 
-var ctx = $("#referal_stats_id");
+var ctx = $("#referal_stats_id")
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
@@ -38,9 +38,9 @@ var myChart = new Chart(ctx, {
             borderWidth: 0
         }]
     },
-});
+})
 
-var ctx = $("#country_stats_id");
+var ctx = $("#country_stats_id")
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
@@ -59,9 +59,9 @@ var myChart = new Chart(ctx, {
             borderWidth: 0
         }]
     },
-});
+})
 
-var ctx = $("#browser_stats_id");
+var ctx = $("#browser_stats_id")
 var myChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {
@@ -80,7 +80,7 @@ var myChart = new Chart(ctx, {
             borderWidth: 0
         }]
     },
-});
+})
 
 var ctx = $("#os_stats_id");
 var myChart = new Chart(ctx, {
@@ -101,4 +101,4 @@ var myChart = new Chart(ctx, {
             borderWidth: 0
         }]
     },
-});
+})
