@@ -45,7 +45,6 @@ var TemplateFiles = TemplateDir.concat('/**/*.html')
 const browserSyncProxyUrl = 'localhost:8000'
 const browserSyncStaticDir = OutputDir
 
-
 function cleanStyles(cb){
     return gulp.src([StylesOutputDir], {allowEmpty: true, read: false})
         .pipe(clean())
