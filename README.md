@@ -7,14 +7,14 @@ Url shortener.
 
 ## Features
 
-- Django 2.0+
-- Uses [Pipenv](https://github.com/kennethreitz/pipenv) - the officially recommended Python packaging tool from Python.org.
-- Development, Staging and Production settings with [django-configurations](https://django-configurations.readthedocs.org).
-- Get value insight and debug information while on Development with [django-debug-toolbar](https://django-debug-toolbar.readthedocs.org).
-- Collection of custom extensions with [django-extensions](http://django-extensions.readthedocs.org).
-- HTTPS and other security related settings on Staging and Production.
-- Procfile for running gunicorn with New Relic's Python agent.
-- PostgreSQL database support with psycopg2.
+  - Django 2.0+
+  - Uses [Pipenv](https://github.com/kennethreitz/pipenv) - the officially recommended Python packaging tool from Python.org.
+  - Development, Staging and Production settings with [django-configurations](https://django-configurations.readthedocs.org).
+  - Get value insight and debug information while on Development with [django-debug-toolbar](https://django-debug-toolbar.readthedocs.org).
+  - Collection of custom extensions with [django-extensions](http://django-extensions.readthedocs.org).
+  - HTTPS and other security related settings on Staging and Production.
+  - Procfile for running gunicorn with New Relic's Python agent.
+  - PostgreSQL database support with psycopg2.
 
 ## How to install
 
@@ -82,11 +82,11 @@ It is possible to deploy to Heroku or to your own server.
 ### Heroku
 
 ```bash
-$ heroku create
-$ heroku addons:add heroku-postgresql:hobby-dev
-$ heroku pg:promote DATABASE_URL
-$ heroku config:set ENVIRONMENT=PRODUCTION
-$ heroku config:set DJANGO_SECRET_KEY=`./manage.py generate_secret_key`
+heroku create
+heroku addons:add heroku-postgresql:hobby-dev
+heroku pg:promote DATABASE_URL
+heroku config:set ENVIRONMENT=PRODUCTION
+heroku config:set DJANGO_SECRET_KEY=`./manage.py generate_secret_key`
 ```
 
 ### API
@@ -135,6 +135,6 @@ Delete a shortened URL and Get stats for a shortened URL:
 POST /api/url/delete/id
 ```
 Returns:
-```
+```json
 {}
 ```
