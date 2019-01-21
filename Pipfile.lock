@@ -171,11 +171,11 @@
         },
         "sentry-sdk": {
             "hashes": [
-                "sha256:6ce9c87815ffa702e3bfd3b9dc4efbc04bb39b6ecb38bef5b7c55d49fb2821b6",
-                "sha256:f3e82027aa82f08c1261beee7155c8078a5c2e390d4c4b7845116b4f01235e39"
+                "sha256:78bb79adfe991a770ce2179826f5f216e086bbc4bd4585c543f377180cae3654",
+                "sha256:a6cfb0a2316416d100d2732a26c95fb7d534c9dcc16e2682e8d19fcd45f0a2c6"
             ],
             "index": "pypi",
-            "version": "==0.6.8"
+            "version": "==0.6.9"
         },
         "six": {
             "hashes": [
@@ -193,11 +193,11 @@
         },
         "stripe": {
             "hashes": [
-                "sha256:2826a08913bc3b3c06f177d4d8e3c71df89fef2718acc9335b48ef736c42348f",
-                "sha256:7929d5539742ae2c11a3cb5fedd69de75b9b24462127d49530bc2f0a77ff3866"
+                "sha256:94f7a4c8e9d9fd1cd216d8c80d5b552c468ddef62477392554e179fde44c4f1b",
+                "sha256:cf26b62612fcb7ecc7c489538f83a385c28c07dbde455c37e282b103c449876b"
             ],
             "index": "pypi",
-            "version": "==2.18.0"
+            "version": "==2.18.1"
         },
         "ua-parser": {
             "hashes": [
@@ -768,9 +768,9 @@
         },
         "wrapt": {
             "hashes": [
-                "sha256:e03f19f64d81d0a3099518ca26b04550026f131eced2e76ced7b85c6b8d32128"
+                "sha256:4aea003270831cceb8a90ff27c4031da6ead7ec1886023b80ce0dfe0adf61533"
             ],
-            "version": "==1.11.0"
+            "version": "==1.11.1"
         }
     }
 }
