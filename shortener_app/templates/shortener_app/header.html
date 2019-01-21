@@ -1,42 +1,43 @@
+{% load static %}
 {% load i18n %}
 <header>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container">
-			<a class="navbar-brand" href="{% url 'shortener_app:index' %}">Cour.fun</a>
-			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'shortener_app:index' %}">{% trans "Home" %}</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'shortener_app:pricing' %}">{% trans "Pricing" %}</a>
-					</li>
-				</ul>
-				<ul class="navbar-nav">
+	<nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+	    <div class="container">
+			<a class="navbar-brand" href="{% url 'shortener_app:index' %}"><img src="{% static 'logo.png' %}"></a>
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+
+	        <div class="collapse navbar-collapse" id="navbarNav">
+	            <ul class="navbar-nav mr-auto">
+	                <li class="nav-item active">
+	                    <a class="nav-link" href="https://github.com/escrichov/shortener">Github</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="{% url 'shortener_app:pricing' %}">{% trans "Pricing" %}</a>
+	                </li>
+	            </ul>
+	            <ul class="navbar-nav ml-auto">
 					{% if user.is_authenticated %}
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'shortener_app:urls' %}">{% trans "My urls" %}</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'shortener_app:profile' %}">{% trans "Profile" %}</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
-						</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'shortener_app:urls' %}">{% trans "My urls" %}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'shortener_app:profile' %}">{% trans "Profile" %}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
+					</li>
 					{% else %}
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'login' %}">{% trans "Login" %}</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'signup' %}">{% trans "Sign up" %}</a>
-						</li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="{% url 'login' %}">{% trans "Login" %}</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="{% url 'signup' %}">{% trans "Sign up" %}</a>
+	                </li>
 					{% endif %}
-				</ul>
-			</div>
-		</div>
+	            </ul>
+	        </div>
+	    </div>
 	</nav>
 </header>
-

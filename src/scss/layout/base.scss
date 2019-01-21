@@ -1,0 +1,24 @@
+html {
+    position: relative;
+    min-height: 100%;
+  }
+
+  body {
+    padding-top: 5rem;
+    margin-bottom: 60px; /* Margin bottom by footer height */
+    background: linear-gradient(180deg,    #ffe6e6 0%, rgba(247, 12, 12, 0.2) 100%);
+  }
+
+  .main {
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  h1 {
+      font-size: 3.5rem;
+  }
+
+  h3 {
+      font-size: 1.5rem;
+  }
+

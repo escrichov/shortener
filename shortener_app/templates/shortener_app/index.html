@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-<div>
-  <h1>{% trans "URL Shortener" %}</h1>
-  <p>{% trans "Insert a url to generate a short link that can be shared in multiple sites." %}</p>
+<div class="main">
+  <h1>{% trans "Open Source URL Shortener" %}</h1>
+  <h3>{% trans "Insert a url to generate a short link that can be shared in multiple sites." %}</h3>
   {% include "shortener_app/shorten_form.html" %}
 </div>
 {% endblock %}
