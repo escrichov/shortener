@@ -78,14 +78,6 @@ def url_redirect(request, short_url_uid):
         browser_string = None
         os_string = None
 
-    # Locate visitors by ip address
-    r = requests.get('http://api.ipstack.com/{ip}'.format(
-        ip=ip), params={'access_key': settings.IPSTACK_APIKEY})
-    if r.status_code == 200:
-        response_data = r.json()
-    else:
-        response_data = {}
-
     # Create log
     point = ShortUrlLog()
     point.ip = ip
@@ -94,9 +86,6 @@ def url_redirect(request, short_url_uid):
     point.short_url = short_url
     point.os = os_string
     point.browser = browser_string
-    point.country_code = response_data.get('country_code')
-    point.latitude = response_data.get('latitude')
-    point.longitude = response_data.get('longitude')
     point.save()
 
     return redirect(short_url.url)
