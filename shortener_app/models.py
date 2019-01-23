@@ -7,7 +7,6 @@ from django.utils.crypto import get_random_string
 from django.core.validators import URLValidator
 
 import string
-import requests
 
 
 def generate_random_uid():
@@ -28,6 +27,8 @@ class ShortUrl(models.Model):
     url = models.CharField(max_length=1024)
     clicks = models.IntegerField(default=0)
     created_on = models.DateTimeField(default=datetime.utcnow)
+    url_active = models.BooleanField(default=True)
+    url_active_last_checked = models.DateTimeField(null=True, blank=True)
     user = models.ForeignKey(
         get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
 
@@ -46,15 +47,6 @@ class ShortUrl(models.Model):
         )
 
         return short_url
-
-    @property
-    def url_active(self):
-        try:
-            response = requests.get(self.url)
-        except:
-            return False
-
-        return response.ok
 
     @property
     def relative_short_url(self):
