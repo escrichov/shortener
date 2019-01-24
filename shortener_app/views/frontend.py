@@ -3,10 +3,8 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.core.exceptions import ValidationError
 from django.db.models import F
-from django.conf import settings
 from django.shortcuts import render
 
-import requests
 from ua_parser import user_agent_parser
 
 from shortener_app.models import ShortUrl, ShortUrlLog
