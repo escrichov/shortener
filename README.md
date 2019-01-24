@@ -52,19 +52,19 @@ pipenv run python manage.py test
 ## Run javascript linter
 
 ```bash
-./node_modules/.bin/eslint src gulpfile.js
+npm run js-lint
 ```
 
 ## Run scss linter
 
 ```bash
-./node_modules/.bin/stylelint "src/scss/"
+npm run css-lint
 ```
 
 ## Run Markdown linter
 
 ```bash
-./node_modules/.bin/remark README.md LICENSE
+npm run md-lint
 ```
 
 ## Install and compile javascript and styles
