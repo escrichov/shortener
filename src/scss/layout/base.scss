@@ -1,24 +1,27 @@
 html {
-    position: relative;
-    min-height: 100%;
-  }
+  /* Positioning */
+  position: relative;
+  min-height: 100%;
+}
 
-  body {
-    padding-top: 5rem;
-    margin-bottom: 60px; /* Margin bottom by footer height */
-    background: linear-gradient(180deg,    #ffe6e6 0%, rgba(247, 12, 12, 0.2) 100%);
-  }
+body {
+  /* Box-model */
+  padding-top: 5rem;
+  margin-bottom: 60px; /* Margin bottom by footer height */
 
-  .main {
-    padding: 3rem 1.5rem;
-    text-align: center;
-  }
+  /* Visual */
+  background-color: linear-gradient(180deg, #ffe6e6 0%, rgba(247,12,12,0.2) 100%);
+}
 
-  h1 {
-      font-size: 3.5rem;
-  }
+.main {
+  /* Box-model */
+  padding-top: 3rem;
+  padding-right: 1.5rem;
 
-  h3 {
-      font-size: 1.5rem;
-  }
+  /* Typography */
+  text-align: center;
+}
 
+h1 { font-size: 3.5rem; }
+
+h3 { font-size: 1.5rem; }

@@ -1,21 +1,26 @@
-.btn-copy {
-    cursor: pointer;
-}
+.btn-copy { cursor: pointer }
 
 .btn-primary {
-    border-color: #e51b23;
-    background-color: #e51b23;
-    box-shadow: 0px 10px 15px rgba(52, 68, 216, 0.35);
-    border-radius: 30px;
-    padding: 1rem 1.5rem 1rem 1.5rem;
+  /* Box-model */
+  padding-top: 1rem;
+  padding-right: 1.5rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
 
-    color: #fff;
-    font-style: normal;
-    font-weight: bold;
-    line-height: normal;
-    font-size: 15px;
-    text-align: center;
-    text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  /* Typography */
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+  line-height: normal;
+  color: #fff;
+
+  /* Visual */
+  border-color: #e51b23;
+  background-color: #e51b23;
+  text-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+  box-shadow: 0px 10px 15px rgba(52,68,216,0.35);
+  border-radius: 30px;
 }
 
 .btn-primary:hover,
@@ -24,28 +29,55 @@
 .btn-primary:not(:disabled):not(.disabled):active:focus,
 .btn-primary:visited,
 .btn-primary:focus {
-    border-color: #8a0f14;
-    background-color: #8a0f14;
-    box-shadow: 0 0 0 .2rem rgba(138, 15, 20, 0.5);
+  /* Visual */
+  border-color: #8a0f14;
+  background-color: #8a0f14;
+  box-shadow: 0 0 0 0.2rem rgba(138,15,20,0.5);
 }
 
 
-.search{
-    width: 20rem;
-    background: #fff;
-    border: 4px solid #d83434;
-    border-radius: 30px;
-    padding: 0.75rem 1rem 0.75rem 1rem;
+.search {
+  /* Box-model */
+  width: 20rem;
+  padding-top: 0.75rem;
+  padding-right: 1rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+
+  /* Visual */
+  background-color: #fff;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #d83434;
+  border-radius: 30px;
 }
 
-a:focus input:focus, button:focus, textarea:focus, textarea:focus, input:active, button:active, textarea:active, a:active, input:active, input, textarea, button, a {
-    outline-color: #ef767b;
+a,
+a:focus,
+a:active {
+  outline-color: #ef767b;
 }
 
-a {
-    color: #e51b23;
+input,
+input:focus,
+input:active {
+  outline-color: #ef767b;
 }
 
-a:hover {
-    color: #8a0f14;
+button,
+button:focus,
+button:active {
+  outline-color: #ef767b;
 }
+
+textarea,
+textarea:focus,
+textarea:focus,
+textarea:active {
+  outline-color: #ef767b;
+}
+
+
+a { color: #e51b23; }
+
+a:hover { color: #8a0f14; }

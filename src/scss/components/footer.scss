@@ -1,8 +1,13 @@
 .footer {
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px; /* Set the fixed height of the footer here */
-    line-height: 60px; /* Vertically center the text there */
+  /* Positioning */
+  position: absolute;
+  bottom: 0px;
+
+  /* Box-model */
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+
+  /* Typography */
+  text-align: center;
+  line-height: 60px; /* Vertically center the text there */
 }
