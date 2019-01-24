@@ -45,7 +45,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp build",
-    "serve": "gulp serve"
+    "serve": "gulp serve",
+    "js-lint": "./node_modules/.bin/eslint src gulpfile.js",
+    "css-lint": "./node_modules/.bin/stylelint \"src/scss/\"",
+    "md-lint": "./node_modules/.bin/remark README.md LICENSE"
   },
   "repository": {
     "type": "git",
