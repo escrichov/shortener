@@ -14,6 +14,7 @@ def check_url_active(url):
 
 
 class Command(BaseCommand):
+
     def handle(self, **options):
         now = datetime.utcnow()
         short_urls = ShortUrl.objects.all()

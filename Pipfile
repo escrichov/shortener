@@ -12,6 +12,7 @@ jupyter = "*"
 autopep8 = "*"
 codecov = "*"
 coverage = "*"
+yapf = "*"
 
 [packages]
 dj-database-url = "==0.5.0"

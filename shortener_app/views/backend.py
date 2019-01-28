@@ -107,10 +107,10 @@ def stats(request, short_url_uid):
     # Get click stats of last 24 hours
     time_threshold = datetime.utcnow() - timedelta(days=1)
     click_stats = ShortUrlLog.objects.filter(
-        created_on__gt=time_threshold,
-    ).annotate(
-        name=Trunc('created_on', 'hour', output_field=DateTimeField())
-    ).values('name').annotate(count=Count('id'))
+        created_on__gt=time_threshold,).annotate(
+            name=Trunc('created_on', 'hour',
+                       output_field=DateTimeField())).values('name').annotate(
+                           count=Count('id'))
 
     # Get country stats of last 24 hours
     country_stats = ShortUrlLog.objects.filter(

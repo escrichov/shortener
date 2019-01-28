@@ -15,10 +15,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ShortUrlStats',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')),
                 ('clicks', models.IntegerField(default=0)),
-                ('aggregated_datetime', models.DateTimeField(default=datetime.datetime.utcnow)),
-                ('short_url', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='shortener_app.ShortUrl')),
+                ('aggregated_datetime',
+                 models.DateTimeField(default=datetime.datetime.utcnow)),
+                ('short_url',
+                 models.ForeignKey(
+                     blank=True,
+                     null=True,
+                     on_delete=django.db.models.deletion.CASCADE,
+                     to='shortener_app.ShortUrl')),
             ],
         ),
     ]

@@ -13,8 +13,7 @@ class ShortUrlSerializer(serializers.ModelSerializer):
 
 
 class ShortUrlCreateSerializer(serializers.ModelSerializer):
-    target = serializers.CharField(
-        source="url", write_only=True, required=True)
+    target = serializers.CharField(source="url", write_only=True, required=True)
 
     class Meta:
         model = ShortUrl

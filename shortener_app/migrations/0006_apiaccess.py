@@ -17,9 +17,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='APIAccess',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('apikey', models.CharField(default=shortener_app.models.generate_random_apikey, max_length=64, unique=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')),
+                ('apikey',
+                 models.CharField(
+                     default=shortener_app.models.generate_random_apikey,
+                     max_length=64,
+                     unique=True)),
+                ('user',
+                 models.ForeignKey(
+                     on_delete=django.db.models.deletion.CASCADE,
+                     to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

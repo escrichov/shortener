@@ -17,12 +17,14 @@ class element_has_css_class(object):
     locator - used to find the element
     returns the WebElement once it has the particular css class
     """
+
     def __init__(self, locator, css_class):
         self.locator = locator
         self.css_class = css_class
 
     def __call__(self, driver):
-        element = driver.find_element(*self.locator)   # Finding the referenced element
+        element = driver.find_element(
+            *self.locator) # Finding the referenced element
         if self.css_class in element.get_attribute("class"):
             return element
         else:
@@ -60,11 +62,10 @@ class NewVisitorTest(CommonTestCase):
         self.assertIn('Shortener', header_text)
 
         # She is invited to enter a to-do item straight away
-        inputbox = self.browser.find_element_by_xpath("//main//form//input[@name='url']")
+        inputbox = self.browser.find_element_by_xpath(
+            "//main//form//input[@name='url']")
         self.assertEqual(
-            inputbox.get_attribute('placeholder'),
-            'Shorten your url'
-        )
+            inputbox.get_attribute('placeholder'), 'Shorten your url')
 
         # She types "https://news.ycombinator.com" into a text box (Edith's hobby
         # is read Hacker news)
@@ -73,13 +74,15 @@ class NewVisitorTest(CommonTestCase):
         # When she hits enter, the page updates, and now the page lists
         # "https://news.ycombinator.com" as an item in a list table
         inputbox.send_keys(Keys.ENTER)
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '//main//table')))
+        self.wait.until(
+            EC.presence_of_element_located((By.XPATH, '//main//table')))
 
         header_text = self.browser.find_element_by_xpath("//main//h3").text
         self.assertIn('Your short url', header_text)
 
         table = self.browser.find_element_by_xpath("//main//table")
-        linked_to_column = table.find_elements_by_tag_name('tr')[1].find_elements_by_tag_name('td')[2]
+        linked_to_column = table.find_elements_by_tag_name(
+            'tr')[1].find_elements_by_tag_name('td')[2]
         self.assertEqual(linked_to_column.text, 'https://news.ycombinator.com')
 
     def test_can_sign_up(self):
@@ -88,22 +91,27 @@ class NewVisitorTest(CommonTestCase):
         self.browser.get(self.live_server_url)
 
         # She notices the "Sign up" button on the corner
-        signup_button = self.browser.find_element_by_xpath("//header//ul[2]//li[2]//a")
+        signup_button = self.browser.find_element_by_xpath(
+            "//header//ul[2]//li[2]//a")
         self.assertIn('Sign up', signup_button.text)
 
         # When she clicks on the "Sign up button", the page updates and now appears a Sign up form
         signup_button.click()
-        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h2'), "Sign up"))
+        self.wait.until(
+            EC.text_to_be_present_in_element((By.XPATH, '//main//h2'),
+                                             "Sign up"))
 
         # She fill the email and password
         sign_up_form = self.browser.find_element_by_xpath("//main//form")
-        sign_up_form.find_element_by_name('email').send_keys('edith@hispage.com')
+        sign_up_form.find_element_by_name('email').send_keys(
+            'edith@hispage.com')
         sign_up_form.find_element_by_name('password1').send_keys('fdfasd890')
         sign_up_form.find_element_by_name('password2').send_keys('fdfasd890')
 
         # When she hit click on the form, the page reloads, and now the Log in form appears
         sign_up_form.find_element_by_xpath("//button[@type='submit']").click()
-        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h2'), "Login"))
+        self.wait.until(
+            EC.text_to_be_present_in_element((By.XPATH, '//main//h2'), "Login"))
 
 
 class LoginUserTest(CommonTestCase):
@@ -112,8 +120,7 @@ class LoginUserTest(CommonTestCase):
         super().setUp()
 
         self.user = get_user_model().objects.create_user(
-            email='edith@hispage.com',
-            password='fdfasd890')
+            email='edith@hispage.com', password='fdfasd890')
 
     def tearDown(self):
         super().tearDown()
@@ -124,13 +131,16 @@ class LoginUserTest(CommonTestCase):
 
         # She fill again the email and password on the form
         login_form = self.browser.find_element_by_xpath("//main//form")
-        login_form.find_element_by_name('username').send_keys('edith@hispage.com')
+        login_form.find_element_by_name('username').send_keys(
+            'edith@hispage.com')
         login_form.find_element_by_name('password').send_keys('fdfasd890')
 
         # When she hit click on the form, the page reloads, and now edith can view
         # her personal space
         login_form.find_element_by_xpath("//button[@type='submit']").click()
-        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//header//ul//li[3]//a'), "Logout"))
+        self.wait.until(
+            EC.text_to_be_present_in_element(
+                (By.XPATH, '//header//ul//li[3]//a'), "Logout"))
 
     def test_login_invalid_password(self):
         # Edith come back to Shortener app to login into her account
@@ -138,16 +148,21 @@ class LoginUserTest(CommonTestCase):
 
         # She fill again the email and a bad password on the form
         login_form = self.browser.find_element_by_xpath("//main//form")
-        login_form.find_element_by_name('username').send_keys('edith@hispage.com')
+        login_form.find_element_by_name('username').send_keys(
+            'edith@hispage.com')
         login_form.find_element_by_name('password').send_keys('flass_onion')
 
         # When she hit click on the form, the page reloads
         login_form.find_element_by_xpath("//button[@type='submit']").click()
-        self.wait.until(element_has_css_class((By.XPATH, '//main//form//ul'), "errorlist"))
+        self.wait.until(
+            element_has_css_class((By.XPATH, '//main//form//ul'), "errorlist"))
 
         # Now Edit she the error
-        error_text = self.browser.find_element_by_xpath("//main//form//ul//li").text
-        self.assertIn("Please enter a correct email and password. Note that both fields may be case-sensitive.", error_text)
+        error_text = self.browser.find_element_by_xpath(
+            "//main//form//ul//li").text
+        self.assertIn(
+            "Please enter a correct email and password. Note that both fields may be case-sensitive.",
+            error_text)
 
 
 class AccountBackendUserTest(CommonTestCase):
@@ -156,8 +171,7 @@ class AccountBackendUserTest(CommonTestCase):
         super().setUp()
 
         self.user = get_user_model().objects.create_user(
-            email='edith@hispage.com',
-            password='fdfasd890')
+            email='edith@hispage.com', password='fdfasd890')
         self.client.force_login(self.user)
         cookie = self.client.cookies['sessionid']
         self.browser.get(self.live_server_url)
@@ -171,24 +185,30 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get(self.live_server_url)
 
         # She views her profile in the header
-        profile_button = self.browser.find_element_by_xpath("//header//ul[2]//li[2]//a")
+        profile_button = self.browser.find_element_by_xpath(
+            "//header//ul[2]//li[2]//a")
         self.assertIn('Profile', profile_button.text)
 
         # When she hit click on the profile button, the page reloads, and now Edith can view her profile
         profile_button.click()
-        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h4'), "Account details"))
+        self.wait.until(
+            EC.text_to_be_present_in_element((By.XPATH, '//main//h4'),
+                                             "Account details"))
 
     def test_view_my_urls(self):
         # Edith come back to Shortener app, she is already logged in
         self.browser.get(self.live_server_url)
 
         # She views "my urls" button in the header
-        my_urls_button = self.browser.find_element_by_xpath("//header//ul[2]//li[1]//a")
+        my_urls_button = self.browser.find_element_by_xpath(
+            "//header//ul[2]//li[1]//a")
         self.assertIn('My urls', my_urls_button.text)
 
         # When she hit click on the profile button, the page reloads, and now Edith can view her profile
         my_urls_button.click()
-        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h3'), "Your urls"))
+        self.wait.until(
+            EC.text_to_be_present_in_element((By.XPATH, '//main//h3'),
+                                             "Your urls"))
 
     def test_create_url(self):
 
@@ -196,11 +216,10 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
         # She is invited to enter a url item straight away
-        inputbox = self.browser.find_element_by_xpath("//main//form//input[@name='url']")
+        inputbox = self.browser.find_element_by_xpath(
+            "//main//form//input[@name='url']")
         self.assertEqual(
-            inputbox.get_attribute('placeholder'),
-            'Shorten your url'
-        )
+            inputbox.get_attribute('placeholder'), 'Shorten your url')
 
         # She types "https://google.com" into a text box (Edith's hobby is search in Google)
         target_url = 'https://google.com'
@@ -209,7 +228,9 @@ class AccountBackendUserTest(CommonTestCase):
         # When she hits enter, the page updates, and now the page lists
         # "https://google.com" as an item in a list table
         inputbox.send_keys(Keys.ENTER)
-        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//table//tr[1]//td[3]//a'), target_url))
+        self.wait.until(
+            EC.text_to_be_present_in_element(
+                (By.XPATH, '//main//table//tr[1]//td[3]//a'), target_url))
 
     def test_view_url_stats(self):
         # Create data
@@ -222,11 +243,13 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
         # She views the "View stats" button in the first url
-        stats_button = self.browser.find_element_by_xpath('//main//table//tr[1]//td[6]//a')
+        stats_button = self.browser.find_element_by_xpath(
+            '//main//table//tr[1]//td[6]//a')
 
         # When she hit click on the "View stats" button, the page redirect to Stats page
         stats_button.click()
-        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//main//h3'), "Stats"))
+        self.wait.until(
+            EC.text_to_be_present_in_element((By.XPATH, '//main//h3'), "Stats"))
 
     def test_delete_url(self):
         # Create data
@@ -239,11 +262,14 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
         # She views the "Delete" button in the first url
-        delete_button = self.browser.find_element_by_xpath('//main//table//tbody//tr[1]//td[7]//form')
+        delete_button = self.browser.find_element_by_xpath(
+            '//main//table//tbody//tr[1]//td[7]//form')
 
         # When she hit click on the "View stats" button, the page redirect to Stats page
         delete_button.click()
-        self.wait.until(EC.invisibility_of_element_located((By.XPATH, '//main//table//tbody//tr[1]')))
+        self.wait.until(
+            EC.invisibility_of_element_located((By.XPATH,
+                                                '//main//table//tbody//tr[1]')))
 
     def test_follow_real_link(self):
         # Create data
@@ -256,7 +282,8 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
         # She views the "https://google.com" link in the first url
-        real_url_button = self.browser.find_element_by_xpath('//main//table//tbody//tr[1]//td[3]//a')
+        real_url_button = self.browser.find_element_by_xpath(
+            '//main//table//tbody//tr[1]//td[3]//a')
 
         # When she hit click on the "https://google.com" button, the page redirect to 'https://google.com'
         real_url_button.click()
@@ -273,7 +300,8 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
         # She views the "Short url" link in the first url
-        short_url_button = self.browser.find_element_by_xpath('//main//table//tbody//tr[1]//td[1]//a')
+        short_url_button = self.browser.find_element_by_xpath(
+            '//main//table//tbody//tr[1]//td[1]//a')
 
         # When she hit click on the "Short url" link, the page redirect to 'https://google.com'
         short_url_button.click()
@@ -284,9 +312,12 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get(self.live_server_url)
 
         # She views the "Logout" button in the header
-        my_urls_button = self.browser.find_element_by_xpath("//header//ul[2]//li[3]//a")
+        my_urls_button = self.browser.find_element_by_xpath(
+            "//header//ul[2]//li[3]//a")
         self.assertIn('Logout', my_urls_button.text)
 
         # When she hit click on the "Logout" button, the page redirect to Homepage
         my_urls_button.click()
-        self.wait.until(EC.text_to_be_present_in_element((By.XPATH, '//header//ul[2]//li[1]//a'), "Login"))
+        self.wait.until(
+            EC.text_to_be_present_in_element(
+                (By.XPATH, '//header//ul[2]//li[1]//a'), "Login"))

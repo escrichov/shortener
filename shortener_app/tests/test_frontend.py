@@ -28,17 +28,16 @@ class FrontendTestCase(TestCase):
 
     def test_info_url_of_other_user(self):
         user = get_user_model().objects.create_user(
-            email='edith@hispage.com',
-            password='fdfasd890'
-        )
+            email='edith@hispage.com', password='fdfasd890')
 
         short_url = ShortUrl()
         short_url.user = user
         short_url.url = 'https://google.com'
         short_url.save()
 
-        response = self.client.get(reverse('shortener_app:info', kwargs={
-                                   'short_url_uid': short_url.uid}))
+        response = self.client.get(
+            reverse(
+                'shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
 
         self.assertEqual(response.content, b'Not found')
         self.assertEqual(response.status_code, 404)
@@ -48,8 +47,9 @@ class FrontendTestCase(TestCase):
         short_url.url = 'https://google.com'
         short_url.save()
 
-        response = self.client.get(reverse('shortener_app:info', kwargs={
-                                   'short_url_uid': short_url.uid}))
+        response = self.client.get(
+            reverse(
+                'shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
 
         self.assertTemplateUsed(response, 'shortener_app/info.html')
         self.assertEquals(response.status_code, 200)
@@ -61,21 +61,20 @@ class FrontendTestCase(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_shorten_invalid_url(self):
-        response = self.client.post(reverse('shortener_app:shorten'), data={
-                                    'url': 'https://google'})
+        response = self.client.post(
+            reverse('shortener_app:shorten'), data={'url': 'https://google'})
 
         self.assertEqual(response.content, b'Invalid url')
         self.assertEqual(response.status_code, 404)
 
     def test_shorten_logged_in(self):
         user = get_user_model().objects.create_user(
-            email='edith@hispage.com',
-            password='fdfasd890'
-        )
+            email='edith@hispage.com', password='fdfasd890')
         self.client.login(email=user.email, password='fdfasd890')
 
-        response = self.client.post(reverse('shortener_app:shorten'), data={
-                                    'url': 'https://google.com'})
+        response = self.client.post(
+            reverse('shortener_app:shorten'),
+            data={'url': 'https://google.com'})
 
         short_url = ShortUrl.objects.first()
         self.assertNotEqual(short_url, None)
@@ -83,14 +82,17 @@ class FrontendTestCase(TestCase):
         self.assertRedirects(response, reverse('shortener_app:urls'))
 
     def test_shorten(self):
-        response = self.client.post(reverse('shortener_app:shorten'), data={
-                                    'url': 'https://google.com'})
+        response = self.client.post(
+            reverse('shortener_app:shorten'),
+            data={'url': 'https://google.com'})
 
         short_url = ShortUrl.objects.first()
         self.assertNotEqual(short_url, None)
         self.assertEqual(short_url.user, None)
-        self.assertRedirects(response, reverse(
-            'shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
+        self.assertRedirects(
+            response,
+            reverse(
+                'shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
 
     def test_url_redirect(self):
         short_url = ShortUrl()
@@ -99,24 +101,29 @@ class FrontendTestCase(TestCase):
         short_url.url = 'https://google.com'
         short_url.save()
 
-        response = self.client.get(reverse('shortener_app:url_redirect', kwargs={
-                                   'short_url_uid': short_url.uid}))
+        response = self.client.get(
+            reverse(
+                'shortener_app:url_redirect',
+                kwargs={'short_url_uid': short_url.uid}))
 
         short_url = ShortUrl.objects.first()
         self.assertNotEqual(short_url, None)
         self.assertEqual(short_url.clicks, 3)
-        self.assertRedirects(response, 'https://google.com',
-                             fetch_redirect_response=False)
+        self.assertRedirects(
+            response, 'https://google.com', fetch_redirect_response=False)
 
     def test_url_redirect_log_created(self):
         short_url = ShortUrl()
         short_url.url = 'https://google.com'
         short_url.save()
-        url = reverse('shortener_app:url_redirect', kwargs={
-                      'short_url_uid': short_url.uid})
+        url = reverse(
+            'shortener_app:url_redirect',
+            kwargs={'short_url_uid': short_url.uid})
         headers = {
-            'HTTP_REFERER': 'google.com',
-            'HTTP_USER_AGENT': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36',
+            'HTTP_REFERER':
+            'google.com',
+            'HTTP_USER_AGENT':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36',
         }
 
         self.client.get(url, **headers)
@@ -135,7 +142,9 @@ class FrontendTestCase(TestCase):
 
     def test_url_redirect_short_url_not_exist(self):
         response = self.client.get(
-            reverse('shortener_app:url_redirect', kwargs={'short_url_uid': '123456'}))
+            reverse(
+                'shortener_app:url_redirect',
+                kwargs={'short_url_uid': '123456'}))
 
         self.assertEqual(response.content, b'Not found')
         self.assertEqual(response.status_code, 404)

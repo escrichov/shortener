@@ -14,6 +14,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='shorturl',
             name='uid',
-            field=models.CharField(default=shortener_app.models.generate_random_uid, max_length=6, unique=True),
+            field=models.CharField(
+                default=shortener_app.models.generate_random_uid,
+                max_length=6,
+                unique=True),
         ),
     ]

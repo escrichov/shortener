@@ -9,11 +9,10 @@ from shortener_app.models import APIAccess, ShortUrl
 
 
 class APITests(APITestCase):
+
     def setUp(self):
         self.user = get_user_model().objects.create_user(
-            email='edith@hispage.com',
-            password='fdfasd890'
-        )
+            email='edith@hispage.com', password='fdfasd890')
         self.api_access = APIAccess()
         self.api_access.user = self.user
         self.api_access.save()
@@ -32,8 +31,7 @@ class APITests(APITestCase):
 
         self.assertEqual(
             response.data,
-            {'detail': exceptions.AuthenticationFailed('No such user').detail}
-        )
+            {'detail': exceptions.AuthenticationFailed('No such user').detail})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_url_list_empty(self):
@@ -95,24 +93,23 @@ class APITests(APITestCase):
         short_url_1.url = 'https://www.google.com'
         short_url_1.user = self.user
         short_url_1.save()
-        url = reverse('shortener_app:api_delete_url',
-                      kwargs={'uid': short_url_1.uid})
+        url = reverse(
+            'shortener_app:api_delete_url', kwargs={'uid': short_url_1.uid})
         self.headers = {self.header_name: 'invalid-api-key'}
 
         response = self.client.get(url, format='json', **self.headers)
 
         self.assertEqual(
             response.data,
-            {'detail': exceptions.AuthenticationFailed('No such user').detail}
-        )
+            {'detail': exceptions.AuthenticationFailed('No such user').detail})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_url_delete_bad_uid(self):
         """
         Ensure we can create a new account object.
         """
-        url = reverse('shortener_app:api_delete_url',
-                      kwargs={'uid': 'invalid_uid'})
+        url = reverse(
+            'shortener_app:api_delete_url', kwargs={'uid': 'invalid_uid'})
 
         response = self.client.post(url, format='json', **self.headers)
 
@@ -127,8 +124,8 @@ class APITests(APITestCase):
         short_url_1.url = 'https://www.google.com'
         short_url_1.user = self.user
         short_url_1.save()
-        url = reverse('shortener_app:api_delete_url',
-                      kwargs={'uid': short_url_1.uid})
+        url = reverse(
+            'shortener_app:api_delete_url', kwargs={'uid': short_url_1.uid})
 
         response = self.client.post(url, format='json', **self.headers)
 
@@ -148,8 +145,7 @@ class APITests(APITestCase):
 
         self.assertEqual(
             response.data,
-            {'detail': exceptions.AuthenticationFailed('No such user').detail}
-        )
+            {'detail': exceptions.AuthenticationFailed('No such user').detail})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_url_create_invalid_target_url(self):

@@ -17,12 +17,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Subscription',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('stripe_payment_token', models.CharField(blank=True, max_length=32, null=True)),
-                ('stripe_subscription_id', models.CharField(blank=True, max_length=64, null=True)),
-                ('stripe_customer_id', models.CharField(blank=True, max_length=32, null=True)),
-                ('state', models.PositiveSmallIntegerField(choices=[(0, 'Active'), (1, 'Cancelled'), (2, 'Paused')], default=0)),
-                ('user', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')),
+                ('stripe_payment_token',
+                 models.CharField(blank=True, max_length=32, null=True)),
+                ('stripe_subscription_id',
+                 models.CharField(blank=True, max_length=64, null=True)),
+                ('stripe_customer_id',
+                 models.CharField(blank=True, max_length=32, null=True)),
+                ('state',
+                 models.PositiveSmallIntegerField(
+                     choices=[(0, 'Active'), (1, 'Cancelled'), (2, 'Paused')],
+                     default=0)),
+                ('user',
+                 models.OneToOneField(
+                     blank=True,
+                     null=True,
+                     on_delete=django.db.models.deletion.CASCADE,
+                     to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

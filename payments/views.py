@@ -47,7 +47,9 @@ def payment_checkout(request):
 
         stripe_subscription = stripe.Subscription.create(
             customer=customer['id'],
-            items=[{'plan': 'plan_E6ugdyKJuqMedj'}],
+            items=[{
+                'plan': 'plan_E6ugdyKJuqMedj'
+            }],
         )
 
         subscription = Subscription()
@@ -72,15 +74,18 @@ def payment_checkout(request):
         else:
             stripe_subscription = stripe.Subscription.create(
                 customer=customer['id'],
-                items=[{'plan': 'plan_E6ugdyKJuqMedj'}],
+                items=[{
+                    'plan': 'plan_E6ugdyKJuqMedj'
+                }],
             )
 
         # Update payment token in subscription
         subscription.stripe_payment_token = payment_token
         subscription.stripe_subscription_id = stripe_subscription['id']
         subscription.state = Subscription.STATE_ACTIVE
-        subscription.save(
-            update_fields=['stripe_payment_token', 'stripe_subscription_id', 'state'])
+        subscription.save(update_fields=[
+            'stripe_payment_token', 'stripe_subscription_id', 'state'
+        ])
 
     context = {}
 

@@ -5,6 +5,7 @@ from datetime import datetime
 
 
 class UpdateUrlActiveCommandTestCase(TestCase):
+
     def test_updated_ok(self):
         " Test my custom command."
 

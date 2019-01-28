@@ -76,24 +76,27 @@ class Common(Configuration):
 
     # Database
     # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue(
-        'sqlite:///{}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
-    )
+    DATABASES = values.DatabaseURLValue('sqlite:///{}'.format(
+        os.path.join(BASE_DIR, 'db.sqlite3')))
 
     # Password validation
     # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
     AUTH_PASSWORD_VALIDATORS = [
         {
-            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+            'NAME':
+            'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+            'NAME':
+            'django.contrib.auth.password_validation.MinimumLengthValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+            'NAME':
+            'django.contrib.auth.password_validation.CommonPasswordValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+            'NAME':
+            'django.contrib.auth.password_validation.NumericPasswordValidator',
         },
     ]
 
@@ -114,9 +117,7 @@ class Common(Configuration):
         ('es', _('Spanish')),
     )
 
-    LOCALE_PATHS = (
-        os.path.join(BASE_DIR, 'locale'),
-    )
+    LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -130,20 +131,16 @@ class Common(Configuration):
     LOGOUT_REDIRECT_URL = 'shortener_app:index'
 
     REST_FRAMEWORK = {
-        'DEFAULT_RENDERER_CLASSES': (
-            'rest_framework.renderers.JSONRenderer',
-        ),
-        'DEFAULT_PARSER_CLASSES': (
-            'rest_framework.parsers.JSONParser',
-        ),
-        'DEFAULT_AUTHENTICATION_CLASSES': (
-            'shortener_app.authentication.APIAccessAuthentication',
-        ),
-        'DEFAULT_PERMISSION_CLASSES': (
-            'rest_framework.permissions.IsAuthenticated',
-        ),
-        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-        'PAGE_SIZE': 10
+        'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',),
+        'DEFAULT_PARSER_CLASSES': ('rest_framework.parsers.JSONParser',),
+        'DEFAULT_AUTHENTICATION_CLASSES':
+        ('shortener_app.authentication.APIAccessAuthentication',),
+        'DEFAULT_PERMISSION_CLASSES':
+        ('rest_framework.permissions.IsAuthenticated',),
+        'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+        'PAGE_SIZE':
+        10
     }
 
     DEFAULT_FROM_EMAIL = 'Cour.fun <info@cour.fun>'
@@ -162,9 +159,7 @@ class Development(Common):
     """
     DEBUG = True
 
-    INTERNAL_IPS = [
-        '127.0.0.1'
-    ]
+    INTERNAL_IPS = ['127.0.0.1']
 
     INSTALLED_APPS = Common.INSTALLED_APPS + [
         'debug_toolbar',
@@ -213,10 +208,8 @@ class Staging(Common):
 
     @classmethod
     def post_setup(cls):
-        sentry_sdk.init(
-            dsn=cls.SENTRY_DSN,
-            integrations=[DjangoIntegration()]
-        )
+        sentry_sdk.init(dsn=cls.SENTRY_DSN, integrations=[DjangoIntegration()])
+
 
 class Production(Staging):
     """

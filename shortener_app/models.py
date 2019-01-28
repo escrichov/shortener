@@ -16,14 +16,14 @@ def generate_random_uid():
 
 def generate_random_apikey():
     s = get_random_string(
-        length=64, allowed_chars=string.ascii_letters+string.digits)
+        length=64, allowed_chars=string.ascii_letters + string.digits)
     return s
 
 
 class ShortUrl(models.Model):
 
-    uid = models.CharField(default=generate_random_uid,
-                           max_length=6, unique=True)
+    uid = models.CharField(
+        default=generate_random_uid, max_length=6, unique=True)
     url = models.CharField(max_length=1024)
     clicks = models.IntegerField(default=0)
     created_on = models.DateTimeField(default=datetime.utcnow)
@@ -34,7 +34,8 @@ class ShortUrl(models.Model):
 
     @classmethod
     def create_and_validate(cls, url_target, user):
-        if not url_target.startswith('http://') and not url_target.startswith('https://'):
+        if not url_target.startswith('http://') and not url_target.startswith(
+                'https://'):
             url_target = 'http://' + url_target
 
         # Throw ValidationError exception if url_target is not incorrect format
@@ -51,9 +52,7 @@ class ShortUrl(models.Model):
     @property
     def relative_short_url(self):
         relative_uri = reverse(
-            'shortener_app:url_redirect',
-            kwargs={'short_url_uid': self.uid}
-        )
+            'shortener_app:url_redirect', kwargs={'short_url_uid': self.uid})
 
         return relative_uri.rstrip('/')
 

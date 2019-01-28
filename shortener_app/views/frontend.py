@@ -35,7 +35,9 @@ def shorten(request):
         return HttpResponse("Invalid url", status=404)
 
     if user is None:
-        return redirect(reverse('shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
+        return redirect(
+            reverse(
+                'shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
     else:
         return redirect(reverse('shortener_app:urls'))
 
@@ -43,9 +45,7 @@ def shorten(request):
 def info(request, short_url_uid):
     try:
         short_url = ShortUrl.objects.get(
-            uid=short_url_uid,
-            user__id=request.user.id
-        )
+            uid=short_url_uid, user__id=request.user.id)
     except ShortUrl.DoesNotExist:
         return HttpResponse("Not found", status=404)
 
@@ -54,9 +54,7 @@ def info(request, short_url_uid):
 
 def url_redirect(request, short_url_uid):
     try:
-        short_url = ShortUrl.objects.get(
-            uid=short_url_uid,
-        )
+        short_url = ShortUrl.objects.get(uid=short_url_uid,)
     except ShortUrl.DoesNotExist:
         return HttpResponse("Not found", status=404)
 
