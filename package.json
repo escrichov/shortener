@@ -39,6 +39,7 @@
     "gulp-uglify": "^3.0.1",
     "remark-cli": "^6.0.1",
     "remark-preset-lint-recommended": "^3.0.2",
+    "standard": "^12.0.1",
     "stylelint": "^9.10.0",
     "uglify-save-license": "^0.4.1"
   },
@@ -46,11 +47,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp build",
     "serve": "gulp serve",
-    "js-lint": "./node_modules/.bin/eslint src gulpfile.js",
+    "js-lint": "./node_modules/.bin/standard",
     "css-lint": "./node_modules/.bin/stylelint \"src/scss/\"",
     "md-lint": "./node_modules/.bin/remark README.md LICENSE",
     "py-lint": "pylint shortener_app shortener users payments functional_tests",
-    "py-format": "yapf -r -p -i ."
+    "py-format": "yapf -r -p -i .",
+    "js-format": "./node_modules/.bin/standard --fix"
   },
   "repository": {
     "type": "git",

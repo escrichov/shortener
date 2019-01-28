@@ -1,3 +1,5 @@
+/* global $, Chart, click_stats, referal_stats, country_stats, browser_stats, os_stats */
+
 var ClickStatsCtx = $('#click_stats_id')
 Chart(ClickStatsCtx, {
   type: 'line',

@@ -1,3 +1,5 @@
+/* global $, ClipboardJS */
+
 $('.btn-copy').tooltip({
   trigger: 'click',
   placement: 'right'
