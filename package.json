@@ -48,7 +48,9 @@
     "serve": "gulp serve",
     "js-lint": "./node_modules/.bin/eslint src gulpfile.js",
     "css-lint": "./node_modules/.bin/stylelint \"src/scss/\"",
-    "md-lint": "./node_modules/.bin/remark README.md LICENSE"
+    "md-lint": "./node_modules/.bin/remark README.md LICENSE",
+    "py-lint": "pylint shortener_app shortener users payments functional_tests",
+    "py-format": "yapf -r -p -i ."
   },
   "repository": {
     "type": "git",
