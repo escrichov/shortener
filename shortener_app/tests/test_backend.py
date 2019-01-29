@@ -118,11 +118,6 @@ class BackendTestCase(TestCase):
         self.assertEquals(response.status_code, 200)
 
     def test_upgrade_to_premium_user_has_no_subscription(self):
-        subscription = Subscription()
-        subscription.user = self.user
-        subscription.state = Subscription.STATE_CANCELLED
-        subscription.save()
-
         response = self.client.get(reverse('shortener_app:upgrade_to_premium'))
 
         self.assertTemplateUsed(response,

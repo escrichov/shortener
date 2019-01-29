@@ -20,6 +20,17 @@ class APITests(APITestCase):
         self.header_name = 'HTTP_X_API_KEY'
         self.headers = {self.header_name: self.api_access.apikey}
 
+    def assert_authentication_failed(self, response):
+        self.assertEqual(
+            response.data,
+            {'detail': exceptions.AuthenticationFailed('No such user').detail}
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def assert_response_ok(self, response, expected_data):
+        self.assertEqual(response.data, expected_data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_url_list_authentication_error(self):
         """
         Ensure we can create a new account object.
@@ -29,10 +40,7 @@ class APITests(APITestCase):
 
         response = self.client.get(url, format='json', **self.headers)
 
-        self.assertEqual(
-            response.data,
-            {'detail': exceptions.AuthenticationFailed('No such user').detail})
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assert_authentication_failed(response)
 
     def test_url_list_empty(self):
         """
@@ -42,8 +50,7 @@ class APITests(APITestCase):
 
         response = self.client.get(url, format='json', **self.headers)
 
-        self.assertEqual(response.data, [])
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assert_response_ok(response, [])
 
     def test_url_list_only_my_urls(self):
         """
@@ -62,8 +69,8 @@ class APITests(APITestCase):
 
         url = reverse('shortener_app:api_list_urls')
         response = self.client.get(url, format='json', **self.headers)
-        self.assertEqual(response.data, s.data)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assert_response_ok(response, s.data)
 
     def test_url_list(self):
         """
@@ -82,8 +89,8 @@ class APITests(APITestCase):
 
         url = reverse('shortener_app:api_list_urls')
         response = self.client.get(url, format='json', **self.headers)
-        self.assertEqual(response.data, s.data)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assert_response_ok(response, s.data)
 
     def test_url_delete_authentication_error(self):
         """
@@ -99,10 +106,7 @@ class APITests(APITestCase):
 
         response = self.client.get(url, format='json', **self.headers)
 
-        self.assertEqual(
-            response.data,
-            {'detail': exceptions.AuthenticationFailed('No such user').detail})
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assert_authentication_failed(response)
 
     def test_url_delete_bad_uid(self):
         """
@@ -129,8 +133,7 @@ class APITests(APITestCase):
 
         response = self.client.post(url, format='json', **self.headers)
 
-        self.assertEqual(response.data, {})
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assert_response_ok(response, {})
         with self.assertRaises(ShortUrl.DoesNotExist):
             ShortUrl.objects.get(id=short_url_1.id)
 
@@ -143,10 +146,7 @@ class APITests(APITestCase):
 
         response = self.client.get(url, format='json', **self.headers)
 
-        self.assertEqual(
-            response.data,
-            {'detail': exceptions.AuthenticationFailed('No such user').detail})
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assert_authentication_failed(response)
 
     def test_url_create_invalid_target_url(self):
         """
@@ -176,5 +176,4 @@ class APITests(APITestCase):
         short_url = ShortUrl.objects.filter(user=self.user).first()
         s = ShortUrlSerializer(short_url)
         self.assertNotEqual(short_url, None)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, s.data)
+        self.assert_response_ok(response, s.data)
