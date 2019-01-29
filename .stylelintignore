@@ -1,1 +1,3 @@
-shortener_app/**/*.css
+.venv
+*.css
+node_modules
