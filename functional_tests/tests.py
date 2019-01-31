@@ -119,9 +119,8 @@ class LoginUserTest(CommonTestCase):
     def setUp(self):
         super().setUp()
 
-        self.user = get_user_model().objects.create_user(
-            email='edith@hispage.com',
-            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
+        self.user = get_user_model().objects.create_user( # nosec
+            email='edith@hispage.com', password='fdfasd890')
 
     def test_login(self):
         # Edith come back to Shortener app to login into her account
@@ -168,9 +167,8 @@ class AccountBackendUserTest(CommonTestCase):
     def setUp(self):
         super().setUp()
 
-        self.user = get_user_model().objects.create_user(
-            email='edith@hispage.com',
-            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
+        self.user = get_user_model().objects.create_user( # nosec
+            email='edith@hispage.com', password='fdfasd890')
         self.client.force_login(self.user)
         cookie = self.client.cookies['sessionid']
         self.browser.get(self.live_server_url)

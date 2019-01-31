@@ -27,9 +27,8 @@ class FrontendTestCase(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_info_url_of_other_user(self):
-        user = get_user_model().objects.create_user(
-            email='edith@hispage.com',
-            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
+        user = get_user_model().objects.create_user( # nosec
+            email='edith@hispage.com', password='fdfasd890')
 
         short_url = ShortUrl()
         short_url.user = user
@@ -69,13 +68,10 @@ class FrontendTestCase(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_shorten_logged_in(self):
-        user = get_user_model().objects.create_user(
-            email='edith@hispage.com',
-            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
-        self.client.login(
-            email=user.email,
-            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
-
+        user = get_user_model().objects.create_user( # nosec
+            email='edith@hispage.com', password='fdfasd890')
+        self.client.login( # nosec
+            email=user.email, password='fdfasd890')
         response = self.client.post(
             reverse('shortener_app:shorten'),
             data={'url': 'https://google.com'})
