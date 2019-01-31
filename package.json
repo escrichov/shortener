@@ -49,7 +49,7 @@
     "build": "gulp build",
     "serve": "gulp serve",
     "js-lint": "./node_modules/.bin/standard",
-    "css-lint": "./node_modules/.bin/stylelint src/scss",
+    "css-lint": "./node_modules/.bin/stylelint src/scss --fix",
     "md-lint": "./node_modules/.bin/remark README.md LICENSE",
     "py-lint": "pylint shortener_app shortener users payments functional_tests",
     "py-bandit": "bandit -r .",
