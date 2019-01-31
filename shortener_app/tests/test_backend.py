@@ -55,8 +55,11 @@ class BackendTestCase(TestCase):
 
     def setUp(self):
         self.user = get_user_model().objects.create_user(
-            email='edith@hispage.com', password='fdfasd890')
-        self.client.login(email=self.user.email, password='fdfasd890')
+            email='edith@hispage.com',
+            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
+        self.client.login(
+            email=self.user.email,
+            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
 
     def test_profile(self):
         response = self.client.get(reverse('shortener_app:profile'))

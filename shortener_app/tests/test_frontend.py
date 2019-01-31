@@ -28,7 +28,8 @@ class FrontendTestCase(TestCase):
 
     def test_info_url_of_other_user(self):
         user = get_user_model().objects.create_user(
-            email='edith@hispage.com', password='fdfasd890')
+            email='edith@hispage.com',
+            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
 
         short_url = ShortUrl()
         short_url.user = user
@@ -69,8 +70,11 @@ class FrontendTestCase(TestCase):
 
     def test_shorten_logged_in(self):
         user = get_user_model().objects.create_user(
-            email='edith@hispage.com', password='fdfasd890')
-        self.client.login(email=user.email, password='fdfasd890')
+            email='edith@hispage.com',
+            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
+        self.client.login(
+            email=user.email,
+            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
 
         response = self.client.post(
             reverse('shortener_app:shorten'),

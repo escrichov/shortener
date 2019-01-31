@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from shortener_app.models import ShortUrl
 
 
-class element_has_css_class(object):
+class ElementHasCSSClass():
     """An expectation for checking that an element has a particular css class.
 
     locator - used to find the element
@@ -27,8 +27,8 @@ class element_has_css_class(object):
             *self.locator) # Finding the referenced element
         if self.css_class in element.get_attribute("class"):
             return element
-        else:
-            return False
+
+        return False
 
 
 class CommonTestCase(LiveServerTestCase):
@@ -120,10 +120,8 @@ class LoginUserTest(CommonTestCase):
         super().setUp()
 
         self.user = get_user_model().objects.create_user(
-            email='edith@hispage.com', password='fdfasd890')
-
-    def tearDown(self):
-        super().tearDown()
+            email='edith@hispage.com',
+            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
 
     def test_login(self):
         # Edith come back to Shortener app to login into her account
@@ -155,14 +153,14 @@ class LoginUserTest(CommonTestCase):
         # When she hit click on the form, the page reloads
         login_form.find_element_by_xpath("//button[@type='submit']").click()
         self.wait.until(
-            element_has_css_class((By.XPATH, '//main//form//ul'), "errorlist"))
+            ElementHasCSSClass((By.XPATH, '//main//form//ul'), "errorlist"))
 
         # Now Edit she the error
         error_text = self.browser.find_element_by_xpath(
             "//main//form//ul//li").text
         self.assertIn(
-            "Please enter a correct email and password. Note that both fields may be case-sensitive.",
-            error_text)
+            "Please enter a correct email and password. "
+            "Note that both fields may be case-sensitive.", error_text)
 
 
 class AccountBackendUserTest(CommonTestCase):
@@ -171,14 +169,12 @@ class AccountBackendUserTest(CommonTestCase):
         super().setUp()
 
         self.user = get_user_model().objects.create_user(
-            email='edith@hispage.com', password='fdfasd890')
+            email='edith@hispage.com',
+            password='fdfasd890') # nosec:B106:hardcoded_password_funcarg
         self.client.force_login(self.user)
         cookie = self.client.cookies['sessionid']
         self.browser.get(self.live_server_url)
         self.browser.add_cookie({'name': 'sessionid', 'value': cookie.value})
-
-    def tearDown(self):
-        super().tearDown()
 
     def test_view_profile(self):
         # Edith come back to Shortener app, she is already logged in
@@ -189,7 +185,8 @@ class AccountBackendUserTest(CommonTestCase):
             "//header//ul[2]//li[2]//a")
         self.assertIn('Profile', profile_button.text)
 
-        # When she hit click on the profile button, the page reloads, and now Edith can view her profile
+        # When she hit click on the profile button, the page reloads,
+        # and now Edith can view her profile
         profile_button.click()
         self.wait.until(
             EC.text_to_be_present_in_element((By.XPATH, '//main//h4'),
@@ -204,7 +201,8 @@ class AccountBackendUserTest(CommonTestCase):
             "//header//ul[2]//li[1]//a")
         self.assertIn('My urls', my_urls_button.text)
 
-        # When she hit click on the profile button, the page reloads, and now Edith can view her profile
+        # When she hit click on the profile button, the page reloads,
+        # and now Edith can view her profile
         my_urls_button.click()
         self.wait.until(
             EC.text_to_be_present_in_element((By.XPATH, '//main//h3'),
@@ -285,7 +283,8 @@ class AccountBackendUserTest(CommonTestCase):
         real_url_button = self.browser.find_element_by_xpath(
             '//main//table//tbody//tr[1]//td[3]//a')
 
-        # When she hit click on the "https://google.com" button, the page redirect to 'https://google.com'
+        # When she hit click on the "https://google.com" button,
+        # the page redirect to 'https://google.com'
         real_url_button.click()
         self.wait.until(EC.title_contains("Google"))
 
