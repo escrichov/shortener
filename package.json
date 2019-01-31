@@ -51,6 +51,7 @@
     "css-lint": "./node_modules/.bin/stylelint \"src/scss/\"",
     "md-lint": "./node_modules/.bin/remark README.md LICENSE",
     "py-lint": "pylint shortener_app shortener users payments functional_tests",
+    "py-bandit": "bandit -r .",
     "py-format": "yapf -r -p -i .",
     "js-format": "./node_modules/.bin/standard --fix"
   },
