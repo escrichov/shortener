@@ -23,8 +23,7 @@ class APITests(APITestCase):
     def assert_authentication_failed(self, response):
         self.assertEqual(
             response.data,
-            {'detail': exceptions.AuthenticationFailed('No such user').detail}
-        )
+            {'detail': exceptions.AuthenticationFailed('No such user').detail})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def assert_response_ok(self, response, expected_data):
