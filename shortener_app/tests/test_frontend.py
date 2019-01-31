@@ -11,13 +11,13 @@ class FrontendTestCase(TestCase):
         response = self.client.get(reverse('shortener_app:index'))
 
         self.assertTemplateUsed(response, 'shortener_app/index.html')
-        self.assertEqual(response.status_code, 200)
+        self.assertEquals(response.status_code, 200)
 
     def test_pricing(self):
         response = self.client.get(reverse('shortener_app:pricing'))
 
         self.assertTemplateUsed(response, 'shortener_app/pricing.html')
-        self.assertEqual(response.status_code, 200)
+        self.assertEquals(response.status_code, 200)
 
     def test_info_short_url_not_exist(self):
         response = self.client.get(
@@ -27,7 +27,7 @@ class FrontendTestCase(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_info_url_of_other_user(self):
-        user = get_user_model().objects.create_user(
+        user = get_user_model().objects.create_user( # nosec
             email='edith@hispage.com', password='fdfasd890')
 
         short_url = ShortUrl()
@@ -52,7 +52,7 @@ class FrontendTestCase(TestCase):
                 'shortener_app:info', kwargs={'short_url_uid': short_url.uid}))
 
         self.assertTemplateUsed(response, 'shortener_app/info.html')
-        self.assertEqual(response.status_code, 200)
+        self.assertEquals(response.status_code, 200)
 
     def test_shorten_no_url_provided(self):
         response = self.client.post(reverse('shortener_app:shorten'))
@@ -68,9 +68,9 @@ class FrontendTestCase(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_shorten_logged_in(self):
-        user = get_user_model().objects.create_user(
+        user = get_user_model().objects.create_user( # nosec
             email='edith@hispage.com', password='fdfasd890')
-        self.client.login(
+        self.client.login( # nosec
             email=user.email, password='fdfasd890')
         response = self.client.post(
             reverse('shortener_app:shorten'),

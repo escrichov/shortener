@@ -1,2 +1,2 @@
 [bandit]
-exclude: /.venv,/bin,/src,/locale,/node_modules,/staticfiles,/tests
+exclude: /.venv,/bin,/src,/locale,/node_modules,/staticfiles
