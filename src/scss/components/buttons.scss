@@ -1,4 +1,4 @@
-.btn-copy { cursor: pointer }
+.btn-copy { cursor: pointer; }
 
 .btn-primary {
   /* Box-model */
@@ -18,23 +18,22 @@
   /* Visual */
   border-color: #e51b23;
   background-color: #e51b23;
-  text-shadow: 0px 10px 10px rgba(0,0,0,0.25);
-  box-shadow: 0px 10px 15px rgba(52,68,216,0.35);
+  text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 10px 15px rgba(52, 68, 216, 0.35);
   border-radius: 30px;
 }
 
 .btn-primary:hover,
 .btn-primary:active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
 .btn-primary:visited,
-.btn-primary:focus {
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled):active:focus {
   /* Visual */
   border-color: #8a0f14;
   background-color: #8a0f14;
-  box-shadow: 0 0 0 0.2rem rgba(138,15,20,0.5);
+  box-shadow: 0 0 0 0.2rem rgba(138, 1 5, 20, 0.5);
 }
-
 
 .search {
   /* Box-model */
@@ -52,11 +51,15 @@
   border-radius: 30px;
 }
 
+a { color: #e51b23; }
+
 a,
 a:focus,
 a:active {
   outline-color: #ef767b;
 }
+
+a:hover { color: #8a0f14; }
 
 input,
 input:focus,
@@ -72,12 +75,6 @@ button:active {
 
 textarea,
 textarea:focus,
-textarea:focus,
 textarea:active {
   outline-color: #ef767b;
 }
-
-
-a { color: #e51b23; }
-
-a:hover { color: #8a0f14; }

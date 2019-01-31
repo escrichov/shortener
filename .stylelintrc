@@ -1,8 +1,8 @@
-"rules": {
-    "block-no-empty": true,
-    "color-hex-case": "lower",
-    "color-hex-length": "short",
-    "color-no-invalid-hex": true,
-    "declaration-colon-space-after": "always",
-    "max-empty-lines": 2
+{
+    "ignoreFiles": "*.css",
+    "extends": "stylelint-config-standard",
+    "rules": {
+        "length-zero-no-unit": null,
+        "unit-whitelist": ["em", "rem", "s", "%", "px", "deg"]
+    }
 }
