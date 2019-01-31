@@ -11,7 +11,7 @@ from shortener_app.models import APIAccess, ShortUrl
 class APITests(APITestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user( # nosec
+        self.user = get_user_model().objects.create_user(
             email='edith@hispage.com', password='fdfasd890')
         self.api_access = APIAccess()
         self.api_access.user = self.user

@@ -167,7 +167,7 @@ class AccountBackendUserTest(CommonTestCase):
     def setUp(self):
         super().setUp()
 
-        self.user = get_user_model().objects.create_user( # nosec
+        self.user = get_user_model().objects.create_user(
             email='edith@hispage.com', password='fdfasd890')
         self.client.force_login(self.user)
         cookie = self.client.cookies['sessionid']

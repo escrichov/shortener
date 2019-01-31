@@ -54,16 +54,16 @@ class BackendTestNotLoggedInCase(TestCase):
 class BackendTestCase(TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user( # nosec
+        self.user = get_user_model().objects.create_user(
             email='edith@hispage.com', password='fdfasd890')
-        self.client.login( # nosec
+        self.client.login(
             email=self.user.email, password='fdfasd890')
 
     def test_profile(self):
         response = self.client.get(reverse('shortener_app:profile'))
 
         self.assertTemplateUsed(response, 'shortener_app/profile.html')
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_profile_api_access(self):
         api_access = APIAccess()
@@ -74,7 +74,7 @@ class BackendTestCase(TestCase):
 
         self.assertTemplateUsed(response, 'shortener_app/profile.html')
         self.assertContains(response, api_access.apikey)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_profile_active_subscription(self):
         subscription = Subscription()
@@ -86,7 +86,7 @@ class BackendTestCase(TestCase):
 
         self.assertTemplateUsed(response, 'shortener_app/profile.html')
         self.assertContains(response, "You have premium account plan")
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_profile_no_active_subscription(self):
         subscription = Subscription()
@@ -98,13 +98,13 @@ class BackendTestCase(TestCase):
 
         self.assertTemplateUsed(response, 'shortener_app/profile.html')
         self.assertContains(response, "Price")
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_list_urls_empty_list(self):
         response = self.client.get(reverse('shortener_app:urls'))
 
         self.assertTemplateUsed(response, 'shortener_app/list_urls.html')
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_list_urls(self):
         short_url = ShortUrl()
@@ -116,7 +116,7 @@ class BackendTestCase(TestCase):
 
         self.assertTemplateUsed(response, 'shortener_app/list_urls.html')
         self.assertContains(response, short_url.url)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_upgrade_to_premium_user_has_no_subscription(self):
         response = self.client.get(reverse('shortener_app:upgrade_to_premium'))
@@ -124,7 +124,7 @@ class BackendTestCase(TestCase):
         self.assertTemplateUsed(response,
                                 'shortener_app/upgrade_to_premium.html')
         self.assertContains(response, "Price")
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_upgrade_to_premium_user_has_cancelled_subscription(self):
         subscription = Subscription()
@@ -137,7 +137,7 @@ class BackendTestCase(TestCase):
         self.assertTemplateUsed(response,
                                 'shortener_app/upgrade_to_premium.html')
         self.assertContains(response, "Price")
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_upgrade_to_premium_user_has_active_subscription(self):
         subscription = Subscription()
@@ -150,7 +150,7 @@ class BackendTestCase(TestCase):
         self.assertTemplateUsed(response,
                                 'shortener_app/upgrade_to_premium.html')
         self.assertContains(response, "You have premium account plan")
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_delete(self):
         short_url = ShortUrl()
@@ -184,7 +184,7 @@ class BackendTestCase(TestCase):
                 'shortener_app:stats', kwargs={'short_url_uid': short_url.uid}))
 
         self.assertTemplateUsed(response, 'shortener_app/stats.html')
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_stats_short_url_not_exist(self):
         response = self.client.get(
