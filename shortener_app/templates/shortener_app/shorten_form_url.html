@@ -1,0 +1,6 @@
+{% load i18n %}
+<form class="mt-5" action="{% url 'shortener_app:shorten' %}" method="post">
+    {% csrf_token %}
+    <input class="search mr-3" name="url" type="text" placeholder="{% trans 'Shorten your url' %}">
+    <input class="btn btn-primary" type="submit" value="{% trans 'CREATE' %}">
+</form>

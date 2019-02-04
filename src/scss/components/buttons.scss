@@ -35,6 +35,32 @@
   box-shadow: 0 0 0 0.2rem rgba(138, 15, 20, 0.5);
 }
 
+.btn-secondary {
+  border-color: #1ae5dd;
+  background-color: #1ae5dd;
+  box-shadow: 0px 10px 15px rgba(52, 68, 216, 0.35);
+  border-radius: 30px;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  color: #fff;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 15px;
+  text-align: center;
+  text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:visited,
+.btn-secondary:focus,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.btn-secondary:not(:disabled):not(.disabled):active:focus, {
+  border-color: rgb(33, 216, 210);
+  background-color: rgb(33, 216, 210);
+  box-shadow: 0 0 0 0.2rem rgba(12, 219, 209, 0.5);
+}
+
 .search {
   /* Box-model */
   width: 20rem;

@@ -3,10 +3,10 @@
 {% load i18n %}
 {% block content %}
 
-<h3>{% trans "Your urls" %}</h3>
+{% for url in urls %}
+  {% include "shortener_app/url.html" %}
+{% endfor %}
 {% include "shortener_app/shorten_form.html" %}
-{% include "shortener_app/urls.html" %}
-
 {% endblock %}
 
 {% block javascript_data %}
