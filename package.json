@@ -50,7 +50,8 @@
     "serve": "gulp serve",
     "js-lint": "./node_modules/.bin/standard",
     "js-format": "./node_modules/.bin/standard --fix",
-    "css-lint": "./node_modules/.bin/stylelint src/scss --fix",
+    "css-lint": "./node_modules/.bin/stylelint src/scss",
+    "css-format": "./node_modules/.bin/stylelint src/scss --fix",
     "md-lint": "./node_modules/.bin/remark README.md LICENSE"
   },
   "repository": {

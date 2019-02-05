@@ -17,6 +17,10 @@ build: app_js_build app_build
 # 	make run -j2
 run: app_run app_js_run
 
+format: app_format app_js_format app_css_format
+
+lint: app_lint app_js_lint app_css_lint
+
 test: app_test
 
 release: git push
@@ -65,6 +69,9 @@ app_js_format:
 
 app_css_lint:
 	@npm run css-lint
+
+app_css_format:
+	@npm run css-format
 
 app_md_lint:
 	@npm run md-lint
