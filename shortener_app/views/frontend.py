@@ -49,7 +49,7 @@ def info(request, short_url_uid):
     except ShortUrl.DoesNotExist:
         return HttpResponse("Not found", status=404)
 
-    return render(request, 'shortener_app/info.html', {'urls': [short_url]})
+    return render(request, 'shortener_app/info.html', {'url': short_url})
 
 
 def url_redirect(request, short_url_uid):

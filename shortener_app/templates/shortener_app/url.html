@@ -15,7 +15,7 @@
     <p>{% trans "Created on" %} {{ url.created_on }}</p>
 
     <div class="d-flex align-items-baseline">
-        <p class="mr-auto">{% trans "Redirect to" %} <a href="{{ url.url }}">{{ url.url }}</a></p>
+        <p class="mr-auto">{% trans "Redirect to" %} <a class="url-target-link" href="{{ url.url }}">{{ url.url }}</a></p>
         <a class="btn btn-secondary mr-1" href="{% url 'shortener_app:stats' url.uid %}">{% trans "View stats" %}</a>
         <form action="{% url 'shortener_app:delete' url.uid %}" method="post">
           {% csrf_token %}
