@@ -34,7 +34,7 @@ app_test:
 	@python manage.py test
 
 app_build:
-	@python manage.py collectstatic
+	@python manage.py collectstatic --noinput
 
 app_migrate:
 	@python manage.py migrate
