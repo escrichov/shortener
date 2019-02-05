@@ -205,7 +205,9 @@ class AccountBackendUserTest(CommonTestCase):
         # When she hit click on the profile button, the page reloads,
         # and now Edith can view her profile
         my_urls_button.click()
-        self.wait.until(EC.url_to_be('{}/myurls'.format(self.live_server_url)))
+        self.wait.until(
+            EC.url_to_be('{}/myurls'.format(self.live_server_url))
+        )
 
     def test_create_url(self):
 
@@ -228,8 +230,7 @@ class AccountBackendUserTest(CommonTestCase):
 
         self.wait.until(
             EC.text_to_be_present_in_element(
-                (By.XPATH, "//main//a[contains(@class, 'url-target-link')]"),
-                target_url))
+                (By.XPATH, "//main//a[contains(@class, 'url-target-link')]"), target_url))
 
     def test_view_url_stats(self):
         # Create data
@@ -242,8 +243,7 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
         # She views the "View stats" button in the first url
-        stats_button = self.get_url_by_index(0).find_elements_by_tag_name(
-            'a')[2]
+        stats_button = self.get_url_by_index(0).find_elements_by_tag_name('a')[2]
 
         # When she hit click on the "View stats" button, the page redirect to Stats page
         stats_button.click()
@@ -261,8 +261,7 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
         # She views the "Delete" button in the first url
-        delete_button = self.get_url_by_index(0).find_element_by_xpath(
-            './/form')
+        delete_button = self.get_url_by_index(0).find_element_by_xpath('.//form')
 
         # When she hit click on the "View stats" button, the page redirect to Stats page
         delete_button.click()
@@ -274,39 +273,37 @@ class AccountBackendUserTest(CommonTestCase):
         # Create data
         short_url = ShortUrl()
         short_url.user = self.user
-        short_url.url = 'https://google.com'
+        short_url.url = '{}/'.format(self.live_server_url)
         short_url.save()
 
         # Edith come back to Shortener app, she is already logged in
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
-        # She views the "https://google.com" link in the first url
-        real_url_button = self.get_url_by_index(0).find_elements_by_tag_name(
-            'a')[1]
+        # She views the link in the first url
+        real_url_button = self.get_url_by_index(0).find_elements_by_tag_name('a')[1]
 
-        # When she hit click on the "https://google.com" button,
-        # the page redirect to 'https://google.com'
+        # When she hit click on the url link button,
+        # the page redirect to url
         real_url_button.click()
-        self.wait.until(EC.title_contains("Google"))
+        self.wait.until(EC.url_to_be('{}/'.format(self.live_server_url)))
 
     def test_follow_short_link(self):
         # Create data
         short_url = ShortUrl()
         short_url.user = self.user
-        short_url.url = 'https://google.com'
+        short_url.url = '{}/'.format(self.live_server_url)
         short_url.save()
 
         # Edith come back to Shortener app, she is already logged in
         self.browser.get('{}/myurls'.format(self.live_server_url))
 
         # She views the "Short url" link in the first url
-        short_url_button = self.get_url_by_index(0).find_elements_by_tag_name(
-            'a')[1]
+        short_url_button = self.get_url_by_index(0).find_elements_by_tag_name('a')[1]
         self.assertEqual(short_url_button.text, short_url.url)
 
-        # When she hit click on the "Short url" link, the page redirect to 'https://google.com'
+        # When she hit click on the "Short url" link, the page redirect to url
         short_url_button.click()
-        self.wait.until(EC.title_contains("Google"))
+        self.wait.until(EC.url_to_be('{}/'.format(self.live_server_url)))
 
     def test_logout(self):
         # Edith come back to Shortener app, she is already logged in
