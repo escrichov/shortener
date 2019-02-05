@@ -48,6 +48,9 @@ class CommonTestCase(LiveServerTestCase):
     def tearDown(self):
         self.browser.quit()
 
+    def get_url_by_index(self, url_index):
+        return self.browser.find_elements_by_class_name('url-row')[url_index]
+
 
 class NewVisitorTest(CommonTestCase):
 
@@ -75,15 +78,14 @@ class NewVisitorTest(CommonTestCase):
         # "https://news.ycombinator.com" as an item in a list table
         inputbox.send_keys(Keys.ENTER)
         self.wait.until(
-            EC.presence_of_element_located((By.XPATH, '//main//table')))
+            EC.presence_of_element_located((By.CLASS_NAME, 'url-row')))
 
         header_text = self.browser.find_element_by_xpath("//main//h3").text
         self.assertIn('Your short url', header_text)
 
-        table = self.browser.find_element_by_xpath("//main//table")
-        linked_to_column = table.find_elements_by_tag_name(
-            'tr')[1].find_elements_by_tag_name('td')[2]
-        self.assertEqual(linked_to_column.text, 'https://news.ycombinator.com')
+        real_url_button = self.get_url_by_index(0).find_elements_by_tag_name('a')[1]
+
+        self.assertEqual(real_url_button.text, 'https://news.ycombinator.com')
 
     def test_can_sign_up(self):
         # Edith has heard about a cool new online Shotener app. She goes
@@ -173,9 +175,6 @@ class AccountBackendUserTest(CommonTestCase):
         cookie = self.client.cookies['sessionid']
         self.browser.get(self.live_server_url)
         self.browser.add_cookie({'name': 'sessionid', 'value': cookie.value})
-
-    def get_url_by_index(self, url_index):
-        return self.browser.find_elements_by_class_name('url-row')[url_index]
 
     def test_view_profile(self):
         # Edith come back to Shortener app, she is already logged in
