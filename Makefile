@@ -31,7 +31,7 @@ release: git push
 ##### Django #####
 
 app_test:
-	@python runtests.py
+	@python manage.py test
 
 app_build:
 	@python manage.py collectstatic
