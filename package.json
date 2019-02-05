@@ -49,12 +49,9 @@
     "build": "gulp build",
     "serve": "gulp serve",
     "js-lint": "./node_modules/.bin/standard",
+    "js-format": "./node_modules/.bin/standard --fix",
     "css-lint": "./node_modules/.bin/stylelint src/scss --fix",
-    "md-lint": "./node_modules/.bin/remark README.md LICENSE",
-    "py-lint": "pylint shortener_app shortener users payments functional_tests",
-    "py-bandit": "bandit -r .",
-    "py-format": "yapf -r -p -i .",
-    "js-format": "./node_modules/.bin/standard --fix"
+    "md-lint": "./node_modules/.bin/remark README.md LICENSE"
   },
   "repository": {
     "type": "git",
