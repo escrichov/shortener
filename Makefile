@@ -17,9 +17,9 @@ build: app_js_build app_build
 # 	make run -j2
 run: app_run app_js_run
 
-format: app_format app_js_format app_css_format
+format: app_format app_js_format app_css_format app_json_format
 
-lint: app_lint app_js_lint app_css_lint
+lint: app_lint app_js_lint app_css_lint app_md_lint
 
 test: app_test
 
@@ -75,6 +75,9 @@ app_css_format:
 
 app_md_lint:
 	@npm run md-lint
+
+app_json_format:
+	@npm run json-format
 
 ##################
 

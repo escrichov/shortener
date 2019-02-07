@@ -37,6 +37,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
+    "jsonlint": "^1.6.3",
     "remark-cli": "^6.0.1",
     "remark-preset-lint-recommended": "^3.0.2",
     "standard": "^12.0.1",
@@ -52,7 +53,8 @@
     "js-format": "./node_modules/.bin/standard --fix",
     "css-lint": "./node_modules/.bin/stylelint src/scss",
     "css-format": "./node_modules/.bin/stylelint src/scss --fix",
-    "md-lint": "./node_modules/.bin/remark README.md LICENSE"
+    "md-lint": "./node_modules/.bin/remark README.md LICENSE",
+    "json-format": "./node_modules/.bin/jsonlint package.json"
   },
   "repository": {
     "type": "git",
