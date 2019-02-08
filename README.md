@@ -37,6 +37,20 @@ brew tap caskroom/cask
 brew cask instal chromedriver
 ```
 
+# Install pre-push hook
+
+```
+cp pre-push.sh .git/hooks/pre-push
+```
+
+# Skip pre-push hook
+
+By default pre-push hook execute tests and linter. You can disable it executing:
+
+```
+git push --no-verify
+```
+
 ## Development frontend (javascript scripts and sass styles)
 ```bash
 pipenv run python manage.py runserver
