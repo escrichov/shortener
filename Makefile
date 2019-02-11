@@ -26,6 +26,9 @@ test: app_test
 release:
 	@git push
 
+release-force:
+	@git push --no-verify
+
 ################
 
 
