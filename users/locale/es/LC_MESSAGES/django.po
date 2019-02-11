@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-13 22:49+0000\n"
-"PO-Revision-Date: 2018-12-13 23:50+0100\n"
+"POT-Creation-Date: 2019-02-11 19:46+0000\n"
+"PO-Revision-Date: 2019-02-11 20:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -16,17 +16,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#: users/admin.py:15
+msgid "Personal info"
+msgstr "Información Personal"
+
+#: users/admin.py:18
+msgid "Permissions"
+msgstr "Permisos"
+
+#: users/admin.py:22
+msgid "Important dates"
+msgstr "Fechas importantes"
+
+#: users/models.py:51
+msgid "first name"
+msgstr "nombre"
 
 #: users/models.py:52
-msgid "first name"
-msgstr "Nombre"
-
-#: users/models.py:53
 msgid "last name"
-msgstr "Apellidos"
+msgstr "apellidos"
 
-#: users/models.py:55
+#: users/models.py:54
 msgid "staff status"
 msgstr "staff status"
 
@@ -47,15 +59,15 @@ msgstr ""
 "Designa si este usuario debe ser tratado como activo. Deselecciona esto en "
 "lugar de eliminar cuentas."
 
-#: users/models.py:67
+#: users/models.py:66
 msgid "date joined"
 msgstr "fecha de ingreso"
 
-#: users/models.py:76
+#: users/models.py:75
 msgid "user"
 msgstr "usuario"
 
-#: users/models.py:77
+#: users/models.py:76
 msgid "users"
 msgstr "usuarios"
 
@@ -80,7 +92,7 @@ msgstr ""
 
 #: users/templates/registration/password_reset_confirm.html:6
 msgid "Set a new password!"
-msgstr "Introduce una nueva contraseña"
+msgstr "Introduce una nueva contraseña!"
 
 #: users/templates/registration/password_reset_confirm.html:10
 msgid "Change my password"
@@ -102,11 +114,7 @@ msgstr ""
 msgid "To initiate the password reset process for your user"
 msgstr "Para iniciar el proceso de cambiar el password para tu usuario"
 
-#: users/templates/registration/password_reset_email.html:3
-msgid ", click the link below:"
-msgstr ", haz click en el enlace de abajo:"
-
-#: users/templates/registration/password_reset_email.html:7
+#: users/templates/registration/password_reset_email.html:8
 msgid ""
 "If clicking the link above doesn't work, please copy and paste the URL in a "
 "new browser window instead."
@@ -114,11 +122,11 @@ msgstr ""
 "Si hacer clic en el enlace anterior no funciona, copia y pega la URL en una "
 "nueva ventana del navegador."
 
-#: users/templates/registration/password_reset_email.html:9
+#: users/templates/registration/password_reset_email.html:10
 msgid "Sincerely,"
 msgstr "Atentamente,"
 
-#: users/templates/registration/password_reset_email.html:10
+#: users/templates/registration/password_reset_email.html:11
 msgid "The Cour.fun Team"
 msgstr "El equipo de Cour.fun"
 
@@ -142,6 +150,36 @@ msgstr "Envíame las instrucciones"
 msgid "Cour.fun Password reset"
 msgstr "Cour.fun Cambio de contraseña"
 
-#: users/templates/signup.html:5 users/templates/signup.html:9
-msgid "Sign up"
+#: users/templates/signup.html:7
+msgid "Register"
 msgstr "Registro"
+
+#: users/templates/signup.html:8
+msgid "Insert email and password"
+msgstr "Introduce email y password"
+
+#: users/templates/signup.html:13
+msgid "Email"
+msgstr "Email"
+
+#: users/templates/signup.html:14
+msgid "Password"
+msgstr "Contraseña"
+
+#: users/templates/signup.html:15
+msgid "Confirm password"
+msgstr "Confirmar contraseña"
+
+#: users/templates/signup.html:16
+msgid "REGISTER"
+msgstr "REGISTRO"
+
+#: users/templates/signup.html:18
+msgid "Already registered? Login"
+msgstr "¿Ya estás registrado? Login"
+
+#~ msgid ", click the link below:"
+#~ msgstr ", haz click en el enlace de abajo:"
+
+#~ msgid "Sign up"
+#~ msgstr "Registro"

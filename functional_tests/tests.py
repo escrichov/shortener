@@ -101,8 +101,8 @@ class NewVisitorTest(CommonTestCase):
         # When she clicks on the "Sign up button", the page updates and now appears a Sign up form
         signup_button.click()
         self.wait.until(
-            EC.text_to_be_present_in_element((By.XPATH, '//main//h2'),
-                                             "Sign up"))
+            EC.text_to_be_present_in_element((By.XPATH, '//main//h1'),
+                                             "Register"))
 
         # She fill the email and password
         sign_up_form = self.browser.find_element_by_xpath("//main//form")

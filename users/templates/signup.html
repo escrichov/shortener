@@ -2,10 +2,20 @@
 {% load i18n %}
 
 {% block content %}
-<h2>{% trans "Sign up" %}</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button class="btn btn-primary" type="submit">{% trans "Sign up" %}</button>
-</form>
+<div class="mx-auto login-page">
+  <div>
+    <h1>{% trans 'Register' %}</h1>
+    <h3>{% trans 'Insert email and password' %}</h3>
+  </div>
+  <div>
+    <form method="post" class="mt-5 mb-4">
+      {% csrf_token %}
+      <input name="email" type="email" class="search d-block mx-auto mt-3 w-100" id="url" placeholder="{% trans 'Email' %}">
+      <input name="password1" type="password" class="search d-block mx-auto mt-3 w-100" id="password1" placeholder="{% trans 'Password' %}">
+      <input name="password2" type="password" class="search d-block mx-auto mt-3 w-100" id="password2" placeholder="{% trans 'Confirm password' %}">
+      <button type="submit" class="d-block mx-auto mt-3 btn btn-primary w-100">{% trans "REGISTER" %}</button>
+    </form>
+    <a href="{% url 'login' %}">{% trans 'Already registered? Login' %}</a>
+  </div>
+</div>
 {% endblock %}

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-13 22:49+0000\n"
-"PO-Revision-Date: 2018-12-13 02:27+0100\n"
+"POT-Creation-Date: 2019-02-11 19:46+0000\n"
+"PO-Revision-Date: 2019-02-11 20:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -16,43 +16,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
-#: shortener_app/templates/shortener_app/footer.html:4
-msgid "all rights reserved"
-msgstr ""
+#: shortener_app/templates/shortener_app/footer.html:3
+msgid "Made with Passion by "
+msgstr "Hecho con pasión por "
 
-#: shortener_app/templates/shortener_app/header.html:12
-msgid "Home"
-msgstr "Home"
-
-#: shortener_app/templates/shortener_app/header.html:15
+#: shortener_app/templates/shortener_app/header.html:17
 msgid "Pricing"
 msgstr "Precio"
 
-#: shortener_app/templates/shortener_app/header.html:21
+#: shortener_app/templates/shortener_app/header.html:23
 msgid "My urls"
 msgstr "Mis urls"
 
-#: shortener_app/templates/shortener_app/header.html:24
+#: shortener_app/templates/shortener_app/header.html:26
 msgid "Profile"
 msgstr "Cuenta"
 
-#: shortener_app/templates/shortener_app/header.html:27
+#: shortener_app/templates/shortener_app/header.html:29
 msgid "Logout"
 msgstr "Salir"
 
-#: shortener_app/templates/shortener_app/header.html:31
+#: shortener_app/templates/shortener_app/header.html:33
 msgid "Login"
 msgstr "Entrar"
 
-#: shortener_app/templates/shortener_app/header.html:34
+#: shortener_app/templates/shortener_app/header.html:36
 msgid "Sign up"
 msgstr "Registro"
 
 #: shortener_app/templates/shortener_app/index.html:5
-msgid "URL Shortener"
-msgstr "Acortador de URLs"
+msgid "Open Source URL Shortener"
+msgstr "Acortador de URLs Open Source"
 
 #: shortener_app/templates/shortener_app/index.html:6
 msgid ""
@@ -64,10 +60,6 @@ msgstr ""
 #: shortener_app/templates/shortener_app/info.html:6
 msgid "Your short url"
 msgstr "Tu url corta"
-
-#: shortener_app/templates/shortener_app/list_urls.html:6
-msgid "Your urls"
-msgstr "Mis urls"
 
 #: shortener_app/templates/shortener_app/pricing.html:7
 msgid "per month"
@@ -82,39 +74,35 @@ msgid "Buy premium"
 msgstr "Compra premium"
 
 #: shortener_app/templates/shortener_app/profile.html:5
-#: shortener_app/templates/shortener_app/profile.html:6
 msgid "Account details"
 msgstr "Detalles de la cuenta"
 
-#: shortener_app/templates/shortener_app/profile.html:8
-msgid "Username"
-msgstr "Nombre de usuario"
-
-#: shortener_app/templates/shortener_app/profile.html:9
+#: shortener_app/templates/shortener_app/profile.html:7
 msgid "Email"
 msgstr "Email"
 
-#: shortener_app/templates/shortener_app/profile.html:15
+#: shortener_app/templates/shortener_app/profile.html:13
 msgid "Api access"
 msgstr "Acceso Api"
 
-#: shortener_app/templates/shortener_app/profile.html:23
-#: shortener_app/templates/shortener_app/urls.html:12
-#: shortener_app/templates/shortener_app/urls.html:31
+#: shortener_app/templates/shortener_app/profile.html:21
+#: shortener_app/templates/shortener_app/url.html:22
 msgid "Delete"
 msgstr "Eliminar"
 
-#: shortener_app/templates/shortener_app/profile.html:32
+#: shortener_app/templates/shortener_app/profile.html:30
 msgid "Generate apikey"
 msgstr "Generar apikey"
 
 #: shortener_app/templates/shortener_app/shorten_form.html:4
+#: shortener_app/templates/shortener_app/shorten_form_url.html:4
 msgid "Shorten your url"
 msgstr "Acorta tu url"
 
 #: shortener_app/templates/shortener_app/shorten_form.html:5
-msgid "Submit"
-msgstr "Enviar"
+#: shortener_app/templates/shortener_app/shorten_form_url.html:5
+msgid "CREATE"
+msgstr "CREAR"
 
 #: shortener_app/templates/shortener_app/stats.html:6
 msgid "Stats for"
@@ -124,26 +112,39 @@ msgstr "Estadísticas para"
 msgid "Total clicks"
 msgstr "Clicks totales"
 
-#: shortener_app/templates/shortener_app/urls.html:7
-msgid "Link"
-msgstr "Enlace"
-
-#: shortener_app/templates/shortener_app/urls.html:8
-msgid "Created on"
-msgstr "Fecha de Creación"
-
-#: shortener_app/templates/shortener_app/urls.html:9
-msgid "Linked to"
-msgstr "Enlace a"
-
-#: shortener_app/templates/shortener_app/urls.html:10
+#: shortener_app/templates/shortener_app/url.html:13
 msgid "Clicks"
 msgstr "Clicks"
 
-#: shortener_app/templates/shortener_app/urls.html:11
-msgid "Stats"
-msgstr "Estadísticas"
+#: shortener_app/templates/shortener_app/url.html:15
+msgid "Created on"
+msgstr "Fecha de Creación"
 
-#: shortener_app/templates/shortener_app/urls.html:27
+#: shortener_app/templates/shortener_app/url.html:18
+msgid "Redirect to"
+msgstr "Redirige a"
+
+#: shortener_app/templates/shortener_app/url.html:19
 msgid "View stats"
 msgstr "Ver estadísticas"
+
+#~ msgid "Home"
+#~ msgstr "Home"
+
+#~ msgid "Your urls"
+#~ msgstr "Mis urls"
+
+#~ msgid "Username"
+#~ msgstr "Nombre de usuario"
+
+#~ msgid "Submit"
+#~ msgstr "Enviar"
+
+#~ msgid "Link"
+#~ msgstr "Enlace"
+
+#~ msgid "Linked to"
+#~ msgstr "Enlace a"
+
+#~ msgid "Stats"
+#~ msgstr "Estadísticas"
