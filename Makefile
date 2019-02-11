@@ -23,7 +23,8 @@ lint: app_lint app_js_lint app_css_lint app_md_lint
 
 test: app_test
 
-release: git push
+release:
+	@git push
 
 ################
 
