@@ -2,10 +2,24 @@
 {% load i18n %}
 {% block content %}
 <div>
-  <h1>Premium</h1>
-  <h2>1€</h2>
-  <h3>{% trans "per month" %}</h3>
-  <p>{% trans "Unlimited urls, unlimited stats" %}</p>
-  <a class="btn btn-primary" href="{% url 'shortener_app:upgrade_to_premium' %}">{% trans "Buy premium" %}</a>
+    <h1>{% trans 'Pricing' %}</h1>
+</div>
+<div class="row mt-5">
+  <div class="col-sm pricing mt-4">
+    <h2>{% trans 'Open Source' %}</h2>
+    <h5>{% trans 'Host on your own server' %}</h5>
+    <h2 class="mt-4">{% trans 'Free forever' %}</h2>
+    <form action="https://github.com/escrichov/shortener">
+      <input class="btn btn-secondary mt-4" type="submit" value="{% trans 'Download' %}" />
+    </form>
+  </div>
+  <div class="col-sm pricing mt-4 ml-5">
+    <h2>{% trans 'Hosted' %}</h2>
+    <h5>{% trans '30 days free trial' %}</h5>
+    <h2 class="mt-4">12$/{% trans 'year' %}</h2>
+    <form action="{% url 'shortener_app:upgrade_to_premium' %}">
+      <input class="btn btn-primary mt-4" type="submit" value="{% trans 'Buy now' %}" />
+    </form>
+  </div>
 </div>
 {% endblock %}

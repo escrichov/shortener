@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-11 19:46+0000\n"
-"PO-Revision-Date: 2019-02-11 20:50+0100\n"
+"POT-Creation-Date: 2019-02-11 20:08+0000\n"
+"PO-Revision-Date: 2019-02-11 21:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -23,6 +23,7 @@ msgid "Made with Passion by "
 msgstr "Hecho con pasión por "
 
 #: shortener_app/templates/shortener_app/header.html:17
+#: shortener_app/templates/shortener_app/pricing.html:5
 msgid "Pricing"
 msgstr "Precio"
 
@@ -61,17 +62,37 @@ msgstr ""
 msgid "Your short url"
 msgstr "Tu url corta"
 
-#: shortener_app/templates/shortener_app/pricing.html:7
-msgid "per month"
-msgstr "por mes"
-
-#: shortener_app/templates/shortener_app/pricing.html:8
-msgid "Unlimited urls, unlimited stats"
-msgstr "Urls ilimitadas, estadísiticas ilimitadas"
-
 #: shortener_app/templates/shortener_app/pricing.html:9
-msgid "Buy premium"
-msgstr "Compra premium"
+msgid "Open Source"
+msgstr "Open Source"
+
+#: shortener_app/templates/shortener_app/pricing.html:10
+msgid "Host on your own server"
+msgstr "Alójalo en tu servidor"
+
+#: shortener_app/templates/shortener_app/pricing.html:11
+msgid "Free forever"
+msgstr "Gratis para siempre"
+
+#: shortener_app/templates/shortener_app/pricing.html:13
+msgid "Download"
+msgstr "Descargar"
+
+#: shortener_app/templates/shortener_app/pricing.html:17
+msgid "Hosted"
+msgstr "Alojado"
+
+#: shortener_app/templates/shortener_app/pricing.html:18
+msgid "30 days free trial"
+msgstr "30 días de prueba gratis"
+
+#: shortener_app/templates/shortener_app/pricing.html:19
+msgid "year"
+msgstr "año"
+
+#: shortener_app/templates/shortener_app/pricing.html:21
+msgid "Buy now"
+msgstr "Comprar ahora"
 
 #: shortener_app/templates/shortener_app/profile.html:5
 msgid "Account details"
@@ -127,6 +148,15 @@ msgstr "Redirige a"
 #: shortener_app/templates/shortener_app/url.html:19
 msgid "View stats"
 msgstr "Ver estadísticas"
+
+#~ msgid "per month"
+#~ msgstr "por mes"
+
+#~ msgid "Unlimited urls, unlimited stats"
+#~ msgstr "Urls ilimitadas, estadísiticas ilimitadas"
+
+#~ msgid "Buy premium"
+#~ msgstr "Compra premium"
 
 #~ msgid "Home"
 #~ msgstr "Home"
