@@ -15,7 +15,8 @@ build: app_js_build app_build
 
 # Run with:
 # 	make run -j2
-run: app_run app_js_run
+run:
+	$(MAKE) -j 2 app_run app_js_run
 
 format: app_format app_js_format app_css_format app_json_format
 
