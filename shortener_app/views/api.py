@@ -26,9 +26,7 @@ def api_url_delete(request, uid):
 
     deleted, _ = ShortUrl.objects.filter(user=request.user, uid=uid).delete()
     if deleted == 0:
-        return Response({
-            'error': 'Url does not exist'
-        },
+        return Response({'error': 'Url does not exist'},
                         status=status.HTTP_400_BAD_REQUEST)
 
     return Response({})
@@ -48,9 +46,7 @@ def api_url_create(request):
         short_url = ShortUrl.create_and_validate(
             s_input.validated_data.get('url'), request.user)
     except ValidationError:
-        return Response({
-            'error': 'Invalid url'
-        },
+        return Response({'error': 'Invalid url'},
                         status=status.HTTP_400_BAD_REQUEST)
 
     s_output = ShortUrlSerializer(short_url)

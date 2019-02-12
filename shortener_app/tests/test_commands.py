@@ -55,13 +55,12 @@ class UpdateLogsGeolocationCommandTestCase(TestCase):
 
         args = []
         opts = {}
-        response = {
-            'country_code': 'es',
-            'latitude': 1.234,
-            'longitude': 23.91
-        }
+        response = {'country_code': 'es', 'latitude': 1.234, 'longitude': 23.91}
         with requests_mock.Mocker() as m:
-            m.get('http://api.ipstack.com/{ip}'.format(ip=log.ip), json=response, status_code=200)
+            m.get(
+                'http://api.ipstack.com/{ip}'.format(ip=log.ip),
+                json=response,
+                status_code=200)
             call_command('update_logs_geolocation', *args, **opts)
 
         updated_log = ShortUrlLog.objects.get(id=log.id)
@@ -78,13 +77,12 @@ class UpdateLogsGeolocationCommandTestCase(TestCase):
 
         args = []
         opts = {}
-        response = {
-            'country_code': 'es',
-            'latitude': 1.234,
-            'longitude': 23.91
-        }
+        response = {'country_code': 'es', 'latitude': 1.234, 'longitude': 23.91}
         with requests_mock.Mocker() as m:
-            m.get('http://api.ipstack.com/{ip}'.format(ip=log.ip), json=response, status_code=400)
+            m.get(
+                'http://api.ipstack.com/{ip}'.format(ip=log.ip),
+                json=response,
+                status_code=400)
             call_command('update_logs_geolocation', *args, **opts)
 
         updated_log = ShortUrlLog.objects.get(id=log.id)
@@ -111,13 +109,12 @@ class UpdateLogsGeolocationCommandTestCase(TestCase):
 
         args = []
         opts = {}
-        response = {
-            'country_code': 'en',
-            'latitude': 1.234,
-            'longitude': 23.91
-        }
+        response = {'country_code': 'en', 'latitude': 1.234, 'longitude': 23.91}
         with requests_mock.Mocker() as m:
-            m.get('http://api.ipstack.com/{ip}'.format(ip=log.ip), json=response, status_code=200)
+            m.get(
+                'http://api.ipstack.com/{ip}'.format(ip=log.ip),
+                json=response,
+                status_code=200)
             call_command('update_logs_geolocation', *args, **opts)
         call_command('update_logs_geolocation', *args, **opts)
 
