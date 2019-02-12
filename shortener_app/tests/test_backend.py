@@ -97,7 +97,7 @@ class BackendTestCase(TestCase):
         response = self.client.get(reverse('shortener_app:profile'))
 
         self.assertTemplateUsed(response, 'shortener_app/profile.html')
-        self.assertContains(response, "Price")
+        self.assertContains(response, "1€/Month")
         self.assertEquals(response.status_code, 200)
 
     def test_list_urls_empty_list(self):

@@ -2,33 +2,57 @@
 {% load i18n %}
 {% block content %}
 
-<h4>{% trans "Account details" %}</h4>
-<ul>
-  <li>{% trans "Email" %}: {{ user.email }}</li>
-</ul>
+<div class="url-row mt-4 text-left">
+    <h2 class="mr-auto mb-4">{% trans "Email Address" %}</h2>
+    <h6 class="mr-auto">{{ user.email }}</h6>
+</div>
 
-<h4>Premium</h4>
-{% include "payments/payment_form.html" %}
+<div class="url-row mt-4 text-left">
+  <div class="d-flex align-items-center">
+    {% if subscription_active %}
+    <div class="mr-auto">
+        <h2 class="mb-4">{% trans "You have premium account plan" %}</h2>
+        <h6></h6>
+        <p>{% trans "If you cancel the subscription you continue to has access until the end of the period." %}</p>
+    </div>
+    <a class="btn btn-primary" href="{% url 'payments:payment_cancel' %}">{% trans "Cancel subscription" %}</a>
+    {% else %}
+    <div class="mr-auto">
+        <h2 class="mb-4">{% trans "Premium" %}</h2>
+        <h6>1€/{% trans "Month" %}</h6>
+    </div>
+    <form action="{% url 'payments:payment_checkout' %}" method="POST">
+      {% csrf_token %}
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ stripe_public_key }}"
+        data-amount="{{ payment_amount }}" data-name="Cour.fun" data-description="Monthly subscription" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto" data-zip-code="true" data-currency="eur">
+        </script>
+    </form>
+    {% endif %}
+  </div>
+</div>
 
-<h4>{% trans "Api access" %}</h4>
-<ul>
+<div class="url-row mt-4 text-left">
+  <h2 class="mr-auto mb-4">API Access</h2>
   {% if api_accesses %}
   {%for api_access in api_accesses %}
-  <li>
-    {{ api_access.apikey }}
+  <div class="d-flex align-items-baseline mb-1">
+    <p class="mr-auto">{{ api_access.apikey }}</p>
     <form action="{% url 'shortener_app:delete_api_access' api_access.id %}" method="post">
       {% csrf_token %}
-      <input class="btn btn-danger" type="submit" value="{% trans 'Delete' %}">
+      <input class="btn btn-primary" type="submit" value="{% trans 'Delete' %}">
     </form>
-  </li>
+  </div>
   {% endfor %}
   {% else %}
   <p>No apikeys</p>
   {% endif %}
-  <form action="{% url 'shortener_app:create_api_access' %}" method="post">
-    {% csrf_token %}
-    <input class="btn btn-secondary" type="submit" value="{% trans 'Generate apikey' %}">
-  </form>
-</ul>
+  <div class="text-center mt-3">
+    <form action="{% url 'shortener_app:create_api_access' %}" method="post">
+      {% csrf_token %}
+      <input class="btn btn-primary" type="submit" value="{% trans 'Generate apikey' %}">
+    </form>
+  </div>
+</div>
 
 {% endblock %}

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-11 20:08+0000\n"
-"PO-Revision-Date: 2019-02-11 21:10+0100\n"
+"POT-Creation-Date: 2019-02-12 22:15+0000\n"
+"PO-Revision-Date: 2019-02-12 23:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -22,28 +22,28 @@ msgstr ""
 msgid "Made with Passion by "
 msgstr "Hecho con pasión por "
 
-#: shortener_app/templates/shortener_app/header.html:17
+#: shortener_app/templates/shortener_app/header.html:18
 #: shortener_app/templates/shortener_app/pricing.html:5
 msgid "Pricing"
 msgstr "Precio"
 
-#: shortener_app/templates/shortener_app/header.html:23
+#: shortener_app/templates/shortener_app/header.html:24
 msgid "My urls"
 msgstr "Mis urls"
 
-#: shortener_app/templates/shortener_app/header.html:26
+#: shortener_app/templates/shortener_app/header.html:27
 msgid "Profile"
 msgstr "Cuenta"
 
-#: shortener_app/templates/shortener_app/header.html:29
+#: shortener_app/templates/shortener_app/header.html:30
 msgid "Logout"
 msgstr "Salir"
 
-#: shortener_app/templates/shortener_app/header.html:33
+#: shortener_app/templates/shortener_app/header.html:34
 msgid "Login"
 msgstr "Entrar"
 
-#: shortener_app/templates/shortener_app/header.html:36
+#: shortener_app/templates/shortener_app/header.html:37
 msgid "Sign up"
 msgstr "Registro"
 
@@ -94,24 +94,24 @@ msgstr "año"
 msgid "Buy now"
 msgstr "Comprar ahora"
 
-#: shortener_app/templates/shortener_app/profile.html:5
-msgid "Account details"
-msgstr "Detalles de la cuenta"
-
-#: shortener_app/templates/shortener_app/profile.html:7
-msgid "Email"
-msgstr "Email"
+#: shortener_app/templates/shortener_app/profile.html:6
+msgid "Email Address"
+msgstr "Dirección de email"
 
 #: shortener_app/templates/shortener_app/profile.html:13
-msgid "Api access"
-msgstr "Acceso Api"
+msgid "Premium"
+msgstr "Premium"
 
-#: shortener_app/templates/shortener_app/profile.html:21
+#: shortener_app/templates/shortener_app/profile.html:14
+msgid "Month"
+msgstr "Mes"
+
+#: shortener_app/templates/shortener_app/profile.html:34
 #: shortener_app/templates/shortener_app/url.html:22
 msgid "Delete"
 msgstr "Eliminar"
 
-#: shortener_app/templates/shortener_app/profile.html:30
+#: shortener_app/templates/shortener_app/profile.html:44
 msgid "Generate apikey"
 msgstr "Generar apikey"
 
@@ -149,14 +149,20 @@ msgstr "Redirige a"
 msgid "View stats"
 msgstr "Ver estadísticas"
 
+#~ msgid "Account details"
+#~ msgstr "Detalles de la cuenta"
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid "Api access"
+#~ msgstr "Acceso Api"
+
 #~ msgid "per month"
 #~ msgstr "por mes"
 
 #~ msgid "Unlimited urls, unlimited stats"
 #~ msgstr "Urls ilimitadas, estadísiticas ilimitadas"
-
-#~ msgid "Buy premium"
-#~ msgstr "Compra premium"
 
 #~ msgid "Home"
 #~ msgstr "Home"
