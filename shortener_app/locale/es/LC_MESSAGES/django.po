@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-12 22:15+0000\n"
-"PO-Revision-Date: 2019-02-12 23:16+0100\n"
+"POT-Creation-Date: 2019-02-13 19:06+0000\n"
+"PO-Revision-Date: 2019-02-13 20:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -98,20 +98,36 @@ msgstr "Comprar ahora"
 msgid "Email Address"
 msgstr "Dirección de email"
 
-#: shortener_app/templates/shortener_app/profile.html:13
+#: shortener_app/templates/shortener_app/profile.html:14
+msgid "You have premium account plan"
+msgstr "Tienes una cuenta premium"
+
+#: shortener_app/templates/shortener_app/profile.html:16
+msgid ""
+"If you cancel the subscription you continue to has access until the end of "
+"the period."
+msgstr ""
+"Si cancelas la subscripción continúas teniendo acceso hasta el final de "
+"periodo."
+
+#: shortener_app/templates/shortener_app/profile.html:18
+msgid "Cancel subscription"
+msgstr "Cancelar subscripción"
+
+#: shortener_app/templates/shortener_app/profile.html:21
 msgid "Premium"
 msgstr "Premium"
 
-#: shortener_app/templates/shortener_app/profile.html:14
+#: shortener_app/templates/shortener_app/profile.html:22
 msgid "Month"
 msgstr "Mes"
 
-#: shortener_app/templates/shortener_app/profile.html:34
+#: shortener_app/templates/shortener_app/profile.html:43
 #: shortener_app/templates/shortener_app/url.html:22
 msgid "Delete"
 msgstr "Eliminar"
 
-#: shortener_app/templates/shortener_app/profile.html:44
+#: shortener_app/templates/shortener_app/profile.html:53
 msgid "Generate apikey"
 msgstr "Generar apikey"
 

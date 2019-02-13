@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-<h2>{% trans "Login" %}</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button class="btn btn-primary" type="submit">{% trans "Login" %}</button>
-</form>
-<p><a href="{% url 'password_reset' %}">{% trans "Reset Password" %}</a></p>
+<div class="mx-auto login-page">
+  <div>
+    <h1>{% trans "Login" %}</h1>
+    <h3>{% trans "Insert email and password" %}</h3>
+  </div>
+  <div>
+    <form method="post" class="mt-5 mb-4">
+      {% csrf_token %}
+      <input name="username" type="email" class="search d-block mx-auto mt-3 w-100" placeholder="{% trans 'Email' %}">
+      <input name="password" type="password" class="search d-block mx-auto mt-3 w-100" placeholder="{% trans 'Password' %}">
+      <button type="submit" class="d-block mx-auto mt-3 btn btn-primary w-100">{% trans "LOGIN" %}</button>
+    </form>
+    <a href="{% url 'password_reset' %}">{% trans "Forgot password?" %}</a>
+  </div>
+</div>
 {% endblock %}

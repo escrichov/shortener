@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-11 19:46+0000\n"
-"PO-Revision-Date: 2019-02-11 20:52+0100\n"
+"POT-Creation-Date: 2019-02-13 19:06+0000\n"
+"PO-Revision-Date: 2019-02-13 20:09+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -71,14 +71,29 @@ msgstr "usuario"
 msgid "users"
 msgstr "usuarios"
 
-#: users/templates/registration/login.html:4
-#: users/templates/registration/login.html:8
+#: users/templates/registration/login.html:6
 msgid "Login"
 msgstr "Entrar"
 
-#: users/templates/registration/login.html:10
-msgid "Reset Password"
-msgstr "Cambiar contraseña"
+#: users/templates/registration/login.html:7 users/templates/signup.html:8
+msgid "Insert email and password"
+msgstr "Introduce email y password"
+
+#: users/templates/registration/login.html:12 users/templates/signup.html:13
+msgid "Email"
+msgstr "Email"
+
+#: users/templates/registration/login.html:13 users/templates/signup.html:14
+msgid "Password"
+msgstr "Contraseña"
+
+#: users/templates/registration/login.html:14
+msgid "LOGIN"
+msgstr "ENTRAR"
+
+#: users/templates/registration/login.html:16
+msgid "Forgot password?"
+msgstr "¿Has olvidado tu contraseña?"
 
 #: users/templates/registration/password_reset_complete.html:6
 msgid "Password reset complete"
@@ -154,18 +169,6 @@ msgstr "Cour.fun Cambio de contraseña"
 msgid "Register"
 msgstr "Registro"
 
-#: users/templates/signup.html:8
-msgid "Insert email and password"
-msgstr "Introduce email y password"
-
-#: users/templates/signup.html:13
-msgid "Email"
-msgstr "Email"
-
-#: users/templates/signup.html:14
-msgid "Password"
-msgstr "Contraseña"
-
 #: users/templates/signup.html:15
 msgid "Confirm password"
 msgstr "Confirmar contraseña"
@@ -177,6 +180,9 @@ msgstr "REGISTRO"
 #: users/templates/signup.html:18
 msgid "Already registered? Login"
 msgstr "¿Ya estás registrado? Login"
+
+#~ msgid "Reset Password"
+#~ msgstr "Cambiar contraseña"
 
 #~ msgid ", click the link below:"
 #~ msgstr ", haz click en el enlace de abajo:"
