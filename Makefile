@@ -13,8 +13,6 @@ COMMIT=`git rev-parse HEAD`
 
 build: app_js_build app_build
 
-# Run with:
-# 	make run -j2
 run:
 	$(MAKE) -j 2 app_run app_js_run
 
