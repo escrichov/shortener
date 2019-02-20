@@ -1,6 +1,4 @@
-# URL Shortener
-
-## Getting started
+# Getting started
 
 ```bash
 git clone https://github.com/escrichov/shortener

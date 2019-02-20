@@ -1,4 +1,4 @@
-# URL Shortener API
+# API
 
 In addition to the website, you can use these APIs to create, delete and get URLs.
 

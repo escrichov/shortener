@@ -1,4 +1,4 @@
-# URL Shortener
+# Deployment
 
 It is possible to deploy to Heroku or to your own server.
 
