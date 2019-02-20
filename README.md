@@ -41,5 +41,3 @@ Url shortener.
 ## Inspiration
 
 -   [Kutt.it](https://github.com/thedevs-network/kutt)
--   Python 3.6+
-
