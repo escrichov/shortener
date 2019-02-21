@@ -8,6 +8,7 @@
     <h3>{% trans 'Insert email and password' %}</h3>
   </div>
   <div>
+    {% include 'registration/errors.html' %}
     <form method="post" class="mt-5 mb-4">
       {% csrf_token %}
       <input name="email" type="email" class="search d-block mx-auto mt-3 w-100" id="url" placeholder="{% trans 'Email' %}">
