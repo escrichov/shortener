@@ -9,7 +9,7 @@
   <div>
     <form method="post" class="mt-5 mb-4">
       {% csrf_token %}
-      <input name="username" type="email" class="search d-block mx-auto mt-3 w-100" placeholder="{% trans 'Email' %}">
+      <input name="email" type="email" class="search d-block mx-auto mt-3 w-100" placeholder="{% trans 'Email' %}">
       <input name="password" type="password" class="search d-block mx-auto mt-3 w-100" placeholder="{% trans 'Password' %}">
       <button type="submit" class="d-block mx-auto mt-3 btn btn-primary w-100">{% trans "LOGIN" %}</button>
     </form>
