@@ -7,7 +7,6 @@ Url shortener.
 
 <img alt="Url Shortener" src="https://raw.githubusercontent.com/escrichov/shortener/master/landing.png" width="500">
 
-
 ## Features
 
 -   Python 3.6+
