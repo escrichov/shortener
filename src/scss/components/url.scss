@@ -1,13 +1,24 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
 .url-row {
   padding-top: 20px;
-  padding-right: 60px;
+  padding-right: 0px;
   padding-bottom: 20px;
-  padding-left: 60px;
-  border-width: 1px;
-  border-color: ffe6e6;
-  border-style: solid;
-  border-radius: 30px;
-  background-color: #ecbfbf;
+  padding-left: 0px;
+}
+
+@include media-breakpoint-up(sm) {
+  .url-row {
+    padding-top: 20px;
+    padding-right: 60px;
+    padding-bottom: 20px;
+    padding-left: 60px;
+    border-width: 1px;
+    border-color: ffe6e6;
+    border-style: solid;
+    border-radius: 30px;
+    background-color: #ecbfbf;
+  }
 }
 
 .url-link {

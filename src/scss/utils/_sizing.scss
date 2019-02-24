@@ -1,0 +1,7 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@include media-breakpoint-down(xs) {
+  .w-xs-100 {
+    width: 100% !important;
+  }
+}

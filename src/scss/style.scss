@@ -1,5 +1,7 @@
 @import "utils/variables";
+// Make variables and mixins available when using CSS modules.
 @import "node_modules/bootstrap/scss/bootstrap";
+@import "utils/sizing";
 @import "layout/base";
 @import "components/url";
 @import "components/buttons";

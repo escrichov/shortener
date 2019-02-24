@@ -1,23 +1,25 @@
 {% load i18n %}
 <div class="url-row mt-4 text-left">
     <div class="d-flex align-items-center">
-        <h2 class="mr-auto">
+        <h4 class="mr-auto">
             <a href="{{ url.relative_short_url }}" class="copy-target url-link">{{ url.full_short_url }}</a>
+            <div class="d-block d-sm-inline">
             {% if url.url_active %}
               <i class="far fa-xxs fa-check-circle"></i>
             {% else %}
               <i class="far fa-xxs fa-times-circle"></i>
             {% endif%}
             <i class="ml-1 far fa-copy btn-copy"></i>
+            </div>
         </h2>
-        <h6>{{ url.clicks }} {% trans "Clicks" %}</h6>
+        <h6 class="d-none d-sm-block">{{ url.clicks }} {% trans "Clicks" %}</h6>
     </div>
     <p>{% trans "Created on" %} {{ url.created_on }}</p>
 
-    <div class="d-flex align-items-baseline">
-        <p class="mr-auto">{% trans "Redirect to" %} <a class="url-target-link" href="{{ url.url }}">{{ url.url }}</a></p>
+    <div class="d-sm-flex align-items-baseline text-center">
+        <p class="mr-auto text-left">{% trans "Redirect to" %} <a class="url-target-link" href="{{ url.url }}">{{ url.url }}</a></p>
         <a class="btn btn-secondary mr-1" href="{% url 'shortener_app:stats' url.uid %}">{% trans "View stats" %}</a>
-        <form action="{% url 'shortener_app:delete' url.uid %}" method="post">
+        <form action="{% url 'shortener_app:delete' url.uid %}" method="post" class="d-inline d-sm-block">
           {% csrf_token %}
           <input class="btn btn-primary" type="submit" value="{% trans 'Delete' %}">
         </form>
