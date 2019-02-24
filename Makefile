@@ -22,10 +22,10 @@ lint: app_lint app_js_lint app_css_lint app_md_lint
 
 test: app_test
 
-release:
+deploy:
 	@git push
 
-release-force:
+deploy-force:
 	@git push --no-verify
 
 ################
