@@ -1,11 +1,14 @@
 #!/bin/sh
 
+check_result() {
+    RESULT=$?
+    [ $RESULT -ne 0 ] && exit 1
+}
+
 make lint
-RESULT=$?
-[ $RESULT -ne 0 ] && exit 1
+check_result
 
 make test
-RESULT=$?
-[ $RESULT -ne 0 ] && exit 1
+check_result
 
 exit 0
