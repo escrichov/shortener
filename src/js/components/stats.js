@@ -1,8 +1,7 @@
 /* global $, Chart, click_stats, referal_stats, country_stats, browser_stats, os_stats */
-
 var ClickStatsCtx = $('#click_stats_id')
-Chart(ClickStatsCtx, {
-  type: 'line',
+new Chart(ClickStatsCtx, {
+  type: 'bar',
   data: {
     labels: click_stats['labels'],
     datasets: [{
@@ -22,7 +21,7 @@ Chart(ClickStatsCtx, {
 })
 
 var ReferalStatsCtx = $('#referal_stats_id')
-Chart(ReferalStatsCtx, {
+new Chart(ReferalStatsCtx, {
   type: 'pie',
   data: {
     labels: referal_stats['labels'],
@@ -43,7 +42,7 @@ Chart(ReferalStatsCtx, {
 })
 
 var CountryStatsCtx = $('#country_stats_id')
-Chart(CountryStatsCtx, {
+new Chart(CountryStatsCtx, {
   type: 'pie',
   data: {
     labels: country_stats['labels'],
@@ -64,7 +63,7 @@ Chart(CountryStatsCtx, {
 })
 
 var BrowserStatsCtx = $('#browser_stats_id')
-Chart(BrowserStatsCtx, {
+new Chart(BrowserStatsCtx, {
   type: 'horizontalBar',
   data: {
     labels: browser_stats['labels'],
@@ -85,7 +84,7 @@ Chart(BrowserStatsCtx, {
 })
 
 var OSStatsCtx = $('#os_stats_id')
-Chart(OSStatsCtx, {
+new Chart(OSStatsCtx, {
   type: 'horizontalBar',
   data: {
     labels: os_stats['labels'],

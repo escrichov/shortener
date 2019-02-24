@@ -4,17 +4,20 @@
 {% block content %}
 
 <h3>{% trans "Stats for" %}: {{ url.full_short_url }}</h3>
-<ul>
-  <li>
-    <p>{% trans "Total clicks" %}: {{ url.clicks }}</p>
-  </li>
-</ul>
-
-<canvas id="click_stats_id" width="200" height="200"></canvas>
-<canvas id="country_stats_id" width="200" height="200"></canvas>
-<canvas id="referal_stats_id" width="200" height="200"></canvas>
-<canvas id="browser_stats_id" width="200" height="200"></canvas>
-<canvas id="os_stats_id" width="200" height="200"></canvas>
+<div class="btn-group mb-5" role="group" aria-label="Filter">
+  <button type="button" class="btn btn-primary">24 h</button>
+  <button type="button" class="btn btn-primary">7 days</button>
+  <button type="button" class="btn btn-primary">1 month</button>
+</div>
+<div>
+  <h4>Clicks</h1>
+  <p>{% trans "Total clicks" %}: {{ url.clicks }}</p>
+  <canvas id="click_stats_id" width="200" height="75"></canvas>
+</div>
+<canvas id="country_stats_id" width="200" height="75"></canvas>
+<canvas id="referal_stats_id" width="200" height="75"></canvas>
+<canvas id="browser_stats_id" width="200" height="75"></canvas>
+<canvas id="os_stats_id" width="200" height="75"></canvas>
 
 {% endblock %}
 
