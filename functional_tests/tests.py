@@ -132,7 +132,7 @@ class LoginUserTest(CommonTestCase):
 
         # She fill again the email and password on the form
         login_form = self.browser.find_element_by_xpath("//main//form")
-        login_form.find_element_by_name('username').send_keys(
+        login_form.find_element_by_name('email').send_keys(
             'edith@hispage.com')
         login_form.find_element_by_name('password').send_keys('fdfasd890')
 
@@ -150,7 +150,7 @@ class LoginUserTest(CommonTestCase):
 
         # She fill again the email and a bad password on the form
         login_form = self.browser.find_element_by_xpath("//main//form")
-        login_form.find_element_by_name('username').send_keys(
+        login_form.find_element_by_name('email').send_keys(
             'edith@hispage.com')
         login_form.find_element_by_name('password').send_keys('flass_onion')
 
