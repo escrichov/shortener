@@ -24,3 +24,6 @@ deploy:
     provider: heroku
     app: $HEROKU_APP
     api_key: $HEROKU_AUTH_TOKEN
+env:
+  - ENVIRONMENT=DEVELOPMENT DJANGO_DEBUG=no DJANGO_SECRET_KEY=dont-tell-eve DJANGO_IPSTACK_APIKEY='apikey'
+
