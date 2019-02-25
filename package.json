@@ -53,7 +53,7 @@
     "js-format": "./node_modules/.bin/standard --fix",
     "css-lint": "./node_modules/.bin/stylelint src/scss",
     "css-format": "./node_modules/.bin/stylelint src/scss --fix",
-    "md-lint": "./node_modules/.bin/remark README.md LICENSE",
+    "md-lint": "./node_modules/.bin/remark README.md LICENSE docs/",
     "json-format": "./node_modules/.bin/jsonlint -i package.json"
   },
   "repository": {
