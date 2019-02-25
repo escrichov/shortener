@@ -18,14 +18,9 @@ function hideTooltip (e) {
 }
 
 // Clipboard
-var clipboard = new ClipboardJS('.btn-copy', {
-  target: function (trigger) {
-    return $(trigger).siblings('.copy-target').get(0)
-  }
-})
+var clipboard = new ClipboardJS('.btn-copy')
 
 clipboard.on('success', function (e) {
-  console.log(e)
   e.clearSelection()
   setTooltip($(e.trigger), 'Copied!')
   hideTooltip($(e.trigger))

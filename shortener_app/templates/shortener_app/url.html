@@ -2,14 +2,14 @@
 <div class="url-row mt-4 text-left">
     <div class="d-flex align-items-center">
         <h4 class="mr-auto">
-            <a href="{{ url.relative_short_url }}" class="copy-target url-link">{{ url.full_short_url }}</a>
+            <a href="{{ url.relative_short_url }}" class="url-link">{{ url.full_short_url }}</a>
             <div class="d-block d-sm-inline">
-            {% if url.url_active %}
-              <i class="far fa-xxs fa-check-circle"></i>
-            {% else %}
-              <i class="far fa-xxs fa-times-circle"></i>
-            {% endif%}
-            <i class="ml-1 far fa-copy btn-copy"></i>
+              {% if url.url_active %}
+                <i class="far fa-xxs fa-check-circle"></i>
+              {% else %}
+                <i class="far fa-xxs fa-times-circle"></i>
+              {% endif%}
+              <i class="ml-1 far fa-copy btn-copy" data-clipboard-text={{ url.full_short_url}}></i>
             </div>
         </h2>
         <h6 class="d-none d-sm-block">{{ url.clicks }} {% trans "Clicks" %}</h6>
