@@ -180,7 +180,6 @@ class AccountBackendUserTest(CommonTestCase):
         self.browser.add_cookie({'name': 'sessionid', 'value': cookie.value})
 
     def test_view_profile(self):
-        print(settings.STRIPE_PUBLIC_KEY, settings.STRIPE_SECRET_KEY)
         # Edith come back to Shortener app, she is already logged in
         self.browser.get(self.live_server_url)
 

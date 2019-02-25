@@ -13,7 +13,6 @@ before_install:
   - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
   - sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 install:
-    - cp example.env .env
     - pip install pipenv
     - pipenv install --dev
     - pipenv run python manage.py collectstatic --no-input
