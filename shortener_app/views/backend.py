@@ -10,6 +10,7 @@ from payments.models import Subscription
 from datetime import datetime, timedelta
 import json
 
+from shortener_app import utils
 from shortener_app.models import ShortUrl, ShortUrlLog, APIAccess
 
 
@@ -106,7 +107,7 @@ def stats(request, short_url_uid):
 
     # Get click stats of last 24 hours
     time_threshold = datetime.utcnow() - timedelta(days=1)
-    click_stats = ShortUrlLog.objects.filter(
+    click_logs = ShortUrlLog.objects.filter(
         created_on__gt=time_threshold,).annotate(
             name=Trunc('created_on', 'hour',
                        output_field=DateTimeField())).values('name').annotate(
@@ -144,10 +145,7 @@ def stats(request, short_url_uid):
         'name': 'browser'
     }).order_by().values('name').annotate(count=Count('id'))
 
-    click_stats_javascript = {'labels': [], 'values': []}
-    for stat in click_stats:
-        click_stats_javascript['labels'].append(str(stat['name']))
-        click_stats_javascript['values'].append(stat['count'])
+    click_stats_javascript = utils.convert_to_stats(click_logs)
 
     referal_stats_javascript = {'labels': [], 'values': []}
     for stat in referal_stats:
@@ -171,7 +169,6 @@ def stats(request, short_url_uid):
 
     context = {
         'url': short_url,
-        'click_stats': click_stats,
         'country_stats': country_stats,
         'os_stats': os_stats,
         'referal_stats': referal_stats,

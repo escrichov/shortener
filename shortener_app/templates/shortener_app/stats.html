@@ -10,14 +10,30 @@
   <button type="button" class="btn btn-primary">1 month</button>
 </div>
 <div>
-  <h4>Clicks</h1>
+  <h4>{% trans "Clicks" %}</h1>
   <p>{% trans "Total clicks" %}: {{ url.clicks }}</p>
   <canvas id="click_stats_id" width="200" height="75"></canvas>
 </div>
-<canvas id="country_stats_id" width="200" height="75"></canvas>
-<canvas id="referal_stats_id" width="200" height="75"></canvas>
-<canvas id="browser_stats_id" width="200" height="75"></canvas>
-<canvas id="os_stats_id" width="200" height="75"></canvas>
+<div class="row mt-5">
+  <div class="col-sm">
+    <h4>{% trans "Referals" %}</h1>
+    <canvas id="referal_stats_id" width="200" height="75"></canvas>
+  </div>
+  <div class="col-sm mt-5 mt-sm-0">
+    <h4>{% trans "Browsers" %}</h1>
+    <canvas id="browser_stats_id" width="200" height="75"></canvas>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-sm">
+    <h4>{% trans "Country" %}</h1>
+    <canvas id="country_stats_id" width="200" height="75"></canvas>
+  </div>
+  <div class="col-sm mt-5 mt-sm-0">
+    <h4>{% trans "OS" %}</h1>
+    <canvas id="os_stats_id" width="200" height="75"></canvas>
+  </div>
+</div>
 
 {% endblock %}
 
