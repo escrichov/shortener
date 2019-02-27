@@ -173,7 +173,7 @@ class Development(Common):
         'django.contrib.auth.hashers.MD5PasswordHasher',
     ]
 
-    HOSTNAME = 'localhost:8000'
+    HOSTNAME = 'http://localhost:8000'
 
     #EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
     #SENDGRID_API_KEY = values.SecretValue()
@@ -199,7 +199,7 @@ class Staging(Common):
     #    ('HTTP_X_FORWARDED_PROTO', 'https')
     #)
 
-    HOSTNAME = 'cour.fun'
+    HOSTNAME = 'https://cour.fun'
 
     EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
     SENDGRID_API_KEY = values.SecretValue()

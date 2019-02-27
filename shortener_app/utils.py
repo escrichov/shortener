@@ -1,4 +1,5 @@
 from datetime import datetime
+from urllib.parse import urlparse
 
 
 def get_client_ip(request):
@@ -8,3 +9,9 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
+
+def strip_scheme(url):
+    parsed = urlparse(url)
+    scheme = "%s://" % parsed.scheme
+    return parsed.geturl().replace(scheme, '', 1)

@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.utils.crypto import get_random_string
 from django.core.validators import URLValidator
+from shortener_app import utils
 
 import string
 
@@ -57,7 +58,11 @@ class ShortUrl(models.Model):
         return relative_uri.rstrip('/')
 
     @property
-    def full_short_url(self):
+    def full_short_url_without_scheme(self):
+        return utils.strip_scheme(self.full_short_url_with_scheme)
+
+    @property
+    def full_short_url_with_scheme(self):
         return settings.HOSTNAME + self.relative_short_url
 
 
