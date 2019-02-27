@@ -4,7 +4,7 @@ from .models import ShortUrl
 
 class ShortUrlSerializer(serializers.ModelSerializer):
     id = serializers.CharField(source="uid")
-    short_url = serializers.CharField(source="full_short_url")
+    short_url = serializers.CharField(source="full_short_url_without_scheme")
     target = serializers.CharField(source="url")
 
     class Meta:
