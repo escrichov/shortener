@@ -3,7 +3,7 @@ language: python
 addons:
   chrome: stable
 python:
-    - "3.7"
+    - "3.7.2"
 before_install:
   - wget -N https://chromedriver.storage.googleapis.com/2.45/chromedriver_linux64.zip -P ~/Downloads
   - unzip ~/Downloads/chromedriver_linux64.zip -d ~/Downloads
