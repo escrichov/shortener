@@ -54,7 +54,8 @@
     "css-lint": "./node_modules/.bin/stylelint src/scss",
     "css-format": "./node_modules/.bin/stylelint src/scss --fix",
     "md-lint": "./node_modules/.bin/remark README.md LICENSE docs/",
-    "json-format": "./node_modules/.bin/jsonlint -i package.json"
+    "json-format": "./node_modules/.bin/jsonlint -i package.json",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "repository": {
     "type": "git",
@@ -66,5 +67,6 @@
   "bugs": {
     "url": "https://github.com/escrichov/shortener/issues"
   },
-  "homepage": "https://github.com/escrichov/shortener#readme"
+  "homepage": "https://github.com/escrichov/shortener#readme",
+  "heroku-run-build-script": true
 }
