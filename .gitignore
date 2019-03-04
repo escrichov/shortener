@@ -118,3 +118,7 @@ db.sqlite3
 
 # Staticfiles
 staticfiles
+
+# Generated JS and CSS
+shortener_app/static/shortener_app/js
+shortener_app/static/shortener_app/css
