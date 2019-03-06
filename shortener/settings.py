@@ -221,7 +221,7 @@ class Staging(Common):
 
     SENTRY_DSN = values.SecretValue()
 
-    REDIS_URL = values.SecretValue(environ_name='REDIS_URL')
+    REDIS_URL = values.SecretValue(environ_name='REDIS_URL', environ_prefix=None)
     CACHES = {
         'default': {
             'BACKEND': 'redis_cache.RedisCache',
