@@ -152,6 +152,9 @@ class Common(Configuration):
     STRIPE_PUBLIC_KEY = values.SecretValue()
     STRIPE_SECRET_KEY = values.SecretValue()
 
+    SEGMENT_ANALYTICS_WRITE_KEY = values.SecretValue()
+    SEGMENT_ANALYTICS_DEBUG = values.BooleanValue()
+
 
 class Development(Common):
     """
