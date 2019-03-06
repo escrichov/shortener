@@ -221,11 +221,11 @@ class Staging(Common):
 
     SENTRY_DSN = values.SecretValue()
 
-    REDIS_URL = values.Value('redis://localhost:6379', environ_prefix=None)
+    REDIS_URL = values.SecretValue(environ_name='REDIS_URL')
     CACHES = {
         'default': {
             'BACKEND': 'redis_cache.RedisCache',
-            'LOCATION': str(REDIS_URL),
+            'LOCATION': REDIS_URL,
         },
     }
 
