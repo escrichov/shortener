@@ -43,6 +43,7 @@ class Common(Configuration):
     ]
 
     MIDDLEWARE = [
+        'django.middleware.cache.UpdateCacheMiddleware',    # This must be first on the list
         'django.middleware.security.SecurityMiddleware',
         'whitenoise.middleware.WhiteNoiseMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
@@ -52,6 +53,7 @@ class Common(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'django.middleware.cache.FetchFromCacheMiddleware', # This must be last
     ]
 
     ROOT_URLCONF = 'shortener.urls'
@@ -153,7 +155,17 @@ class Common(Configuration):
     STRIPE_SECRET_KEY = values.SecretValue()
 
     SEGMENT_ANALYTICS_WRITE_KEY = values.SecretValue()
-    SEGMENT_ANALYTICS_DEBUG = values.BooleanValue()
+    SEGMENT_ANALYTICS_DEBUG = values.BooleanValue(True)
+
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        },
+    }
+    CACHE_MIDDLEWARE_ALIAS = 'default'
+    CACHE_MIDDLEWARE_SECONDS = 100
+    CACHE_MIDDLEWARE_KEY_PREFIX = ''
+    SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 
 class Development(Common):
@@ -208,6 +220,14 @@ class Staging(Common):
     SENDGRID_API_KEY = values.SecretValue()
 
     SENTRY_DSN = values.SecretValue()
+
+    CACHE_LOCATION = values.Value('localhost:6379')
+    CACHES = {
+        'default': {
+            'BACKEND': 'redis_cache.RedisCache',
+            'LOCATION': str(CACHE_LOCATION),
+        },
+    }
 
     @classmethod
     def post_setup(cls):

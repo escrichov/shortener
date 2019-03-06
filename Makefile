@@ -34,16 +34,16 @@ deploy-force:
 ##### Django #####
 
 app_test:
-	@python manage.py test
+	@pipenv run python manage.py test
 
 app_build:
-	@python manage.py collectstatic --noinput
+	@pipenv run python manage.py collectstatic --noinput
 
 app_migrate:
-	@python manage.py migrate
+	@pipenv run python manage.py migrate
 
 app_run:
-	@python manage.py runserver
+	@pipenv run python manage.py runserver
 
 app_lint:
 	@pylint shortener_app shortener users payments functional_tests
