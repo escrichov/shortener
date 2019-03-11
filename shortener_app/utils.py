@@ -4,6 +4,19 @@ from urllib.parse import urlparse
 
 
 def get_client_ip(request):
+    """Extract client ip from request headers
+
+    Retrieves rows pertaining to the given keys from the Table instance
+    represented by big_table.  Silly things may happen if
+    other_silly_variable is not None.
+
+    Args:
+        request: django HttpRequest object.
+
+    Returns:
+        IP Address in string format from header HTTP_X_FORWARDED_FOR if exist or
+        from header REMOTE_ADDR
+    """
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]
@@ -46,7 +59,6 @@ def monthly_range(begin, end):
 
 def convert_to_stats(logs):
     now = datetime.utcnow()
-    hourly_list = hourly_range(now-timedelta(days=1), now)
     hourly_list = hourly_range(now - timedelta(days=1), now)
 
     stats = {'labels': [], 'values': []}
