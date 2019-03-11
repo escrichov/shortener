@@ -43,7 +43,7 @@ class Common(Configuration):
     ]
 
     MIDDLEWARE = [
-        'django.middleware.cache.UpdateCacheMiddleware',    # This must be first on the list
+        'django.middleware.cache.UpdateCacheMiddleware', # This must be first on the list
         'django.middleware.security.SecurityMiddleware',
         'whitenoise.middleware.WhiteNoiseMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
@@ -221,7 +221,8 @@ class Staging(Common):
 
     SENTRY_DSN = values.SecretValue()
 
-    REDIS_URL = values.SecretValue(environ_name='REDIS_URL', environ_prefix=None)
+    REDIS_URL = values.SecretValue(
+        environ_name='REDIS_URL', environ_prefix=None)
     CACHES = {
         'default': {
             'BACKEND': 'redis_cache.RedisCache',

@@ -47,6 +47,7 @@ def monthly_range(begin, end):
 def convert_to_stats(logs):
     now = datetime.utcnow()
     hourly_list = hourly_range(now-timedelta(days=1), now)
+    hourly_list = hourly_range(now - timedelta(days=1), now)
 
     stats = {'labels': [], 'values': []}
     i = 0
