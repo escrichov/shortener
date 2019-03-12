@@ -1,3 +1,18 @@
+var statsColors = [
+  'rgba(255, 99, 132, 0.3)',
+  'rgba(255, 255, 153, 0.3)',
+  'rgba(54, 162, 235, 0.3)',
+  'rgba(102, 255, 102, 0.3)',
+  'rgba(255, 99, 132, 0.6)',
+  'rgba(255, 255, 153, 0.6)',
+  'rgba(54, 162, 235, 0.6)',
+  'rgba(102, 255, 102, 0.6)',
+  'rgba(255, 99, 132, 1.0)',
+  'rgba(255, 255, 153, 1.0)',
+  'rgba(54, 162, 235, 1.0)',
+  'rgba(102, 255, 102, 1.0)'
+]
+
 /* global $, Chart, click_stats, referal_stats, country_stats, browser_stats, os_stats */
 var ClickStatsCtx = $('#click_stats_id')
 new Chart(ClickStatsCtx, {
@@ -8,14 +23,8 @@ new Chart(ClickStatsCtx, {
     datasets: [{
       label: 'Clicks',
       data: click_stats['values'],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)'
-      ],
+      backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+      borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
       borderWidth: 0
     }]
   },
@@ -53,14 +62,8 @@ new Chart(ReferalStatsCtx, {
     datasets: [{
       label: 'Clicks',
       data: referal_stats['values'],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)'
-      ],
+      backgroundColor: statsColors,
+      borderColor: statsColors,
       borderWidth: 0
     }]
   }
@@ -74,14 +77,8 @@ new Chart(CountryStatsCtx, {
     datasets: [{
       label: 'Clicks',
       data: country_stats['values'],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)'
-      ],
+      backgroundColor: statsColors,
+      borderColor: statsColors,
       borderWidth: 0
     }]
   }
@@ -95,14 +92,8 @@ new Chart(BrowserStatsCtx, {
     datasets: [{
       label: 'Clicks',
       data: browser_stats['values'],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)'
-      ],
+      backgroundColor: statsColors,
+      borderColor: statsColors,
       borderWidth: 0
     }]
   },
@@ -131,14 +122,8 @@ new Chart(OSStatsCtx, {
     datasets: [{
       label: 'Clicks',
       data: os_stats['values'],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)'
-      ],
+      backgroundColor: statsColors,
+      borderColor: statsColors,
       borderWidth: 0
     }]
   },
