@@ -26,12 +26,36 @@ def get_client_ip(request):
 
 
 def strip_scheme(url):
+    """Remove scheme from url
+
+    Returns url without scheme
+
+    Args:
+        url: url string.
+
+    Returns:
+        Url without scheme
+    """
     parsed = urlparse(url)
     scheme = "%s://" % parsed.scheme
     return parsed.geturl().replace(scheme, '', 1)
 
 
 def date_range(frequency, begin, end):
+    """Generate list of datetimes in a range
+
+    Create a list of datetimes from begin to end.
+    The list starts with begin datetime and terminates with end datetime.
+    The difference between datetimes in the list is the frequency.
+
+    Args:
+        frequency: rrule frequency. Only supports HOURLY, DAILY and MONTHLY
+        begin: datetime.datetime object.
+        end: datetime.datetime object.
+
+    Returns:
+        List of datetimes
+    """
     datetimes = []
     for dt in rrule.rrule(frequency, dtstart=begin, until=end):
         if frequency == rrule.HOURLY:
@@ -46,14 +70,17 @@ def date_range(frequency, begin, end):
 
 
 def hourly_range(begin, end):
+    """Generate list of datetimes in a hourly range"""
     return date_range(rrule.HOURLY, begin, end)
 
 
 def daily_range(begin, end):
+    """Generate list of datetimes in a daily range"""
     return date_range(rrule.DAILY, begin, end)
 
 
 def monthly_range(begin, end):
+    """Generate list of datetimes in a monthly range"""
     return date_range(rrule.MONTHLY, begin, end)
 
 
