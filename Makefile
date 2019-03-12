@@ -46,7 +46,7 @@ app_run:
 	@pipenv run python manage.py runserver
 
 app_lint:
-	@pipenv run pylint shortener_app shortener users payments functional_tests
+	@pipenv run pylint --rcfile=config/.pylintrc shortener_app shortener users payments functional_tests
 
 app_bandit:
 	@bandit -r .
