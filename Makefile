@@ -28,6 +28,12 @@ deploy:
 deploy-force:
 	@git push --no-verify
 
+deploy-heroku:
+	@git push heroku master
+
+deploy-heroku-force:
+	@git push --no-verify heroku master
+
 ################
 
 
