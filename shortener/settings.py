@@ -124,7 +124,7 @@ class Common(Configuration):
 
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/2.1/howto/static-files/
-    STATIC_URL = '/static/'
+    #STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -175,14 +175,21 @@ class Common(Configuration):
         AWS_ACCESS_KEY_ID = values.SecretValue()
         AWS_SECRET_ACCESS_KEY = values.SecretValue()
         AWS_STORAGE_BUCKET_NAME = values.SecretValue()
-        AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+        @property
+        def AWS_S3_CUSTOM_DOMAIN(self):
+            return '%s.s3.amazonaws.com' % self.AWS_STORAGE_BUCKET_NAME
+
+        @property
+        def STATIC_URL(self):
+            return 'https://%s/%s/' % (
+                self.AWS_S3_CUSTOM_DOMAIN, self.AWS_LOCATION)
+
         AWS_S3_OBJECT_PARAMETERS = {
             'CacheControl': 'max-age=86400',
         }
         AWS_LOCATION = 'static'
 
-        STATIC_URL = 'https://%s/%s/' % (
-            AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
         STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
