@@ -44,7 +44,6 @@ class Common(Configuration):
     ]
 
     MIDDLEWARE = [
-        'django.middleware.cache.UpdateCacheMiddleware', # This must be first on the list
         'django.middleware.security.SecurityMiddleware',
         'whitenoise.middleware.WhiteNoiseMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,7 +53,6 @@ class Common(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'django.middleware.cache.FetchFromCacheMiddleware', # This must be last
     ]
 
     ROOT_URLCONF = 'shortener.urls'
