@@ -166,7 +166,7 @@ class Common(Configuration):
     CACHE_MIDDLEWARE_KEY_PREFIX = ''
     SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
-    USE_S3 = values.BooleanValue(True)
+    USE_S3 = False
 
     if USE_S3:
         AWS_DEFAULT_ACL = None
@@ -262,4 +262,4 @@ class Production(Staging):
     """
     The in-production settings.
     """
-    pass
+    USE_S3 = True
