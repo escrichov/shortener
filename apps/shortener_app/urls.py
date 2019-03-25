@@ -7,11 +7,17 @@ app_name = 'shortener_app'
 
 urlpatterns = [
     # Frontend
-    path('', cache_page(settings.CACHE_MIDDLEWARE_SECONDS)(frontend.index), name='index'),
+    path(
+        '',
+        cache_page(settings.CACHE_MIDDLEWARE_SECONDS)(frontend.index),
+        name='index'),
     path('<slug:short_url_uid>/', frontend.url_redirect, name='url_redirect'),
     path('info/<slug:short_url_uid>', frontend.info, name='info'),
     path('shorten', frontend.shorten, name='shorten'),
-    path('pricing', cache_page(settings.CACHE_MIDDLEWARE_SECONDS)(frontend.pricing), name='pricing'),
+    path(
+        'pricing',
+        cache_page(settings.CACHE_MIDDLEWARE_SECONDS)(frontend.pricing),
+        name='pricing'),
 
     # Backend
     path('delete/<slug:short_url_uid>', backend.delete, name='delete'),

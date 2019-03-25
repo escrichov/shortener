@@ -180,8 +180,8 @@ class Common(Configuration):
 
         @property
         def STATIC_URL(self):
-            return 'https://%s/%s/' % (
-                self.AWS_S3_CUSTOM_DOMAIN, self.AWS_LOCATION)
+            return 'https://%s/%s/' % (self.AWS_S3_CUSTOM_DOMAIN,
+                                       self.AWS_LOCATION)
 
         AWS_S3_OBJECT_PARAMETERS = {
             'CacheControl': 'max-age=86400',
