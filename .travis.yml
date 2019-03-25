@@ -20,7 +20,7 @@ install:
 script:
     - whereis chromedriver
     - pipenv run coverage run manage.py test
-    - codecov
+    - pipenv run codecov
 deploy:
     provider: heroku
     app: $HEROKU_APP
