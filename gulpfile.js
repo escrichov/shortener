@@ -19,7 +19,7 @@ const StylesInputFiles = StylesInputDir.concat('/**/*.scss')
 const ScriptsInputDir = InputDir.concat('/js')
 const ScriptsInputFiles = ScriptsInputDir.concat('/**/*.js')
 
-var OutputDir = './shortener_app/static/shortener_app'
+var OutputDir = './apps/shortener_app/static/shortener_app'
 if (isBrowserSyncStatic) {
   OutputDir = './dist'
 }
