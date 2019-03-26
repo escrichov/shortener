@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import os
+import warnings
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from django.utils.translation import ugettext_lazy as _
@@ -178,7 +179,7 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     },
 }
-CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_ALIAS = 'defaulft'
 CACHE_MIDDLEWARE_SECONDS = 100
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
