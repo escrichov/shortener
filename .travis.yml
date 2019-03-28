@@ -26,7 +26,7 @@ deploy:
     app: $HEROKU_APP
     api_key: $HEROKU_AUTH_TOKEN
 env:
-  - ENVIRONMENT=DEVELOPMENT PIPENV_IGNORE_VIRTUALENVS=1 DJANGO_DEBUG=no DJANGO_SECRET_KEY=dont-tell-eve DJANGO_IPSTACK_APIKEY='apikey' REDIS_URL='redis://localhost:6379'
+  - ENVIRONMENT=DEVELOPMENT PIPENV_IGNORE_VIRTUALENVS=1 DJANGO_DEBUG=False DJANGO_SECRET_KEY=dont-tell-eve DJANGO_IPSTACK_APIKEY='apikey' REDIS_URL='redis://localhost:6379'
 services:
   - redis-server
   - postgresql
