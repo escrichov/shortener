@@ -28,11 +28,11 @@ const ScriptsOutputDir = OutputDir.concat('/js')
 const ScriptsOutputVendorDir = ScriptsOutputDir.concat('/vendor')
 const ScriptsOutputSuffix = '.min'
 const ScriptsVendorFiles = [
-  'node_modules/bootstrap/dist/js/bootstrap.js',
-  'node_modules/jquery/dist/jquery.js',
-  'node_modules/popper.js/dist/umd/popper.js',
-  'node_modules/clipboard/dist/clipboard.js',
-  'node_modules/chart.js/dist/Chart.js'
+  'node_modules/bootstrap/dist/js/bootstrap.min.js',
+  'node_modules/jquery/dist/jquery.min.js',
+  'node_modules/popper.js/dist/umd/popper.min.js',
+  'node_modules/clipboard/dist/clipboard.min.js',
+  'node_modules/chart.js/dist/Chart.min.js'
 ]
 
 var TemplateDir = './shortener_app/templates'
@@ -71,16 +71,7 @@ function compileStyles (cb) {
 
 function vendorJavascript (cb) {
   return gulp.src(ScriptsVendorFiles)
-    .pipe(sourcemaps.init())
-    .pipe(uglify({
-      output: {
-        comments: saveLicense
-      }
-    }))
-    .pipe(rename({ suffix: ScriptsOutputSuffix }))
-    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest(ScriptsOutputVendorDir))
-    .pipe(browserSync.stream())
 }
 
 function compileJavascript (cb) {
