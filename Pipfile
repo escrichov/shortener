@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-Werkzeug = "==0.14.1"
+Werkzeug = "==0.15.3"
 pylint = "*"
 pylint-django = "*"
 selenium = "*"
