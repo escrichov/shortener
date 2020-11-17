@@ -16,8 +16,8 @@
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.27.1",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^5.1.1",
+    "webpack-cli": "^4.0.0"
   },
   "devDependencies": {
     "argv": "0.0.2",
